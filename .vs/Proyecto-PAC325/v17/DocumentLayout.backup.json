@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Ra\u00FAl\\source\\repos\\Proyecto-PAC325\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{53536024-5F46-44DC-BE87-F63DD5A0E7D9}|Proyecto-PAC325\\Proyecto-PAC325.csproj|c:\\users\\ra\u00FAl\\source\\repos\\proyecto-pac325\\proyecto-pac325\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{53536024-5F46-44DC-BE87-F63DD5A0E7D9}|Proyecto-PAC325\\Proyecto-PAC325.csproj|solutionrelative:proyecto-pac325\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ra\u00FAl\\source\\repos\\Proyecto-PAC325\\Proyecto-PAC325\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Proyecto-PAC325\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\Ra\u00FAl\\source\\repos\\Proyecto-PAC325\\Proyecto-PAC325\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Proyecto-PAC325\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-16T17:15:55.782Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
