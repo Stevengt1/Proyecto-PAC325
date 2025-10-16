@@ -31,3 +31,4 @@ C:\Users\Raúl\source\repos\Proyecto-PAC325\Proyecto-PAC325\obj\Debug\net8.0\ref
 C:\Users\Raúl\source\repos\Proyecto-PAC325\Proyecto-PAC325\obj\Debug\net8.0\Proyecto-PAC325.pdb
 C:\Users\Raúl\source\repos\Proyecto-PAC325\Proyecto-PAC325\obj\Debug\net8.0\Proyecto-PAC325.genruntimeconfig.cache
 C:\Users\Raúl\source\repos\Proyecto-PAC325\Proyecto-PAC325\obj\Debug\net8.0\ref\Proyecto-PAC325.dll
+C:\Users\Raúl\source\repos\Proyecto-PAC325\Proyecto-PAC325\obj\Debug\net8.0\Proyecto-PAC325.sourcelink.json
