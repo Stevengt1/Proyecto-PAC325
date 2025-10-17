@@ -86,3 +86,4 @@ wwwroot/lib/
 .env
 .env.*
 appsettings.json
+appsettings.Development.json
