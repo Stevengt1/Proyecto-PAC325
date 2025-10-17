@@ -1,7 +1,24 @@
+using Microsoft.EntityFrameworkCore;
+using Proyecto_PAC325.Business;
+using Proyecto_PAC325.Data;
+using Proyecto_PAC325.Repository;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+//El contexto de la base a la app
+builder.Services.AddDbContext<AppDbContext>(
+        options=>options.UseMySQL(builder.Configuration.GetConnectionString("MySqlConnection"))
+    );
+
+//Agregar los repos
+builder.Services.AddScoped<ComercioRepository>();
+
+//Agregar los Business
+builder.Services.AddScoped<ComercioBusiness>();
+
+//Lo anterior es para que se inyecten automaticamente en los constructores esto por la biblioteca de inyeccion que trae asp.net
 
 var app = builder.Build();
 

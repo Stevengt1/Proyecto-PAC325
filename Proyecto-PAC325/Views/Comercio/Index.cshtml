@@ -1,4 +1,5 @@
-﻿<section class="bienvenida">
+﻿@model List<Proyecto_PAC325.Models.ComercioModel>
+<section class="bienvenida">
     <div>
         <p>Apartado de Comercio</p>
         <h1>
@@ -28,23 +29,60 @@
         <table class="tabla">
             <thead>
                 <tr>
+                    <th>Identificación</th>
+                    <th>Tipo de Identificación</th>
                     <th>Nombre</th>
-                    <th>Descripción</th>
+                    <th>Tipo de Comercio</th>
                     <th>Teléfono</th>
-                    <th>Fecha de Registro</th>
+                    <th>Correo</th>
                     <th>Estado</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Info</td>
-                    <td>Info</td>
-                    <td>Info</td>
-                    <td>Info</td>
-                    <td>Info</td>
-                    <td>BOTONES</td>
-                </tr>
+                @foreach(ComercioModel comercio in Model)
+                {
+                    <tr>
+                        <td>@comercio.Identificacion</td>
+                        @if (comercio.TipoIdentificacion == 1)
+                        {
+                            <td>Física</td>
+                        }
+                        else
+                        {
+                            <td>Jurídica</td>
+                        }
+                        <td>@comercio.Nombre</td>
+                        @switch (comercio.TipoDeComercio)
+                        {
+                            case 1:
+                                <td>Restaurante</td>
+                            break;
+                            case 2:
+                                <td>Supermercado</td>
+                            break;
+                            case 3:
+                                <td>Ferretería</td>
+                            break;
+                            case 4:
+                                <td>Otro</td>
+                            break;
+                        }
+                        <td>@comercio.CorreoElectronico</td>
+                        @if (comercio.Estado == 1)
+                        {
+                            <td>Activo</td>
+                        }
+                        else
+                        {
+                            <td>Inactivo</td>
+                        }
+                        <td>
+                            <a class="boton">Editar</a>
+                            <a class="boton">Eliminar</a>    
+                        </td>
+                    </tr>
+                }
             </tbody>
         </table>
     </section>

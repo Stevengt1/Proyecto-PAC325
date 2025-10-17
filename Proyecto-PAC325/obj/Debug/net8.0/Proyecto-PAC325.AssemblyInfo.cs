@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Proyecto-PAC325")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+06baf6d5c12d6963ea43850321df73925de0ee5b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6ba25c8222f541eb60a6e462f252ae69bb788693")]
 [assembly: System.Reflection.AssemblyProductAttribute("Proyecto-PAC325")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Proyecto-PAC325")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
