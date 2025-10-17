@@ -8,5 +8,10 @@ namespace Proyecto_PAC325.Controllers
         {
             return View();
         }
+
+        public IActionResult Registro()
+        {
+            return View();
+        }
     }
 }

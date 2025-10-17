@@ -237,3 +237,82 @@ thead th:last-child {
 .act-container .activo{
     border-bottom: 5px solid black;
 }
+
+/*Diseño de formulario*/
+.registro-container{
+    width: 100%;
+    padding: 0 1%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formulario {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+.formulario label{
+    margin: 1% 0;
+
+}
+
+.entrada-datos{
+    width: 100%;
+    padding: 1%;
+    background-color: darkgrey;
+    border: none;
+    border-radius: 10px;
+}
+
+select {
+    background-color: darkgrey;
+    border: none;
+    padding: 1%;
+    border-radius: 10px;
+}
+
+select,
+::picker(select) {
+    appearance: base-select;
+}
+
+select::picker-icon {
+    color: #999999;
+    transition: 0.4s rotate;
+}
+
+select:open::picker-icon {
+    rotate: 180deg;
+}
+
+option {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    border: 2px solid #dddddd;
+    background: #eeeeee;
+    padding: 1%;
+    transition: 0.4s;
+}
+
+option:first-of-type {
+    border-radius: 10px 10px 0 0;
+}
+
+option:last-of-type {
+    border-radius: 0 0 10px 10px;
+}
+
+::picker(select) {
+    border-radius: 10px;
+}
+
+option:not(option:last-of-type) {
+    border-bottom: none;
+}
+
+option:hover{
+    background-color: rgba(0,0,0,0.1);
+}
