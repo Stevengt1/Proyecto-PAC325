@@ -1,4 +1,5 @@
-﻿<section class="bienvenida">
+﻿@model Proyecto_PAC325.Models.ComercioModel
+<section class="bienvenida">
     <div>
         <p>Apartado de Comercio</p>
         <h1>
@@ -24,29 +25,29 @@
 </div>
 
 <section class="registro-container">
-    <form class="formulario">
+    <form class="formulario" asp-action="Add">
         <label>Identificación</label>
-        <input type="text" class="entrada-datos" placeholder="Ej: 123as278dsjk" required />
+        <input type="text" class="entrada-datos" placeholder="Ej: 123as278dsjk" required asp-for="Identificacion"/>
         <label>Tipo de Identificación</label>
-        <select class="entrada-select" required>
+        <select class="entrada-select" required asp-for="TipoIdentificacion">
             <option value="1">Fisica</option>
             <option value="2">Juridica</option>
         </select>
         <label>Nombre de Comercio</label>
-        <input type="text" class="entrada-datos" placeholder="Ej: Shein" required />
+        <input type="text" class="entrada-datos" placeholder="Ej: Shein" required asp-for="Nombre" />
         <label>Tipo de Comercio</label>
-        <select class="entrada-select" required>
+        <select class="entrada-select" required asp-for="TipoDeComercio">
             <option value="1">Restaurante</option>
             <option value="2">Supermercado</option>
             <option value="3">Ferreteria</option>
             <option value="4">Otros</option>
         </select>
         <label>Teléfono</label>
-        <input type="number" class="entrada-datos" placeholder="Ej: 60767155" required />
+        <input type="number" class="entrada-datos" placeholder="Ej: 60767155" required asp-for="Telefono"/>
         <label>Correo Electrónico</label>
-        <input type="email" class="entrada-datos" placeholder="Ej: organizacion@gmail.com" required />
+        <input type="email" class="entrada-datos" placeholder="Ej: organizacion@gmail.com" required asp-for="CorreoElectronico" />
         <label>Dirección Completa</label>
-        <input type="text" class="entrada-datos" placeholder="Ej: Alajuela, Grecia, San Roque a 100mts Noroeste del super x" required />
+        <input type="text" class="entrada-datos" placeholder="Ej: Alajuela, Grecia, San Roque a 100mts Noroeste del super x" required asp-for="Direccion" />
         <button class="boton">
             Registrar Comercio
         </button>

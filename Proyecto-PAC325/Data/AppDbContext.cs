@@ -11,7 +11,7 @@ namespace Proyecto_PAC325.Data
 
         }
 
-        public DbSet<ComercioModel> COMERCIO {  get; set; }
+        public DbSet<ComercioModel> COMERCIOS {  get; set; }
 
         
     }
