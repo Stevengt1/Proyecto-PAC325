@@ -38,7 +38,7 @@ namespace Proyecto_PAC325.Controllers
             {
                 TempData["success"] = "El comercio fue guardado con exito";
             }
-                return RedirectToAction("Index");
+                return RedirectToAction("Registro");
         }
     }
 }

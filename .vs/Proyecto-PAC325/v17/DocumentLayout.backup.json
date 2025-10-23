@@ -1,30 +1,34 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Ra\u00FAl\\source\\repos\\Proyecto-PAC325\\",
+  "WorkspaceRootPath": "C:\\Users\\Raul\\Documents\\Proyectos\\Proyecto-PAC325\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{53536024-5F46-44DC-BE87-F63DD5A0E7D9}|Proyecto-PAC325\\Proyecto-PAC325.csproj|c:\\users\\ra\u00FAl\\source\\repos\\proyecto-pac325\\proyecto-pac325\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{53536024-5F46-44DC-BE87-F63DD5A0E7D9}|Proyecto-PAC325\\Proyecto-PAC325.csproj|solutionrelative:proyecto-pac325\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{53536024-5F46-44DC-BE87-F63DD5A0E7D9}|Proyecto-PAC325\\Proyecto-PAC325.csproj|c:\\users\\raul\\documents\\proyectos\\proyecto-pac325\\proyecto-pac325\\views\\comercio\\registro.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{53536024-5F46-44DC-BE87-F63DD5A0E7D9}|Proyecto-PAC325\\Proyecto-PAC325.csproj|solutionrelative:proyecto-pac325\\views\\comercio\\registro.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{53536024-5F46-44DC-BE87-F63DD5A0E7D9}|Proyecto-PAC325\\Proyecto-PAC325.csproj|c:\\users\\ra\u00FAl\\source\\repos\\proyecto-pac325\\proyecto-pac325\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{53536024-5F46-44DC-BE87-F63DD5A0E7D9}|Proyecto-PAC325\\Proyecto-PAC325.csproj|solutionrelative:proyecto-pac325\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{53536024-5F46-44DC-BE87-F63DD5A0E7D9}|Proyecto-PAC325\\Proyecto-PAC325.csproj|c:\\users\\ra\u00FAl\\source\\repos\\proyecto-pac325\\proyecto-pac325\\views\\comercio\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{53536024-5F46-44DC-BE87-F63DD5A0E7D9}|Proyecto-PAC325\\Proyecto-PAC325.csproj|solutionrelative:proyecto-pac325\\views\\comercio\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{53536024-5F46-44DC-BE87-F63DD5A0E7D9}|Proyecto-PAC325\\Proyecto-PAC325.csproj|c:\\users\\ra\u00FAl\\source\\repos\\proyecto-pac325\\proyecto-pac325\\controllers\\comerciocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{53536024-5F46-44DC-BE87-F63DD5A0E7D9}|Proyecto-PAC325\\Proyecto-PAC325.csproj|c:\\users\\raul\\documents\\proyectos\\proyecto-pac325\\proyecto-pac325\\controllers\\comerciocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{53536024-5F46-44DC-BE87-F63DD5A0E7D9}|Proyecto-PAC325\\Proyecto-PAC325.csproj|solutionrelative:proyecto-pac325\\controllers\\comerciocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{53536024-5F46-44DC-BE87-F63DD5A0E7D9}|Proyecto-PAC325\\Proyecto-PAC325.csproj|c:\\users\\ra\u00FAl\\source\\repos\\proyecto-pac325\\proyecto-pac325\\business\\comerciobusiness.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{53536024-5F46-44DC-BE87-F63DD5A0E7D9}|Proyecto-PAC325\\Proyecto-PAC325.csproj|solutionrelative:proyecto-pac325\\business\\comerciobusiness.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{53536024-5F46-44DC-BE87-F63DD5A0E7D9}|Proyecto-PAC325\\Proyecto-PAC325.csproj|c:\\users\\raul\\documents\\proyectos\\proyecto-pac325\\proyecto-pac325\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{53536024-5F46-44DC-BE87-F63DD5A0E7D9}|Proyecto-PAC325\\Proyecto-PAC325.csproj|solutionrelative:proyecto-pac325\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{53536024-5F46-44DC-BE87-F63DD5A0E7D9}|Proyecto-PAC325\\Proyecto-PAC325.csproj|c:\\users\\ra\u00FAl\\source\\repos\\proyecto-pac325\\proyecto-pac325\\repository\\comerciorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{53536024-5F46-44DC-BE87-F63DD5A0E7D9}|Proyecto-PAC325\\Proyecto-PAC325.csproj|solutionrelative:proyecto-pac325\\repository\\comerciorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{53536024-5F46-44DC-BE87-F63DD5A0E7D9}|Proyecto-PAC325\\Proyecto-PAC325.csproj|c:\\users\\raul\\documents\\proyectos\\proyecto-pac325\\proyecto-pac325\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{53536024-5F46-44DC-BE87-F63DD5A0E7D9}|Proyecto-PAC325\\Proyecto-PAC325.csproj|solutionrelative:proyecto-pac325\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53536024-5F46-44DC-BE87-F63DD5A0E7D9}|Proyecto-PAC325\\Proyecto-PAC325.csproj|c:\\users\\raul\\documents\\proyectos\\proyecto-pac325\\proyecto-pac325\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{53536024-5F46-44DC-BE87-F63DD5A0E7D9}|Proyecto-PAC325\\Proyecto-PAC325.csproj|solutionrelative:proyecto-pac325\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53536024-5F46-44DC-BE87-F63DD5A0E7D9}|Proyecto-PAC325\\Proyecto-PAC325.csproj|c:\\users\\raul\\documents\\proyectos\\proyecto-pac325\\proyecto-pac325\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{53536024-5F46-44DC-BE87-F63DD5A0E7D9}|Proyecto-PAC325\\Proyecto-PAC325.csproj|solutionrelative:proyecto-pac325\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53536024-5F46-44DC-BE87-F63DD5A0E7D9}|Proyecto-PAC325\\Proyecto-PAC325.csproj|c:\\users\\raul\\documents\\proyectos\\proyecto-pac325\\proyecto-pac325\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{53536024-5F46-44DC-BE87-F63DD5A0E7D9}|Proyecto-PAC325\\Proyecto-PAC325.csproj|solutionrelative:proyecto-pac325\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,84 +38,97 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Ra\u00FAl\\source\\repos\\Proyecto-PAC325\\Proyecto-PAC325\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "Proyecto-PAC325\\Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Ra\u00FAl\\source\\repos\\Proyecto-PAC325\\Proyecto-PAC325\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "Proyecto-PAC325\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-21T16:17:05.598Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "site.css",
-              "DocumentMoniker": "C:\\Users\\Ra\u00FAl\\source\\repos\\Proyecto-PAC325\\Proyecto-PAC325\\wwwroot\\css\\site.css",
-              "RelativeDocumentMoniker": "Proyecto-PAC325\\wwwroot\\css\\site.css",
-              "ToolTip": "C:\\Users\\Ra\u00FAl\\source\\repos\\Proyecto-PAC325\\Proyecto-PAC325\\wwwroot\\css\\site.css",
-              "RelativeToolTip": "Proyecto-PAC325\\wwwroot\\css\\site.css",
-              "ViewState": "AgIAADgBAAAAAAAAAAAuwEQBAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-10-21T16:14:51.45Z",
+              "DocumentIndex": 4,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Raul\\Documents\\Proyectos\\Proyecto-PAC325\\Proyecto-PAC325\\appsettings.json",
+              "RelativeDocumentMoniker": "Proyecto-PAC325\\appsettings.json",
+              "ToolTip": "C:\\Users\\Raul\\Documents\\Proyectos\\Proyecto-PAC325\\Proyecto-PAC325\\appsettings.json",
+              "RelativeToolTip": "Proyecto-PAC325\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-10-23T02:41:05.455Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Ra\u00FAl\\source\\repos\\Proyecto-PAC325\\Proyecto-PAC325\\Views\\Comercio\\Index.cshtml",
-              "RelativeDocumentMoniker": "Proyecto-PAC325\\Views\\Comercio\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Ra\u00FAl\\source\\repos\\Proyecto-PAC325\\Proyecto-PAC325\\Views\\Comercio\\Index.cshtml",
-              "RelativeToolTip": "Proyecto-PAC325\\Views\\Comercio\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEYAAAAzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-18T00:20:28.468Z",
+              "Title": "site.js",
+              "DocumentMoniker": "C:\\Users\\Raul\\Documents\\Proyectos\\Proyecto-PAC325\\Proyecto-PAC325\\wwwroot\\js\\site.js",
+              "RelativeDocumentMoniker": "Proyecto-PAC325\\wwwroot\\js\\site.js",
+              "ToolTip": "C:\\Users\\Raul\\Documents\\Proyectos\\Proyecto-PAC325\\Proyecto-PAC325\\wwwroot\\js\\site.js",
+              "RelativeToolTip": "Proyecto-PAC325\\wwwroot\\js\\site.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-10-23T02:35:14.995Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "ComercioController.cs",
-              "DocumentMoniker": "C:\\Users\\Ra\u00FAl\\source\\repos\\Proyecto-PAC325\\Proyecto-PAC325\\Controllers\\ComercioController.cs",
-              "RelativeDocumentMoniker": "Proyecto-PAC325\\Controllers\\ComercioController.cs",
-              "ToolTip": "C:\\Users\\Ra\u00FAl\\source\\repos\\Proyecto-PAC325\\Proyecto-PAC325\\Controllers\\ComercioController.cs",
-              "RelativeToolTip": "Proyecto-PAC325\\Controllers\\ComercioController.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAowB4AAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-17T23:48:21.811Z",
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\Raul\\Documents\\Proyectos\\Proyecto-PAC325\\Proyecto-PAC325\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Proyecto-PAC325\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\Raul\\Documents\\Proyectos\\Proyecto-PAC325\\Proyecto-PAC325\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Proyecto-PAC325\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-23T02:35:05.878Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ComercioBusiness.cs",
-              "DocumentMoniker": "C:\\Users\\Ra\u00FAl\\source\\repos\\Proyecto-PAC325\\Proyecto-PAC325\\Business\\ComercioBusiness.cs",
-              "RelativeDocumentMoniker": "Proyecto-PAC325\\Business\\ComercioBusiness.cs",
-              "ToolTip": "C:\\Users\\Ra\u00FAl\\source\\repos\\Proyecto-PAC325\\Proyecto-PAC325\\Business\\ComercioBusiness.cs",
-              "RelativeToolTip": "Proyecto-PAC325\\Business\\ComercioBusiness.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAYwBkAAAAgAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "ComercioController.cs",
+              "DocumentMoniker": "C:\\Users\\Raul\\Documents\\Proyectos\\Proyecto-PAC325\\Proyecto-PAC325\\Controllers\\ComercioController.cs",
+              "RelativeDocumentMoniker": "Proyecto-PAC325\\Controllers\\ComercioController.cs",
+              "ToolTip": "C:\\Users\\Raul\\Documents\\Proyectos\\Proyecto-PAC325\\Proyecto-PAC325\\Controllers\\ComercioController.cs",
+              "RelativeToolTip": "Proyecto-PAC325\\Controllers\\ComercioController.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwCgAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-17T20:27:40.842Z",
+              "WhenOpened": "2025-10-23T02:32:38.7Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Registro.cshtml",
+              "DocumentMoniker": "C:\\Users\\Raul\\Documents\\Proyectos\\Proyecto-PAC325\\Proyecto-PAC325\\Views\\Comercio\\Registro.cshtml",
+              "RelativeDocumentMoniker": "Proyecto-PAC325\\Views\\Comercio\\Registro.cshtml",
+              "ToolTip": "C:\\Users\\Raul\\Documents\\Proyectos\\Proyecto-PAC325\\Proyecto-PAC325\\Views\\Comercio\\Registro.cshtml",
+              "RelativeToolTip": "Proyecto-PAC325\\Views\\Comercio\\Registro.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-23T02:31:25.915Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "ComercioRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Ra\u00FAl\\source\\repos\\Proyecto-PAC325\\Proyecto-PAC325\\Repository\\ComercioRepository.cs",
-              "RelativeDocumentMoniker": "Proyecto-PAC325\\Repository\\ComercioRepository.cs",
-              "ToolTip": "C:\\Users\\Ra\u00FAl\\source\\repos\\Proyecto-PAC325\\Proyecto-PAC325\\Repository\\ComercioRepository.cs",
-              "RelativeToolTip": "Proyecto-PAC325\\Repository\\ComercioRepository.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAEwCEAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-17T20:09:19.524Z",
+              "Title": "site.css",
+              "DocumentMoniker": "C:\\Users\\Raul\\Documents\\Proyectos\\Proyecto-PAC325\\Proyecto-PAC325\\wwwroot\\css\\site.css",
+              "RelativeDocumentMoniker": "Proyecto-PAC325\\wwwroot\\css\\site.css",
+              "ToolTip": "C:\\Users\\Raul\\Documents\\Proyectos\\Proyecto-PAC325\\Proyecto-PAC325\\wwwroot\\css\\site.css",
+              "RelativeToolTip": "Proyecto-PAC325\\wwwroot\\css\\site.css",
+              "ViewState": "AgIAAEoBAAAAAAAAAAAAAEwBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-10-23T02:30:22.665Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Raul\\Documents\\Proyectos\\Proyecto-PAC325\\Proyecto-PAC325\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Proyecto-PAC325\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Raul\\Documents\\Proyectos\\Proyecto-PAC325\\Proyecto-PAC325\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Proyecto-PAC325\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-23T02:29:49.074Z",
               "EditorCaption": ""
             }
           ]
