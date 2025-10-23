@@ -26,11 +26,19 @@ namespace Proyecto_PAC325.Controllers
 
         public async Task<IActionResult> Add(ComercioModel comercio)
         {
-            if (await _comercioBusiness.Add(comercio) == null)
+            ComercioModel comercio_temp = await _comercioBusiness.Add(comercio);
+            if (comercio_temp == null)
             {
-                return RedirectToAction("Registro");
+                TempData["error"] = "Ocurrio un error a la hora de insertar el registro en la base de datos";
+            }else if (comercio_temp.IdComercio == -1)
+            {
+                TempData["error"] = "El identificador del comercio ya esta siendo utilizado";
             }
-            return RedirectToAction("Index");
+            else
+            {
+                TempData["success"] = "El comercio fue guardado con exito";
+            }
+                return RedirectToAction("Index");
         }
     }
 }

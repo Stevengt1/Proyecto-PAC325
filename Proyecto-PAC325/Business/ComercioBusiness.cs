@@ -22,7 +22,8 @@ namespace Proyecto_PAC325.Business
         {
             if (await _comercioRepository.ExistIdentification(comercio.Identificacion)) //Esta es la funcion que cree
             { // para ver que no exista ell comercio con esa identidad
-                return null;
+                comercio.IdComercio = -1;
+                return comercio;
             }
             comercio.FechaDeModificacion = DateTime.Now; //Se asigna la fecha en que se realizo
             comercio.FechaDeRegistro = DateTime.Now; //Se asigna la fecha en que se realizo
