@@ -1,0 +1,69 @@
+﻿@model Proyecto_PAC325.Models.ComercioModel
+@if(TempData["error"] != null)
+{
+    <div class="mensaje error" id="mensaje">
+        <span>@TempData["error"]</span>
+        <button id="cerrar-modal">×</button>
+    </div>
+}else if (TempData["success"] != null)
+{
+    <div class="mensaje success" id="mensaje">
+        <span>@TempData["success"]</span>
+        <button id="cerrar-modal">×</button>
+    </div>
+}
+<section class="bienvenida">
+    <div>
+        <p>Apartado de Comercio</p>
+        <h1>
+            ESTE ES EL APARTADO DE COMERCIO DONDE PODRAS REGISTRAR LOS COMERCIOS A LOS QUE SE AFILIARA EL SISTEMA
+        </h1>
+        <p>Este sector esta designado para que puedas registrar los comercios a los cuales se les podra realizar las transferencias</p>
+        <button class="boton">
+            Registrar Comercio
+        </button>
+    </div>
+</section>
+
+<div class="titulo-container">
+    <h2>
+        REGISTRO DE COMERCIOS
+    </h2>
+</div>
+
+<div class="act-container">
+    <h3>Acciones: </h3>
+    <a asp-action="Index">Lista</a>
+    <a class="activo" asp-action="Registro">Registrar</a>
+</div>
+
+<section class="registro-container">
+    <form class="formulario" asp-action="Add">
+        <label>Identificación</label>
+        <input type="text" class="entrada-datos" placeholder="Ej: 123as278dsjk" required asp-for="Identificacion"/>
+        <label>Tipo de Identificación</label>
+        <select class="entrada-select" required asp-for="TipoIdentificacion">
+            <option value="1">Fisica</option>
+            <option value="2">Juridica</option>
+        </select>
+        <label>Nombre de Comercio</label>
+        <input type="text" class="entrada-datos" placeholder="Ej: Shein" required asp-for="Nombre" />
+        <label>Tipo de Comercio</label>
+        <select class="entrada-select" required asp-for="TipoDeComercio">
+            <option value="1">Restaurante</option>
+            <option value="2">Supermercado</option>
+            <option value="3">Ferreteria</option>
+            <option value="4">Otros</option>
+        </select>
+        <label>Teléfono</label>
+        <input type="number" class="entrada-datos" placeholder="Ej: 60767155" required asp-for="Telefono"/>
+        <label>Correo Electrónico</label>
+        <input type="email" class="entrada-datos" placeholder="Ej: organizacion@gmail.com" required asp-for="CorreoElectronico" />
+        <label>Dirección Completa</label>
+        <input type="text" class="entrada-datos" placeholder="Ej: Alajuela, Grecia, San Roque a 100mts Noroeste del super x" required asp-for="Direccion" />
+        <button class="boton">
+            Registrar Comercio
+        </button>
+    </form>
+</section>
+
