@@ -87,4 +87,6 @@ wwwroot/lib/
 .env.*
 appsettings.json
 appsettings.Development.json
-.vs
+*obj/
+obj/
+Debug/
