@@ -1,20 +1,20 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 * {
@@ -53,14 +53,14 @@ main {
     gap: 3%;
 }
 
-.navbar a:first-child {
+    .navbar a:first-child {
         background-color: rgb(113, 113, 113);
         padding: 1%;
         aspect-ratio: 1 / 1;
         border-radius: 50%;
         align-items: center;
         margin-right: 3%;
-}
+    }
 
 a {
     text-decoration: none;
@@ -78,11 +78,11 @@ a {
     align-items: center;
 }
 
-.bienvenida p:first-child {
+    .bienvenida p:first-child {
         background-color: grey;
         padding: 1%;
         border-radius: 10000px;
-}
+    }
 
 .boton {
     padding: 10px;
@@ -132,18 +132,17 @@ a {
     margin-bottom: 3%;
 }
 
-.card:hover {
+    .card:hover {
         transform: scale(1.01);
         transition: 0.3s;
-}
+    }
 
-.card img {
+    .card img {
         width: 30%;
         background-color: aliceblue;
         padding: 2%;
         border-radius: 50%;
-
-}
+    }
 
 .btn-logo {
     display: flex;
@@ -152,7 +151,7 @@ a {
     align-items: center;
 }
 
-.btn-logo img {
-    all: unset;
-    width: 20%;
-}
+    .btn-logo img {
+        all: unset;
+        width: 20%;
+    }

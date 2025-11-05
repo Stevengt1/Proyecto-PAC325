@@ -1,0 +1,14 @@
+﻿@model Proyecto_PAC325.Models.SinpeModel
+
+@{
+    ViewData["Title"] = "Sinpe Móvil";
+}
+<h1>Pago en Sinpe Móvil</h1>
+<form asp-action="Index" method="post">
+    <div class="form-group mb-3">
+        <label asp-for="TelefonoOrigen" class="form-label"></label>
+        <input asp-for="TelefonoOrigen" class="form-control" />
+        <span asp-validation-for="TelefonoOrigen" class="text-danger"></span>
+    </div>
+
+</form>
