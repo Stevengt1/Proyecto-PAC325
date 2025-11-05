@@ -1,0 +1,46 @@
+﻿@model Proyecto_PAC325.Models.CajaModel
+@{
+    ViewData["Title"] = "Registrar Caja";
+}
+@if (TempData["error"] != null)
+{
+    <div class="mensaje error" id="mensaje">
+        <span>@TempData["error"]</span>
+        <button id="cerrar-modal">×</button>
+    </div>
+}
+else if (TempData["success"] != null)
+{
+    <div class="mensaje success" id="mensaje">
+        <span>@TempData["success"]</span>
+        <button id="cerrar-modal">×</button>
+    </div>
+}
+
+<div class="titulo-container">
+    <h2>REGISTRO DE CAJAS</h2>
+</div>
+
+<div class="act-container">
+    <h3>Acciones: </h3>
+    <a asp-action="Index" asp-route-idComercio="@Model.IdComercio">Lista</a>
+    <a class="activo" asp-action="Registro" asp-route-idComercio="@Model.IdComercio">Registrar</a>
+</div>
+
+<section class="registro-container">
+    <form class="formulario" asp-action="Add" method="post">
+        <input type="hidden" asp-for="IdComercio" />
+        <label>Nombre</label>
+        <input type="text" class="entrada-datos" required asp-for="Nombre" />
+        <label>Descripción</label>
+        <input type="text" class="entrada-datos" required asp-for="Descripcion" />
+        <label>Teléfono SINPE</label>
+        <input type="text" class="entrada-datos" required asp-for="TelefonoSINPE" />
+        <div class="checkbox">
+            <input type="hidden" name="Estado" value="0" />
+            <input asp-for="Estado" type="checkbox" value="1" checked />
+            <label>Activo</label>
+        </div>
+        <button class="boton">Registrar Caja</button>
+    </form>
+</section>

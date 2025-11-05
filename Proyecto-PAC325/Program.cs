@@ -14,9 +14,12 @@ builder.Services.AddDbContext<AppDbContext>(
 
 //Agregar los repos
 builder.Services.AddScoped<ComercioRepository>();
+builder.Services.AddScoped<CajaRepository>();
 
 //Agregar los Business
 builder.Services.AddScoped<ComercioBusiness>();
+builder.Services.AddScoped<CajaBusiness>();
+
 
 //Lo anterior es para que se inyecten automaticamente en los constructores esto por la biblioteca de inyeccion que trae asp.net
 
