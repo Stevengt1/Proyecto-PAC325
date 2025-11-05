@@ -79,8 +79,9 @@
                             <td>Inactivo</td>
                         }
                         <td>
-                            <a class="boton">Editar</a>
-                            <a class="boton">Eliminar</a>    
+                            <a class="boton" asp-route-idComercio="@comercio.IdComercio" asp-action="Editar">Editar</a>
+                            <a class="boton" asp-route-idComercio="@comercio.IdComercio" asp-action="Detalle">Detalles</a>
+                            <a class="boton">Ver Cajas</a>
                         </td>
                     </tr>
                 }

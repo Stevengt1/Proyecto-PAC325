@@ -24,6 +24,7 @@ namespace Proyecto_PAC325.Controllers
             return View();
         }
 
+        [HttpPost]
         public async Task<IActionResult> Add(ComercioModel comercio)
         {
             ComercioModel comercio_temp = await _comercioBusiness.Add(comercio);
@@ -39,6 +40,29 @@ namespace Proyecto_PAC325.Controllers
                 TempData["success"] = "El comercio fue guardado con exito";
             }
                 return RedirectToAction("Registro");
+        }
+
+        public async Task<IActionResult> Editar(int idComercio)
+        {
+            return View(await _comercioBusiness.GetComercio(idComercio));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Update(ComercioModel comercio)
+        {
+            var result = await _comercioBusiness.Update(comercio);
+            if (result == null)
+            {
+                TempData["error"] = "Ocurrio un error a la hora de actualizar los datos";
+                return RedirectToAction("Editar", comercio);
+            }
+            TempData["success"] = "Los datos fueron editados de manera correcta";
+            return RedirectToAction("Editar", result);
+        }
+
+        public async Task<IActionResult> Detalle(int idComercio)
+        {
+            return View(await _comercioBusiness.GetComercio(idComercio));
         }
     }
 }

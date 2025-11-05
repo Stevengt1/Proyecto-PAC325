@@ -18,6 +18,11 @@ namespace Proyecto_PAC325.Business
             return await _comercioRepository.GetAllComercio();
         }
 
+        public async Task<ComercioModel> GetComercio(int id)
+        {
+            return await _comercioRepository.GetComercio(id);
+        }
+
         public async Task<ComercioModel> Add(ComercioModel comercio)
         {
             if (await _comercioRepository.ExistIdentification(comercio.Identificacion)) //Esta es la funcion que cree
@@ -29,6 +34,12 @@ namespace Proyecto_PAC325.Business
             comercio.FechaDeRegistro = DateTime.Now; //Se asigna la fecha en que se realizo
             comercio.Estado = 1; //Este es el activo
             return await _comercioRepository.Add(comercio);
+        }
+
+        public async Task<ComercioModel> Update(ComercioModel comercio)
+        {
+            comercio.FechaDeModificacion = DateTime.Now;
+            return await _comercioRepository.Update(comercio);
         }
 
     }
