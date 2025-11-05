@@ -35,19 +35,7 @@ namespace Proyecto_PAC325.Repository
 
         public async Task<ComercioModel> Update(ComercioModel comercio)
         {
-
             _context.COMERCIOS.Update(comercio);
-            if (await _context.SaveChangesAsync() > 0)
-            {
-                return comercio;
-            }
-            return null;
-        }
-
-        public async Task<ComercioModel> Delete(ComercioModel comercio)
-        {
-            
-            _context.COMERCIOS.Remove(comercio);
             if (await _context.SaveChangesAsync() > 0)
             {
                 return comercio;
@@ -58,6 +46,15 @@ namespace Proyecto_PAC325.Repository
         public async Task<bool> ExistIdentification(String Identificacion)
         {
             if (await _context.COMERCIOS.FirstOrDefaultAsync(c => c.Identificacion == Identificacion) != null)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public async Task<bool> Exist(int id)
+        {
+            if (await _context.COMERCIOS.FindAsync(id) != null)
             {
                 return true;
             }
