@@ -29,18 +29,40 @@ else if (TempData["success"] != null)
 
 <section class="registro-container">
     <form class="formulario" asp-action="Add" method="post">
-        <input type="hidden" asp-for="IdComercio" />
+        @Html.AntiForgeryToken()
+
+        @if (ViewBag.Comercios != null)
+        {
+            <label>Comercio</label>
+            <select asp-for="IdComercio" asp-items="ViewBag.Comercios" class="entrada-datos"></select>
+            <span asp-validation-for="IdComercio" class="text-danger"></span>
+        }
+        else
+        {
+            <input type="hidden" asp-for="IdComercio" />
+        }
+
         <label>Nombre</label>
         <input type="text" class="entrada-datos" required asp-for="Nombre" />
+        <span asp-validation-for="Nombre" class="text-danger"></span>
+
         <label>Descripción</label>
         <input type="text" class="entrada-datos" required asp-for="Descripcion" />
+        <span asp-validation-for="Descripcion" class="text-danger"></span>
+
         <label>Teléfono SINPE</label>
         <input type="text" class="entrada-datos" required asp-for="TelefonoSINPE" />
+        <span asp-validation-for="TelefonoSINPE" class="text-danger"></span>
+
         <div class="checkbox">
-            <input type="hidden" name="Estado" value="0" />
-            <input asp-for="Estado" type="checkbox" value="1" checked />
+            <input asp-for="EstadoBool" type="checkbox" />
             <label>Activo</label>
         </div>
+
         <button class="boton">Registrar Caja</button>
     </form>
 </section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

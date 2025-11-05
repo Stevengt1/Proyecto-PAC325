@@ -42,27 +42,34 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var c in Model)
+                @if (Model == null || !Model.Any())
                 {
                     <tr>
-                        <td>@c.Nombre</td>
-                        <td>@(string.IsNullOrEmpty(c.Descripcion) ? "" : (c.Descripcion.Length > 10 ? c.Descripcion.Substring(0, 10) + "…" : c.Descripcion))</td>
-                        <td>@c.TelefonoSINPE</td>
-                        <td>@c.FechaDeRegistro.ToString("g")</td>
-                        @if (c.Estado == 1)
-                        {
-                            <td>Activo</td>
-                        }
-                        else
-                        {
-                            <td>Inactivo</td>
-                        }
-                        <td>
-                            <a class="boton" asp-action="Edit" asp-route-id="@c.IdCaja">Editar</a>
-                            @* esta opcion aun no esta activa *@
-                            <a class="boton" asp-action="VerSinpe" asp-route-telefono="@c.TelefonoSINPE">Ver SINPE</a>
+                        <td colspan="6" style="text-align:center; padding:2rem;">
+                            No hay cajas para mostrar.
+                            @if (idComercio == 0)
+                            {
+                                <div>(No se recibió idComercio. Para listar por comercio, abra la lista desde Comercios o use el selector en Registrar.)</div>
+                            }
                         </td>
                     </tr>
+                }
+                else
+                {
+                    @foreach (var c in Model)
+                    {
+                        <tr>
+                            <td>@c.Nombre</td>
+                            <td>@(string.IsNullOrEmpty(c.Descripcion) ? "" : (c.Descripcion.Length > 10 ? c.Descripcion.Substring(0, 10) + "…" : c.Descripcion))</td>
+                            <td>@c.TelefonoSINPE</td>
+                            <td>@c.FechaDeRegistro.ToString("g")</td>
+                            <td>@(c.Estado == 1 ? "Activo" : "Inactivo")</td>
+                            <td>
+                                <a class="boton" asp-action="Editar" asp-route-idCaja="@c.IdCaja">Editar</a>
+                                <a class="boton" asp-action="VerSinpe" asp-route-telefono="@c.TelefonoSINPE">Ver SINPE</a>
+                            </td>
+                        </tr>
+                    }
                 }
             </tbody>
         </table>

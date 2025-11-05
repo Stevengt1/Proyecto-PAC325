@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Query;
 using Proyecto_PAC325.Data;
 using Proyecto_PAC325.Models;
 
@@ -7,67 +6,75 @@ namespace Proyecto_PAC325.Repository
 {
     public class CajaRepository
     {
-
         private readonly AppDbContext _context;
+
         public CajaRepository(AppDbContext context)
         {
             _context = context;
         }
 
-
-        //obtener por comercio
-        public async Task<List<CajaModel>> GetByComercioAsync(int idComercio)
+        public async Task<List<CajaModel>> GetCajasByComercio(int idComercio)
         {
             return await _context.CAJAS
                 .Where(c => c.IdComercio == idComercio)
                 .OrderByDescending(c => c.FechaDeRegistro)
                 .ToListAsync();
         }
-        //obtener caja por id
-        public async Task<CajaModel> GetCajaAsync(int id)
+        public async Task<List<CajaModel>> GetAllCajas()
+        {
+            return await _context.CAJAS
+                .OrderByDescending(c => c.FechaDeRegistro)
+                .ToListAsync();
+        }
+
+        public async Task<CajaModel> GetCaja(int id)
         {
             return await _context.CAJAS.FindAsync(id);
         }
 
-        //registro de cajas
-        public async Task<CajaModel> Registro(CajaModel caja)
+        public async Task<CajaModel> Add(CajaModel caja)
         {
             _context.CAJAS.Add(caja);
-            if (await _context.SaveChangesAsync() > 0) return caja;//el guardado no puede ser nulo
+            if (await _context.SaveChangesAsync() > 0)
+            {
+                return caja;
+            }
             return null;
         }
 
-        //editar cajas
-        public async Task<CajaModel> Editar(CajaModel caja)
+        public async Task<CajaModel> Update(CajaModel caja)
         {
-            _context.CAJAS.Update(caja);
-            if (await _context.SaveChangesAsync() > 0) return caja;
-            return null;
-        }
-        //eliminar misma logica
-        public async Task<CajaModel> Eliminar(CajaModel caja)
-        {
-            _context.CAJAS.Remove(caja);
-            if (await _context.SaveChangesAsync() > 0) return caja;
+            var existing = await _context.CAJAS.FindAsync(caja.IdCaja);
+            if (existing == null) return null;
+
+            existing.Nombre = caja.Nombre;
+            existing.Descripcion = caja.Descripcion;
+            existing.TelefonoSINPE = caja.TelefonoSINPE;
+            existing.Estado = caja.Estado;
+            existing.FechaDeModificacion = caja.FechaDeModificacion;
+            existing.IdComercio = caja.IdComercio;
+
+            _context.CAJAS.Update(existing);
+            if (await _context.SaveChangesAsync() > 0)
+            {
+                return existing;
+            }
             return null;
         }
 
-        //parametro por el enunciado
-        //verifica si existe el nombre de la caja para un comercio
-        public async Task<bool> ExistNombreAsync(int idComercio, string nombre, int? excludeId = null)
+        public async Task<CajaModel> FindByNombreAndComercio(string nombre, int idComercio)
         {
-            var q = _context.CAJAS.Where(c => c.IdComercio == idComercio && c.Nombre == nombre);
-            if (excludeId.HasValue) q = q.Where(c => c.IdCaja != excludeId.Value);
-            return await q.AnyAsync();
-        }
-        //verifica si existe un telefono sinpe activo
-        //esto se configura cuado el modulo sinpe este desarrollado
-        public async Task<bool> ExistActivoTelefonoAsync(string telefono, int? excludeId = null)
-        {
-            var q = _context.CAJAS.Where(c => c.TelefonoSINPE == telefono && c.Estado == 1);
-            if (excludeId.HasValue) q = q.Where(c => c.IdCaja != excludeId.Value);
-            return await q.AnyAsync();
+            if (string.IsNullOrWhiteSpace(nombre)) return null;
+            var n = nombre.Trim().ToLower();
+            return await _context.CAJAS
+                .FirstOrDefaultAsync(c => c.IdComercio == idComercio && c.Nombre.Trim().ToLower() == n);
         }
 
+        public async Task<CajaModel> FindActiveByTelefono(string telefonoSINPE)
+        {
+            if (string.IsNullOrWhiteSpace(telefonoSINPE)) return null;
+            return await _context.CAJAS
+                .FirstOrDefaultAsync(c => c.TelefonoSINPE == telefonoSINPE && c.Estado == 1);
+        }
     }
 }

@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Editar Caja";
 }
+
 @if (TempData["error"] != null)
 {
     <div class="mensaje error" id="mensaje">
@@ -24,32 +25,40 @@ else if (TempData["success"] != null)
 <div class="act-container">
     <h3>Acciones: </h3>
     <a asp-action="Index" asp-route-idComercio="@Model.IdComercio">Lista</a>
-    <a asp-action="Registro" asp-route-idComercio="@Model.IdComercio">Registrar</a>
+    <a class="activo" asp-action="Editar" asp-route-idCaja="@Model.IdCaja">Editar</a>
 </div>
 
 <section class="registro-container">
-    <form class="formulario" asp-action="Edit" method="post">
+    <form class="formulario" asp-action="Update" method="post">
+        @Html.AntiForgeryToken()
+
         <input type="hidden" asp-for="IdCaja" />
         <input type="hidden" asp-for="IdComercio" />
+
         <label>Nombre</label>
         <input type="text" class="entrada-datos" required asp-for="Nombre" />
+        <span asp-validation-for="Nombre" class="text-danger"></span>
+
         <label>Descripción</label>
-        <input type="text" class="entrada-datos" required asp-for="Descripcion" />
+        <input type="text" class="entrada-datos" asp-for="Descripcion" />
+        <span asp-validation-for="Descripcion" class="text-danger"></span>
+
         <label>Teléfono SINPE</label>
-        <input type="text" class="entrada-datos" required asp-for="TelefonoSINPE" />
+        <input type="text" class="entrada-datos" asp-for="TelefonoSINPE" />
+        <span asp-validation-for="TelefonoSINPE" class="text-danger"></span>
+
         <div class="checkbox">
-            <input type="hidden" name="Estado" value="0" />
-            @if (Model.Estado == 1)
-            {
-                <input type="checkbox" name="Estado" value="1" checked />
-            }
-            else
-            {
-                <input type="checkbox" name="Estado" value="1" />
-            }
+            <input asp-for="EstadoBool" type="checkbox" value="true" />
             <label>Activo</label>
         </div>
-        <button class="boton">Guardar cambios</button>
-        <a class="boton" asp-action="Index" asp-route-idComercio="@Model.IdComercio">Cancelar</a>
+
+        <div style="display:flex; gap:12px; margin-top:1rem;">
+            <button type="submit" class="boton">Guardar cambios</button>
+            <a asp-action="Index" asp-route-idComercio="@Model.IdComercio" class="boton" style="background:#eee; color:#000; text-decoration:none; display:inline-flex; align-items:center; justify-content:center;">Cancelar</a>
+        </div>
     </form>
 </section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
