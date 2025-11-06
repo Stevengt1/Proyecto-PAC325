@@ -16,6 +16,10 @@ namespace Proyecto_PAC325.Business
             sinpe.FechaDeRegistro = DateTime.Now;
             sinpe.Estado = false;
         }
+        public async Task<List<SinpeModel>> ObtenerSinpesAsync()
+        {
+            return await _sinpeRepository.ObtenerSinpesAsync();
+        }
 
     }
 }

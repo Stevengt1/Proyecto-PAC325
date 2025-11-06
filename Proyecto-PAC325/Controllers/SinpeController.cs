@@ -11,7 +11,12 @@ namespace Proyecto_PAC325.Controllers
         {
             _sinpeBusiness = sinpeBusiness;
         }
-
+        public async Task<IActionResult> Index()
+        {
+            var sinpes = await _sinpeBusiness.ObtenerSinpesAsync();
+            return View(sinpes);
+        }
+        [HttpGet]
         public IActionResult TXSE()
         {
             return View();
@@ -20,7 +25,7 @@ namespace Proyecto_PAC325.Controllers
         public async Task<IActionResult> TXSE(SinpeModel sinpe)
         {
             
-            if (ModelState.IsValid) {
+            if (!ModelState.IsValid) {
                 return View(sinpe);
             }
             try

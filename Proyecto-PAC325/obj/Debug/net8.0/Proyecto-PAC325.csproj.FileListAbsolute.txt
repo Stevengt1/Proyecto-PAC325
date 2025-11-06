@@ -31,6 +31,16 @@ C:\Users\Raúl\source\repos\Proyecto-PAC325\Proyecto-PAC325\obj\Debug\net8.0\ref
 C:\Users\Raúl\source\repos\Proyecto-PAC325\Proyecto-PAC325\obj\Debug\net8.0\Proyecto-PAC325.pdb
 C:\Users\Raúl\source\repos\Proyecto-PAC325\Proyecto-PAC325\obj\Debug\net8.0\Proyecto-PAC325.genruntimeconfig.cache
 C:\Users\Raúl\source\repos\Proyecto-PAC325\Proyecto-PAC325\obj\Debug\net8.0\ref\Proyecto-PAC325.dll
+C:\Users\zheng\Desktop\Fidelitas 8-9-25\Programacion avanzada en C\Proyecto\Proyecto-PAC325\Proyecto-PAC325\obj\Debug\net8.0\Proyecto-PAC325.csproj.AssemblyReference.cache
+C:\Users\zheng\Desktop\Fidelitas 8-9-25\Programacion avanzada en C\Proyecto\Proyecto-PAC325\Proyecto-PAC325\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Users\zheng\Desktop\Fidelitas 8-9-25\Programacion avanzada en C\Proyecto\Proyecto-PAC325\Proyecto-PAC325\obj\Debug\net8.0\Proyecto-PAC325.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\zheng\Desktop\Fidelitas 8-9-25\Programacion avanzada en C\Proyecto\Proyecto-PAC325\Proyecto-PAC325\obj\Debug\net8.0\Proyecto-PAC325.AssemblyInfoInputs.cache
+C:\Users\zheng\Desktop\Fidelitas 8-9-25\Programacion avanzada en C\Proyecto\Proyecto-PAC325\Proyecto-PAC325\obj\Debug\net8.0\Proyecto-PAC325.AssemblyInfo.cs
+C:\Users\zheng\Desktop\Fidelitas 8-9-25\Programacion avanzada en C\Proyecto\Proyecto-PAC325\Proyecto-PAC325\obj\Debug\net8.0\Proyecto-PAC325.csproj.CoreCompileInputs.cache
+C:\Users\zheng\Desktop\Fidelitas 8-9-25\Programacion avanzada en C\Proyecto\Proyecto-PAC325\Proyecto-PAC325\obj\Debug\net8.0\Proyecto-PAC325.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\zheng\Desktop\Fidelitas 8-9-25\Programacion avanzada en C\Proyecto\Proyecto-PAC325\Proyecto-PAC325\obj\Debug\net8.0\Proyecto-PAC325.RazorAssemblyInfo.cache
+C:\Users\zheng\Desktop\Fidelitas 8-9-25\Programacion avanzada en C\Proyecto\Proyecto-PAC325\Proyecto-PAC325\obj\Debug\net8.0\Proyecto-PAC325.RazorAssemblyInfo.cs
+C:\Users\zheng\Desktop\Fidelitas 8-9-25\Programacion avanzada en C\Proyecto\Proyecto-PAC325\Proyecto-PAC325\obj\Debug\net8.0\Proyecto-PAC325.sourcelink.json
 C:\Users\zheng\Desktop\Fidelitas 8-9-25\Programacion avanzada en C\Proyecto\Proyecto-PAC325\Proyecto-PAC325\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\zheng\Desktop\Fidelitas 8-9-25\Programacion avanzada en C\Proyecto\Proyecto-PAC325\Proyecto-PAC325\bin\Debug\net8.0\appsettings.json
 C:\Users\zheng\Desktop\Fidelitas 8-9-25\Programacion avanzada en C\Proyecto\Proyecto-PAC325\Proyecto-PAC325\bin\Debug\net8.0\Proyecto-PAC325.staticwebassets.runtime.json
@@ -143,16 +153,6 @@ C:\Users\zheng\Desktop\Fidelitas 8-9-25\Programacion avanzada en C\Proyecto\Proy
 C:\Users\zheng\Desktop\Fidelitas 8-9-25\Programacion avanzada en C\Proyecto\Proyecto-PAC325\Proyecto-PAC325\bin\Debug\net8.0\runtimes\win-x64\native\krb5_64.dll
 C:\Users\zheng\Desktop\Fidelitas 8-9-25\Programacion avanzada en C\Proyecto\Proyecto-PAC325\Proyecto-PAC325\bin\Debug\net8.0\runtimes\win-x64\native\krbcc64.dll
 C:\Users\zheng\Desktop\Fidelitas 8-9-25\Programacion avanzada en C\Proyecto\Proyecto-PAC325\Proyecto-PAC325\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Windows.Extensions.dll
-C:\Users\zheng\Desktop\Fidelitas 8-9-25\Programacion avanzada en C\Proyecto\Proyecto-PAC325\Proyecto-PAC325\obj\Debug\net8.0\Proyecto-PAC325.csproj.AssemblyReference.cache
-C:\Users\zheng\Desktop\Fidelitas 8-9-25\Programacion avanzada en C\Proyecto\Proyecto-PAC325\Proyecto-PAC325\obj\Debug\net8.0\rpswa.dswa.cache.json
-C:\Users\zheng\Desktop\Fidelitas 8-9-25\Programacion avanzada en C\Proyecto\Proyecto-PAC325\Proyecto-PAC325\obj\Debug\net8.0\Proyecto-PAC325.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\zheng\Desktop\Fidelitas 8-9-25\Programacion avanzada en C\Proyecto\Proyecto-PAC325\Proyecto-PAC325\obj\Debug\net8.0\Proyecto-PAC325.AssemblyInfoInputs.cache
-C:\Users\zheng\Desktop\Fidelitas 8-9-25\Programacion avanzada en C\Proyecto\Proyecto-PAC325\Proyecto-PAC325\obj\Debug\net8.0\Proyecto-PAC325.AssemblyInfo.cs
-C:\Users\zheng\Desktop\Fidelitas 8-9-25\Programacion avanzada en C\Proyecto\Proyecto-PAC325\Proyecto-PAC325\obj\Debug\net8.0\Proyecto-PAC325.csproj.CoreCompileInputs.cache
-C:\Users\zheng\Desktop\Fidelitas 8-9-25\Programacion avanzada en C\Proyecto\Proyecto-PAC325\Proyecto-PAC325\obj\Debug\net8.0\Proyecto-PAC325.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\zheng\Desktop\Fidelitas 8-9-25\Programacion avanzada en C\Proyecto\Proyecto-PAC325\Proyecto-PAC325\obj\Debug\net8.0\Proyecto-PAC325.RazorAssemblyInfo.cache
-C:\Users\zheng\Desktop\Fidelitas 8-9-25\Programacion avanzada en C\Proyecto\Proyecto-PAC325\Proyecto-PAC325\obj\Debug\net8.0\Proyecto-PAC325.RazorAssemblyInfo.cs
-C:\Users\zheng\Desktop\Fidelitas 8-9-25\Programacion avanzada en C\Proyecto\Proyecto-PAC325\Proyecto-PAC325\obj\Debug\net8.0\Proyecto-PAC325.sourcelink.json
 C:\Users\zheng\Desktop\Fidelitas 8-9-25\Programacion avanzada en C\Proyecto\Proyecto-PAC325\Proyecto-PAC325\obj\Debug\net8.0\rjimswa.dswa.cache.json
 C:\Users\zheng\Desktop\Fidelitas 8-9-25\Programacion avanzada en C\Proyecto\Proyecto-PAC325\Proyecto-PAC325\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
 C:\Users\zheng\Desktop\Fidelitas 8-9-25\Programacion avanzada en C\Proyecto\Proyecto-PAC325\Proyecto-PAC325\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json

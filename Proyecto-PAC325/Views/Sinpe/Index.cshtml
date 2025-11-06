@@ -1,38 +1,73 @@
-﻿@model Proyecto_PAC325.Models.SinpeModel
+﻿@model IEnumerable<Proyecto_PAC325.Models.SinpeModel>
 
 @{
-    ViewData["Title"] = "Sinpe Móvil";
+    ViewData["Title"] = "Confirmación Sinpe Móvil";
 }
-<h1>Pago en Sinpe Móvil</h1>
-<form asp-action="Index" method="post">
-    <div class="form-group mb-3">
-        <label asp-for="TelefonoOrigen" class="form-label"></label>
-        <input asp-for="TelefonoOrigen" class="form-control" />
-        <span asp-validation-for="TelefonoOrigen" class="text-danger"></span>
+
+@if (TempData["error"] != null)
+{
+    <div class="mensaje error" id="mensaje">
+        <span>@TempData["error"]</span>
+        <button id="cerrar-modal">×</button>
     </div>
-    <div class="form-group mb-3">
-        <label asp-for="NombreOrigen" class="form-label"></label>
-        <input asp-for="NombreOrigen" class="form-control" />
-        <span asp-validation-for="NombreOrigen" class="text-danger"></span>
+}
+else if (TempData["success"] != null)
+{
+    <div class="mensaje success" id="mensaje">
+        <span>@TempData["success"]</span>
+        <button id="cerrar-modal">×</button>
     </div>
-    <div class="form-group mb-3">
-        <label asp-for="TelefonoDestinatario" class="form-label"></label>
-        <input asp-for="TelefonoDestinatario" class="form-control" />
-        <span asp-validation-for="TelefonoDestinatario" class="text-danger"></span>
-    </div>
-    <div class="form-group mb-3">
-        <label asp-for="NombreDestinatario" class="form-label"></label>
-        <input asp-for="NombreDestinatario" class="form-control" />
-        <span asp-validation-for="NombreDestinatario" class="text-danger"></span>
-    </div>
-    <div class="form-group mb-3">
-        <label asp-for="Monto" class="form-label"></label>
-        <input asp-for="Monto" class="form-control" />
-        <span asp-validation-for="Monto" class="text-danger"></span>
-    </div>
-    <div class="form-group mb-3">
-        <label asp-for="Descripcion" class="form-label"></label>
-        <input asp-for="Descripcion" class="form-control" />
-        <span asp-validation-for="Descripcion" class="text-danger"></span>
-    </div>
-</form>
+}
+
+<div class="titulo-container">
+    <h2>PAGOS SINPE MÓVIL</h2>
+</div>
+<a class="boton" asp-action="TXSE">Pago en Sinpe Móvil</a>
+<section class="vista-tabla">
+    <section class="tabla-container">
+        <table class="tabla">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Teléfono Emisor</th>
+                    <th>Nombre Emisor</th>
+                    <th>Teléfono Receptor</th>
+                    <th>Nombre Receptor</th>
+                    <th>Monto</th>
+                    <th>Fecha de Registro</th>
+                    <th>Descripción</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model == null || !Model.Any())
+                {
+                    <tr>
+                        <td colspan="9" style="text-align:center; padding:2rem;">
+                            No hay pagos registrados.
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    @foreach (var sinpeModel in Model)
+                    {
+                        <tr>
+                            <td>@sinpeModel.IdSinpe</td>
+                            <td>@sinpeModel.TelefonoOrigen</td>
+                            <td>@sinpeModel.NombreOrigen</td>
+                            <td>@sinpeModel.TelefonoDestinatario</td>
+                            <td>@sinpeModel.NombreDestinatario</td>
+                            <td>@sinpeModel.Monto.ToString("C")</td>
+                            <td>@sinpeModel.FechaDeRegistro.ToString("g")</td>
+                            <td>@(string.IsNullOrEmpty(sinpeModel.Descripcion) ? "" : (sinpeModel.Descripcion.Length > 15 ? sinpeModel.Descripcion.Substring(0, 15) + "…" : sinpeModel.Descripcion))</td>
+                            <td>
+                                @(sinpeModel.Estado ? "Confirmado" : "Pendiente")
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </section>
+</section>
