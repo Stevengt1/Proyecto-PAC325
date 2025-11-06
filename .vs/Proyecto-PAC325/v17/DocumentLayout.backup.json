@@ -3,28 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\zheng\\Desktop\\Fidelitas 8-9-25\\Programacion avanzada en C\\Proyecto\\Proyecto-PAC325\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{53536024-5F46-44DC-BE87-F63DD5A0E7D9}|Proyecto-PAC325\\Proyecto-PAC325.csproj|c:\\users\\zheng\\desktop\\fidelitas 8-9-25\\programacion avanzada en c\\proyecto\\proyecto-pac325\\proyecto-pac325\\business\\sinpebusiness.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{53536024-5F46-44DC-BE87-F63DD5A0E7D9}|Proyecto-PAC325\\Proyecto-PAC325.csproj|solutionrelative:proyecto-pac325\\business\\sinpebusiness.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{53536024-5F46-44DC-BE87-F63DD5A0E7D9}|Proyecto-PAC325\\Proyecto-PAC325.csproj|c:\\users\\zheng\\desktop\\fidelitas 8-9-25\\programacion avanzada en c\\proyecto\\proyecto-pac325\\proyecto-pac325\\controllers\\sinpecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{53536024-5F46-44DC-BE87-F63DD5A0E7D9}|Proyecto-PAC325\\Proyecto-PAC325.csproj|solutionrelative:proyecto-pac325\\controllers\\sinpecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{53536024-5F46-44DC-BE87-F63DD5A0E7D9}|Proyecto-PAC325\\Proyecto-PAC325.csproj|c:\\users\\zheng\\desktop\\fidelitas 8-9-25\\programacion avanzada en c\\proyecto\\proyecto-pac325\\proyecto-pac325\\views\\sinpe\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{53536024-5F46-44DC-BE87-F63DD5A0E7D9}|Proyecto-PAC325\\Proyecto-PAC325.csproj|solutionrelative:proyecto-pac325\\views\\sinpe\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{53536024-5F46-44DC-BE87-F63DD5A0E7D9}|Proyecto-PAC325\\Proyecto-PAC325.csproj|c:\\users\\zheng\\desktop\\fidelitas 8-9-25\\programacion avanzada en c\\proyecto\\proyecto-pac325\\proyecto-pac325\\models\\sinpemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{53536024-5F46-44DC-BE87-F63DD5A0E7D9}|Proyecto-PAC325\\Proyecto-PAC325.csproj|solutionrelative:proyecto-pac325\\models\\sinpemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{53536024-5F46-44DC-BE87-F63DD5A0E7D9}|Proyecto-PAC325\\Proyecto-PAC325.csproj|c:\\users\\zheng\\desktop\\fidelitas 8-9-25\\programacion avanzada en c\\proyecto\\proyecto-pac325\\proyecto-pac325\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{53536024-5F46-44DC-BE87-F63DD5A0E7D9}|Proyecto-PAC325\\Proyecto-PAC325.csproj|solutionrelative:proyecto-pac325\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{53536024-5F46-44DC-BE87-F63DD5A0E7D9}|Proyecto-PAC325\\Proyecto-PAC325.csproj|c:\\users\\zheng\\desktop\\fidelitas 8-9-25\\programacion avanzada en c\\proyecto\\proyecto-pac325\\proyecto-pac325\\repository\\sinperepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{53536024-5F46-44DC-BE87-F63DD5A0E7D9}|Proyecto-PAC325\\Proyecto-PAC325.csproj|solutionrelative:proyecto-pac325\\repository\\sinperepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,84 +18,53 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\zheng\\Desktop\\Fidelitas 8-9-25\\Programacion avanzada en C\\Proyecto\\Proyecto-PAC325\\Proyecto-PAC325\\Views\\Sinpe\\Index.cshtml",
               "RelativeDocumentMoniker": "Proyecto-PAC325\\Views\\Sinpe\\Index.cshtml",
               "ToolTip": "C:\\Users\\zheng\\Desktop\\Fidelitas 8-9-25\\Programacion avanzada en C\\Proyecto\\Proyecto-PAC325\\Proyecto-PAC325\\Views\\Sinpe\\Index.cshtml",
               "RelativeToolTip": "Proyecto-PAC325\\Views\\Sinpe\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-05T22:46:35.849Z",
+              "WhenOpened": "2025-11-06T00:34:17.765Z",
               "EditorCaption": ""
-            },
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "FloatingWindowState": {
+        "Id": "f91faf58-1b39-49df-af32-86efb2885d97",
+        "Display": 0,
+        "X": 1073,
+        "Y": 297,
+        "Width": 1522,
+        "Height": 580,
+        "WindowState": 0
+      },
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "SinpeModel.cs",
               "DocumentMoniker": "C:\\Users\\zheng\\Desktop\\Fidelitas 8-9-25\\Programacion avanzada en C\\Proyecto\\Proyecto-PAC325\\Proyecto-PAC325\\Models\\SinpeModel.cs",
               "RelativeDocumentMoniker": "Proyecto-PAC325\\Models\\SinpeModel.cs",
               "ToolTip": "C:\\Users\\zheng\\Desktop\\Fidelitas 8-9-25\\Programacion avanzada en C\\Proyecto\\Proyecto-PAC325\\Proyecto-PAC325\\Models\\SinpeModel.cs",
               "RelativeToolTip": "Proyecto-PAC325\\Models\\SinpeModel.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAgwBkAAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAABEAAAAAAAAAAAAAwCgAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-05T22:33:43.395Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "SinpeController.cs",
-              "DocumentMoniker": "C:\\Users\\zheng\\Desktop\\Fidelitas 8-9-25\\Programacion avanzada en C\\Proyecto\\Proyecto-PAC325\\Proyecto-PAC325\\Controllers\\SinpeController.cs",
-              "RelativeDocumentMoniker": "Proyecto-PAC325\\Controllers\\SinpeController.cs",
-              "ToolTip": "C:\\Users\\zheng\\Desktop\\Fidelitas 8-9-25\\Programacion avanzada en C\\Proyecto\\Proyecto-PAC325\\Proyecto-PAC325\\Controllers\\SinpeController.cs",
-              "RelativeToolTip": "Proyecto-PAC325\\Controllers\\SinpeController.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAQwBwAAABFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-05T22:35:15.79Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "SinpeBusiness.cs",
-              "DocumentMoniker": "C:\\Users\\zheng\\Desktop\\Fidelitas 8-9-25\\Programacion avanzada en C\\Proyecto\\Proyecto-PAC325\\Proyecto-PAC325\\Business\\SinpeBusiness.cs",
-              "RelativeDocumentMoniker": "Proyecto-PAC325\\Business\\SinpeBusiness.cs",
-              "ToolTip": "C:\\Users\\zheng\\Desktop\\Fidelitas 8-9-25\\Programacion avanzada en C\\Proyecto\\Proyecto-PAC325\\Proyecto-PAC325\\Business\\SinpeBusiness.cs",
-              "RelativeToolTip": "Proyecto-PAC325\\Business\\SinpeBusiness.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-05T22:13:52.209Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AppDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\zheng\\Desktop\\Fidelitas 8-9-25\\Programacion avanzada en C\\Proyecto\\Proyecto-PAC325\\Proyecto-PAC325\\Data\\AppDbContext.cs",
-              "RelativeDocumentMoniker": "Proyecto-PAC325\\Data\\AppDbContext.cs",
-              "ToolTip": "C:\\Users\\zheng\\Desktop\\Fidelitas 8-9-25\\Programacion avanzada en C\\Proyecto\\Proyecto-PAC325\\Proyecto-PAC325\\Data\\AppDbContext.cs",
-              "RelativeToolTip": "Proyecto-PAC325\\Data\\AppDbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA0AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-05T22:13:05.87Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "SinpeRepository.cs",
-              "DocumentMoniker": "C:\\Users\\zheng\\Desktop\\Fidelitas 8-9-25\\Programacion avanzada en C\\Proyecto\\Proyecto-PAC325\\Proyecto-PAC325\\Repository\\SinpeRepository.cs",
-              "RelativeDocumentMoniker": "Proyecto-PAC325\\Repository\\SinpeRepository.cs",
-              "ToolTip": "C:\\Users\\zheng\\Desktop\\Fidelitas 8-9-25\\Programacion avanzada en C\\Proyecto\\Proyecto-PAC325\\Proyecto-PAC325\\Repository\\SinpeRepository.cs",
-              "RelativeToolTip": "Proyecto-PAC325\\Repository\\SinpeRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-05T21:50:40.996Z",
+              "WhenOpened": "2025-11-06T00:34:16.085Z",
               "EditorCaption": ""
             }
           ]
