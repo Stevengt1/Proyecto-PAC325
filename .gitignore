@@ -87,4 +87,5 @@ wwwroot/lib/
 .env.*
 appsettings.json
 appsettings.Development.json
+
 *obj/

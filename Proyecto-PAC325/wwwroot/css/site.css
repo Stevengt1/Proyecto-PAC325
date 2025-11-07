@@ -81,16 +81,16 @@ a {
     align-items: center;
 }
 
-    .bienvenida div {
-        width: 80%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-    }
+.bienvenida div {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
 
-    .bienvenida p:first-child {
+.bienvenida p:first-child {
         background-color: grey;
         padding: 1%;
         border-radius: 10000px;
@@ -159,6 +159,23 @@ a {
     background-color: rgba(0,0,0,0.2);
 }
 
+/*Diseño Botones*/
+.boton {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    margin-top: 2%;
+}
+
+.bg-oscuro {
+    background-color: rgb(90, 90, 90);
+}
+
+.boton:hover {
+    transition: 0.4s;
+    background-color: rgba(0,0,0,0.2);
+}
+
 .btn-logo {
     display: flex;
     flex-direction: row;
@@ -166,10 +183,10 @@ a {
     align-items: center;
 }
 
-    .btn-logo img {
-        all: unset;
-        width: 20%;
-    }
+.btn-logo img {
+    all: unset;
+    width: 20%;
+}
 
 /*Diseño Tabla*/
 
@@ -214,7 +231,7 @@ thead th:last-child {
 
 /*Diseño de acciones por modulo*/
 
-.act-container {
+.act-container{
     padding: 1%;
     background-color: grey;
     border-radius: 10px;
@@ -225,20 +242,20 @@ thead th:last-child {
     align-items: center;
 }
 
-    .act-container h3 {
-        margin: 0 2%;
-    }
+.act-container h3{
+    margin: 0 2%;
+}
 
-    .act-container a {
-        border-bottom: 5px solid transparent;
-    }
+.act-container a {
+    border-bottom: 5px solid transparent;
+}
 
-    .act-container .activo {
-        border-bottom: 5px solid black;
-    }
+.act-container .activo{
+    border-bottom: 5px solid black;
+}
 
 /*Diseño de formulario*/
-.registro-container {
+.registro-container{
     width: 100%;
     padding: 0 1%;
     display: flex;
@@ -252,11 +269,12 @@ thead th:last-child {
     flex-direction: column;
 }
 
-    .formulario label {
-        margin: 1% 0;
-    }
+.formulario label{
+    margin: 1% 0;
 
-.entrada-datos {
+}
+
+.entrada-datos{
     width: 100%;
     padding: 1%;
     background-color: darkgrey;
@@ -275,15 +293,14 @@ select,
 ::picker(select) {
     appearance: base-select;
 }
+select::picker-icon {
+    color: #999999;
+    transition: 0.4s rotate;
+}
 
-    select::picker-icon {
-        color: #999999;
-        transition: 0.4s rotate;
-    }
-
-    select:open::picker-icon {
-        rotate: 180deg;
-    }
+select:open::picker-icon {
+    rotate: 180deg;
+}
 
 option {
     display: flex;
@@ -294,14 +311,13 @@ option {
     padding: 1%;
     transition: 0.4s;
 }
+option:first-of-type {
+    border-radius: 10px 10px 0 0;
+}
 
-    option:first-of-type {
-        border-radius: 10px 10px 0 0;
-    }
-
-    option:last-of-type {
-        border-radius: 0 0 10px 10px;
-    }
+option:last-of-type {
+    border-radius: 0 0 10px 10px;
+}
 
 ::picker(select) {
     border-radius: 10px;
@@ -311,7 +327,7 @@ option:not(option:last-of-type) {
     border-bottom: none;
 }
 
-option:hover {
+option:hover{
     background-color: rgba(0,0,0,0.1);
 }
 
@@ -333,24 +349,24 @@ option:hover {
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
-    .mensaje.error {
-        background-color: #e74c3c;
-    }
+.mensaje.error {
+    background-color: #e74c3c; 
+}
 
-    .mensaje.success {
-        background-color: #2ecc71;
-    }
+.mensaje.success {
+    background-color: #2ecc71; 
+}
 
-    .mensaje button {
-        background: transparent;
-        border: none;
-        color: #fff;
-        font-weight: bold;
-        font-size: 18px;
-        cursor: pointer;
-        margin-left: 10px;
-    }
+.mensaje button {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+    margin-left: 10px;
+}
 
-   .mensaje button:hover {
-            color: #ddd;
-   }
+.mensaje button:hover {
+    color: #ddd;
+}

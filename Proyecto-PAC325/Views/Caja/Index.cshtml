@@ -1,0 +1,77 @@
+﻿@model List<Proyecto_PAC325.Models.CajaModel>
+@{
+    ViewData["Title"] = "Cajas";
+    var idComercio = ViewBag.IdComercio as int? ?? 0;
+}
+<section class="bienvenida">
+    <div>
+        <p>Apartado de Cajas</p>
+        <h1>
+            ESTE ES EL APARTADO DE CAJAS DONDE PODRÁS VISUALIZAR LAS CAJAS DEL COMERCIO
+        </h1>
+        <p>Las cajas listadas representan los teléfonos asociados a cada comercio para recibir SINPE.</p>
+        <button class="boton">
+            Ver cajas
+        </button>
+    </div>
+</section>
+
+<div class="titulo-container">
+    <h2>
+        CAJAS DEL COMERCIO
+    </h2>
+</div>
+
+<div class="act-container">
+    <h3>Acciones: </h3>
+    <a class="activo" asp-action="Index" asp-route-idComercio="@idComercio">Lista</a>
+    <a asp-action="Registro" asp-route-idComercio="@idComercio">Registrar</a>
+</div>
+
+<section class="vista-tabla">
+    <section class="tabla-container">
+        <table class="tabla">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Teléfono SINPE</th>
+                    <th>Fecha de registro</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model == null || !Model.Any())
+                {
+                    <tr>
+                        <td colspan="6" style="text-align:center; padding:2rem;">
+                            No hay cajas para mostrar.
+                            @if (idComercio == 0)
+                            {
+                                <div>(No se recibió idComercio. Para listar por comercio, abra la lista desde Comercios o use el selector en Registrar.)</div>
+                            }
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    @foreach (var c in Model)
+                    {
+                        <tr>
+                            <td>@c.Nombre</td>
+                            <td>@(string.IsNullOrEmpty(c.Descripcion) ? "" : (c.Descripcion.Length > 10 ? c.Descripcion.Substring(0, 10) + "…" : c.Descripcion))</td>
+                            <td>@c.TelefonoSINPE</td>
+                            <td>@c.FechaDeRegistro.ToString("g")</td>
+                            <td>@(c.Estado == 1 ? "Activo" : "Inactivo")</td>
+                            <td>
+                                <a class="boton" asp-action="Editar" asp-route-idCaja="@c.IdCaja">Editar</a>
+                                <a class="boton" asp-action="VerSinpe" asp-route-telefono="@c.TelefonoSINPE">Ver SINPE</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </section>
+</section>
