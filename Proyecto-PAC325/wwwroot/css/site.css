@@ -56,13 +56,10 @@ main {
     gap: 3%;
 }
 
-.navbar a:first-child {
-        background-color: rgb(113, 113, 113);
-        padding: 1%;
-        aspect-ratio: 1 / 1;
-        border-radius: 50%;
-        align-items: center;
-        margin-right: 3%;
+.navbar img {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
 }
 
 a {
