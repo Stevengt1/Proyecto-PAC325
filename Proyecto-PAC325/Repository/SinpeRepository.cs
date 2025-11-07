@@ -50,5 +50,10 @@ namespace Proyecto_PAC325.Repository
                 })
                 .ToListAsync();
         }
+
+        public async Task<List<SinpeModel>> GetSinpesByTelefono(String telefono)
+        {
+            return await _context.SINPE.Where(s => s.TelefonoDestinatario == telefono).ToListAsync();
+        }
     }
 }
