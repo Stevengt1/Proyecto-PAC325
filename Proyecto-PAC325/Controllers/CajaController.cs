@@ -158,12 +158,9 @@ namespace Proyecto_PAC325.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> VerSinpe(string telefono)
+        public async Task<IActionResult> SinpesPorCaja(string telefono)
         {
-            if (string.IsNullOrWhiteSpace(telefono)) return BadRequest();
-
-            var sinpes = await _sinpeBusiness.GetSinpesByTelefono(telefono);
-            return PartialView("SinpesPorCaja", sinpes);
+            return View( await _sinpeBusiness.GetSinpesByTelefono(telefono));
         }
     }
 }

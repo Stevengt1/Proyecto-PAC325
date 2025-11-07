@@ -1,40 +1,72 @@
 ﻿@model List<Proyecto_PAC325.Models.SinpeModel>
 
-@if (Model == null || !Model.Any())
-{
-    <div class="p-3">No se encontraron transacciones SINPE para esta caja.</div>
-}
-else
-{
-    <div class="table-responsive">
-        <table class="table table-sm table-striped">
-            <thead>
-                <tr>
-                    <th>Fecha</th>
-                    <th>Origen</th>
-                    <th>Destino</th>
-                    <th class="text-end">Monto</th>
-                    <th>Descripción</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var s in Model)
-                {
-                    <tr>
-                        <td>@s.FechaDeRegistro.ToString("g")</td>
-                        <td>
-                            <div>@s.TelefonoOrigen</div>
-                            <small class="text-muted">@s.NombreOrigen</small>
-                        </td>
-                        <td>
-                            <div>@s.TelefonoDestinatario</div>
-                            <small class="text-muted">@s.NombreDestinatario</small>
-                        </td>
-                        <td class="text-end">@s.Monto.ToString("C")</td>
-                        <td>@(string.IsNullOrWhiteSpace(s.Descripcion) ? "-" : s.Descripcion)</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+    <section class="bienvenida">
+        <div>
+            <p>Apartado de Cajas</p>
+            <h1>
+                ESTE ES EL APARTADO DONDE PODRAS VER LO SINPES AFILIADOS A LA CAJA SELECCIONADA
+            </h1>
+            <p>Solo se evidenciaran los sinpes realizados a la caja seleccionada</p>
+            <button class="boton bg-oscuro">
+                Sinpes
+            </button>
+        </div>
+    </section>
+
+    <div class="titulo-container">
+        <h2>PAGOS SINPE MÓVIL</h2>
     </div>
-}
+
+    <div class="act-container">
+        <h3>Acciones: </h3>
+        <a asp-action="Index">Lista</a>
+    </div>
+
+    <section class="vista-tabla">
+        <section class="tabla-container">
+            <table class="tabla">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Teléfono Emisor</th>
+                        <th>Nombre Emisor</th>
+                        <th>Teléfono Receptor</th>
+                        <th>Nombre Receptor</th>
+                        <th>Monto</th>
+                        <th>Fecha de Registro</th>
+                        <th>Descripción</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model == null || !Model.Any())
+                    {
+                        <tr>
+                            <td colspan="9" style="text-align:center; padding:2rem;">
+                                No hay pagos registrados.
+                            </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        @foreach (var sinpeModel in Model)
+                        {
+                            <tr>
+                                <td>@sinpeModel.IdSinpe</td>
+                                <td>@sinpeModel.TelefonoOrigen</td>
+                                <td>@sinpeModel.NombreOrigen</td>
+                                <td>@sinpeModel.TelefonoDestinatario</td>
+                                <td>@sinpeModel.NombreDestinatario</td>
+                                <td>@sinpeModel.Monto.ToString("C")</td>
+                                <td>@sinpeModel.FechaDeRegistro.ToString("g")</td>
+                                <td>@(string.IsNullOrEmpty(sinpeModel.Descripcion) ? "" : (sinpeModel.Descripcion.Length > 15 ? sinpeModel.Descripcion.Substring(0, 15) + "…" : sinpeModel.Descripcion))</td>
+                                <td>
+                                    @(sinpeModel.Estado ? "Confirmado" : "Pendiente")
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </section>
+    </section>
