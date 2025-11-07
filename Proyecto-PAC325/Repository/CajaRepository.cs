@@ -94,5 +94,13 @@ namespace Proyecto_PAC325.Repository
             return await _context.CAJAS
                 .FirstOrDefaultAsync(c => c.TelefonoSINPE == telefonoSINPE && c.Estado == 1);
         }
+
+        public async Task<List<CajaModel>> ObtenerCajasActivasAsync()
+        {
+            return await _context.CAJAS
+                .Where(c => c.Estado == 1)
+                .OrderBy(c => c.Nombre)
+                .ToListAsync();
+        }
     }
 }

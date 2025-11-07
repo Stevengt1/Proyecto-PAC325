@@ -17,7 +17,7 @@ namespace Proyecto_PAC325.Data
 
         public DbSet<BitacoraModel> BitacoraEventos { get; set; }
 
-
+        public DbSet<SinpeModel> SINPE { get; set; }
 
     }
 }
