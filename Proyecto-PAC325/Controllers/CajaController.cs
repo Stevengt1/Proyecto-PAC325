@@ -9,11 +9,15 @@ namespace Proyecto_PAC325.Controllers
     {
         private readonly CajaBusiness _cajaBusiness;
         private readonly ComercioBusiness _comercioBusiness;
+        private readonly SinpeBusiness _sinpeBusiness;
 
-        public CajaController(CajaBusiness cajaBusiness, ComercioBusiness comercioBusiness)
+
+        public CajaController(CajaBusiness cajaBusiness, ComercioBusiness comercioBusiness, SinpeBusiness sinpeBusiness)
         {
             _cajaBusiness = cajaBusiness;
             _comercioBusiness = comercioBusiness;
+            _sinpeBusiness = sinpeBusiness;
+
         }
 
         public async Task<IActionResult> Index(int? idComercio)
@@ -150,6 +154,16 @@ namespace Proyecto_PAC325.Controllers
         public async Task<IActionResult> Detalle(int idCaja)
         {
             return View(await _cajaBusiness.GetCaja(idCaja));
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> VerSinpe(string telefono)
+        {
+            if (string.IsNullOrWhiteSpace(telefono)) return BadRequest();
+
+            var sinpes = await _sinpeBusiness.GetSinpesByTelefono(telefono);
+            return PartialView("SinpesPorCaja", sinpes);
         }
     }
 }

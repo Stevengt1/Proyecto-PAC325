@@ -1,0 +1,40 @@
+﻿@model List<Proyecto_PAC325.Models.SinpeModel>
+
+@if (Model == null || !Model.Any())
+{
+    <div class="p-3">No se encontraron transacciones SINPE para esta caja.</div>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-sm table-striped">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Origen</th>
+                    <th>Destino</th>
+                    <th class="text-end">Monto</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var s in Model)
+                {
+                    <tr>
+                        <td>@s.FechaDeRegistro.ToString("g")</td>
+                        <td>
+                            <div>@s.TelefonoOrigen</div>
+                            <small class="text-muted">@s.NombreOrigen</small>
+                        </td>
+                        <td>
+                            <div>@s.TelefonoDestinatario</div>
+                            <small class="text-muted">@s.NombreDestinatario</small>
+                        </td>
+                        <td class="text-end">@s.Monto.ToString("C")</td>
+                        <td>@(string.IsNullOrWhiteSpace(s.Descripcion) ? "-" : s.Descripcion)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

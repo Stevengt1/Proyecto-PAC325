@@ -37,7 +37,7 @@ namespace Proyecto_PAC325.Business
             return await _sinpeRepository.ObtenerSinpesAsync();
         }
 
-        public async Task<List<SinpeModel>> GetSinpesByTelefono(String telefono)
+        public async Task<List<SinpeModel>> GetSinpesByTelefono(string telefono)
         {
             return await _sinpeRepository.GetSinpesByTelefono(telefono);
         }

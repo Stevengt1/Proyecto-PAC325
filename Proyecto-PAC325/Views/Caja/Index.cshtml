@@ -20,21 +20,12 @@ else if (TempData["success"] != null)
 <section class="bienvenida">
     <div>
         <p>Apartado de Cajas</p>
-        <h1>
-            ESTE ES EL APARTADO DE CAJAS DONDE PODRÁS VISUALIZAR LAS CAJAS DEL COMERCIO
-        </h1>
+        <h1>ESTE ES EL APARTADO DE CAJAS</h1>
         <p>Las cajas listadas representan los teléfonos asociados a cada comercio para recibir SINPE.</p>
-        <button class="boton bg-oscuro">
-            Ver cajas
-        </button>
     </div>
 </section>
 
-<div class="titulo-container">
-    <h2>
-        CAJAS DEL COMERCIO
-    </h2>
-</div>
+<div class="titulo-container"><h2>CAJAS DEL COMERCIO</h2></div>
 
 <div class="act-container">
     <h3>Acciones: </h3>
@@ -63,7 +54,7 @@ else if (TempData["success"] != null)
                             No hay cajas para mostrar.
                             @if (idComercio == 0)
                             {
-                                <div>(No se recibió idComercio. Para listar por comercio, abra la lista desde Comercios o use el selector en Registrar.)</div>
+                                <div>(No se recibió idComercio.)</div>
                             }
                         </td>
                     </tr>
@@ -74,13 +65,13 @@ else if (TempData["success"] != null)
                     {
                         <tr>
                             <td>@c.Nombre</td>
-                            <td>@(string.IsNullOrEmpty(c.Descripcion) ? "" : (c.Descripcion.Length > 10 ? c.Descripcion.Substring(0, 10) + "…" : c.Descripcion))</td>
-                            <td>@c.TelefonoSINPE</td>
+                            <td>@(string.IsNullOrEmpty(c.Descripcion) ? "" : (c.Descripcion.Length > 30 ? c.Descripcion.Substring(0, 30) + "…" : c.Descripcion))</td>
+                            <td>@(string.IsNullOrWhiteSpace(c.TelefonoSINPE) ? "-" : c.TelefonoSINPE)</td>
                             <td>@c.FechaDeRegistro.ToString("g")</td>
                             <td>@(c.Estado == 1 ? "Activo" : "Inactivo")</td>
                             <td>
                                 <a class="boton bg-success" asp-action="Editar" asp-route-idCaja="@c.IdCaja">Editar</a>
-                                <a class="boton bg-oscuro" asp-action="VerSinpe" asp-route-telefono="@c.TelefonoSINPE">Ver SINPE</a>
+                                <button type="button" class="boton bg-oscuro" onclick="openSinpeModal('@(c.TelefonoSINPE ?? "")')">Ver SINPE</button>
                             </td>
                         </tr>
                     }
@@ -89,3 +80,51 @@ else if (TempData["success"] != null)
         </table>
     </section>
 </section>
+
+<!-- Modal -->
+<div class="modal fade" id="sinpeModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Transacciones SINPE</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body" id="sinpeModalBody">
+                <div class="text-center p-3">Cargando...</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="boton bg-oscuro" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        async function openSinpeModal(telefono) {
+          const body = document.getElementById('sinpeModalBody');
+          body.innerHTML = '<div class="text-center p-3">Cargando...</div>';
+
+          if (!telefono) {
+            body.innerHTML = '<div class="p-3 text-warning">Caja sin teléfono SINPE.</div>';
+            new bootstrap.Modal(document.getElementById('sinpeModal')).show();
+            return;
+          }
+
+          const url = `/Caja/VerSinpe?telefono=${encodeURIComponent(telefono)}`;
+          try {
+            const resp = await fetch(url, { headers: { 'X-Requested-With': 'XMLHttpRequest' } });
+            if (!resp.ok) {
+              body.innerHTML = '<div class="p-3 text-danger">No se pudieron cargar las transacciones.</div>';
+            } else {
+              body.innerHTML = await resp.text();
+            }
+            new bootstrap.Modal(document.getElementById('sinpeModal')).show();
+          } catch (ex) {
+            body.innerHTML = '<div class="p-3 text-danger">Error de red al cargar las transacciones.</div>';
+            console.error(ex);
+            new bootstrap.Modal(document.getElementById('sinpeModal')).show();
+          }
+        }
+    </script>
+}

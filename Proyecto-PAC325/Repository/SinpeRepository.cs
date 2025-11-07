@@ -8,6 +8,9 @@ namespace Proyecto_PAC325.Repository
     {
         Task HacerSinpeAsync(SinpeModel sinpe);
         Task<List<SinpeModel>> ObtenerSinpesAsync();
+
+        Task<List<SinpeModel>> GetSinpesByTelefono(string telefono);
+
     }
     public class SinpeRepository : ISinpeRepository
     {
@@ -51,9 +54,14 @@ namespace Proyecto_PAC325.Repository
                 .ToListAsync();
         }
 
-        public async Task<List<SinpeModel>> GetSinpesByTelefono(String telefono)
+        public async Task<List<SinpeModel>> GetSinpesByTelefono(string telefono)
         {
-            return await _context.SINPE.Where(s => s.TelefonoDestinatario == telefono).ToListAsync();
+            if (string.IsNullOrWhiteSpace(telefono)) return new List<SinpeModel>();
+
+            return await _context.SINPE
+                .Where(s => s.TelefonoDestinatario == telefono)
+                .OrderByDescending(s => s.FechaDeRegistro)
+                .ToListAsync();
         }
     }
 }
