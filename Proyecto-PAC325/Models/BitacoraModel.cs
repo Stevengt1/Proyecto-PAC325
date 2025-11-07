@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Proyecto_PAC325.Models
 {
-    public class BitacoraEvento
+    public class BitacoraModel
     {
         [Key]
         public int IdEvento { get; set; }

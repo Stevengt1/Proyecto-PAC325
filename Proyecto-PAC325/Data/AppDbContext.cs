@@ -15,6 +15,8 @@ namespace Proyecto_PAC325.Data
 
         public DbSet<CajaModel> CAJAS { get; set; }
 
+        public DbSet<BitacoraModel> BitacoraEventos { get; set; }
+
 
 
     }

@@ -7,10 +7,11 @@ namespace Proyecto_PAC325.Repository
     public class CajaRepository
     {
         private readonly AppDbContext _context;
-
-        public CajaRepository(AppDbContext context)
+        private IBitacora _bitacora;
+        public CajaRepository(AppDbContext context, BitacoraRepository bitacora)
         {
             _context = context;
+            _bitacora = bitacora;
         }
 
         public async Task<List<CajaModel>> GetCajasByComercio(int idComercio)
@@ -34,32 +35,49 @@ namespace Proyecto_PAC325.Repository
 
         public async Task<CajaModel> Add(CajaModel caja)
         {
-            _context.CAJAS.Add(caja);
-            if (await _context.SaveChangesAsync() > 0)
+            try
             {
-                return caja;
+                _context.CAJAS.Add(caja);
+                if (await _context.SaveChangesAsync() > 0)
+                {
+                    await _bitacora.RegistrarEvento("CAJAS", "Registrar", "Se registro una caja", caja);
+                    return caja;
+                }
+                return null;
+            }catch(Exception ex)
+            {
+                await _bitacora.RegistrarEvento("CAJAS", "Error", "Error", ex);
+                return null;
             }
-            return null;
         }
 
         public async Task<CajaModel> Update(CajaModel caja)
         {
-            var existing = await _context.CAJAS.FindAsync(caja.IdCaja);
-            if (existing == null) return null;
-
-            existing.Nombre = caja.Nombre;
-            existing.Descripcion = caja.Descripcion;
-            existing.TelefonoSINPE = caja.TelefonoSINPE;
-            existing.Estado = caja.Estado;
-            existing.FechaDeModificacion = caja.FechaDeModificacion;
-            existing.IdComercio = caja.IdComercio;
-
-            _context.CAJAS.Update(existing);
-            if (await _context.SaveChangesAsync() > 0)
+            try
             {
-                return existing;
+                var cajaAnterior = await _context.CAJAS.AsNoTracking().FirstOrDefaultAsync(c => c.IdCaja == caja.IdCaja);
+                var existing = await _context.CAJAS.FindAsync(caja.IdCaja);
+                if (existing == null) return null;
+
+                existing.Nombre = caja.Nombre;
+                existing.Descripcion = caja.Descripcion;
+                existing.TelefonoSINPE = caja.TelefonoSINPE;
+                existing.Estado = caja.Estado;
+                existing.FechaDeModificacion = caja.FechaDeModificacion;
+                existing.IdComercio = caja.IdComercio;
+                
+                _context.CAJAS.Update(existing);
+                if (await _context.SaveChangesAsync() > 0)
+                {
+                    await _bitacora.RegistrarEvento("CAJAS", "Editar", "Se actualizo una caja", cajaAnterior, existing);
+                    return existing;
+                }
+                return null;
+            }catch(Exception ex)
+            {
+                await _bitacora.RegistrarEvento("CAJAS", "Error", "Error", ex);
+                return null;
             }
-            return null;
         }
 
         public async Task<CajaModel> FindByNombreAndComercio(string nombre, int idComercio)
