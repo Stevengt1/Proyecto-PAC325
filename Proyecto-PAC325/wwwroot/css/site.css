@@ -1,20 +1,20 @@
 html {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 @media (min-width: 768px) {
-    html {
-        font-size: 16px;
-    }
+  html {
+    font-size: 16px;
+  }
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 html {
-    position: relative;
-    min-height: 100%;
+  position: relative;
+  min-height: 100%;
 }
 
 * {
@@ -36,7 +36,7 @@ main {
     background-color: #d5efff;
 }
 
-/*Diseño de la barra de nav*/
+/*Dise�o de la barra de nav*/
 .nav-container {
     z-index: 1;
     position: absolute;
@@ -56,14 +56,6 @@ main {
     gap: 3%;
 }
 
-    .navbar a:first-child {
-        background-color: rgb(113, 113, 113);
-        padding: 1%;
-        aspect-ratio: 1 / 1;
-        border-radius: 50%;
-        align-items: center;
-        margin-right: 3%;
-    }
 .navbar img {
     height: 50px;
     width: auto;
@@ -74,7 +66,7 @@ a {
     text-decoration: none;
 }
 
-/*Diseño de la parte de bienvenida con sus mensajes*/
+/*Dise�o de la parte de bienvenida con sus mensajes*/
 
 .bienvenida {
     width: 100%;
@@ -112,7 +104,7 @@ p, a, h3 {
     color: #ecf9ff;
 }
 
-/*Diseños relacionados al titulo q es una franja grande que cubre toda la pantalla en width*/
+/*Dise�os relacionados al titulo q es una franja grande que cubre toda la pantalla en width*/
 
 .titulo-container {
     width: 100%;
@@ -125,7 +117,7 @@ p, a, h3 {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
 }
 
-/*Diseño de cartas simple*/
+/*Dise�o de cartas simple*/
 .cards {
     width: 100%;
     display: flex;
@@ -148,36 +140,20 @@ p, a, h3 {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
 }
 
-    .card:hover {
+.card:hover {
         transform: scale(1.01);
         transition: 0.3s;
-    }
+}
 
-    .card img {
+.card img {
         width: 30%;
         background-color: aliceblue;
         padding: 2%;
         border-radius: 50%;
-    }
 
-/*Diseño Botones*/
-.boton {
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
-    margin-top: 2%;
 }
 
-.bg-oscuro {
-    background-color: rgb(90, 90, 90);
-}
-
-.boton:hover {
-    transition: 0.4s;
-    background-color: rgba(0,0,0,0.2);
-}
-
-/*Diseño Botones*/
+/*Dise�o Botones*/
 .boton {
     padding: 10px;
     border-radius: 5px;
@@ -224,7 +200,7 @@ p, a, h3 {
     width: 20%;
 }
 
-/*Diseño Tabla*/
+/*Dise�o Tabla*/
 
 .tabla-container {
     width: 100%;
@@ -265,7 +241,7 @@ thead th:last-child {
     border-top-right-radius: 10px;
 }
 
-/*Diseño de acciones por modulo*/
+/*Dise�o de acciones por modulo*/
 
 .act-container {
     padding: 1%;
@@ -291,7 +267,7 @@ thead th:last-child {
     border-bottom: 5px solid black;
 }
 
-/*Diseño de formulario*/
+/*Dise�o de formulario*/
 .registro-container{
     width: 100%;
     padding: 0 1%;
@@ -330,6 +306,7 @@ select,
 ::picker(select) {
     appearance: base-select;
 }
+
 select::picker-icon {
     color: #373a78;
     transition: 0.4s rotate;
@@ -348,6 +325,7 @@ option {
     padding: 1%;
     transition: 0.4s;
 }
+
 option:first-of-type {
     border-radius: 10px 10px 0 0;
 }

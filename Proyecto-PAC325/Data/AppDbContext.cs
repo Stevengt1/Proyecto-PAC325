@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Mysqlx.Crud;
 using Proyecto_PAC325.Models;
 
 namespace Proyecto_PAC325.Data
@@ -11,8 +10,12 @@ namespace Proyecto_PAC325.Data
         {
 
         }
-        public DbSet<ComercioModel> COMERCIOS { get; set; }
+
+        public DbSet<ComercioModel> COMERCIOS {  get; set; }
+
         public DbSet<CajaModel> CAJAS { get; set; }
-        public DbSet<SinpeModel> SINPE { get; set; }
+
+
+
     }
 }
