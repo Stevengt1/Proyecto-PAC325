@@ -1,0 +1,77 @@
+﻿@model Proyecto_PAC325.Models.CajaModel
+@{
+    ViewData["Title"] = "Editar Caja";
+}
+
+@if (TempData["error"] != null)
+{
+    <div class="mensaje error" id="mensaje">
+        <span>@TempData["error"]</span>
+        <button id="cerrar-modal">×</button>
+    </div>
+}
+else if (TempData["success"] != null)
+{
+    <div class="mensaje success" id="mensaje">
+        <span>@TempData["success"]</span>
+        <button id="cerrar-modal">×</button>
+    </div>
+}
+
+<section class="bienvenida">
+    <div>
+        <p>Apartado de Cajas</p>
+        <h1>
+            BIENVENIDOS AL APARTADO DE EDICIÓN DE CAJA
+        </h1>
+        <p>En este apartado podrás editar los datos de la caja seleccionada</p>
+        <button class="boton bg-oscuro">
+            Quiero Probar
+        </button>
+    </div>
+</section>
+
+<div class="titulo-container">
+    <h2>EDITAR CAJA</h2>
+</div>
+
+<div class="act-container">
+    <h3>Acciones: </h3>
+    <a asp-action="Index" asp-route-idComercio="@Model.IdComercio">Lista</a>
+    <a class="activo" asp-action="Editar" asp-route-idCaja="@Model.IdCaja">Editar</a>
+</div>
+
+<section class="registro-container">
+    <form class="formulario" asp-action="Update" method="post">
+        @Html.AntiForgeryToken()
+
+        <input type="hidden" asp-for="IdCaja" />
+        <input type="hidden" asp-for="IdComercio" />
+
+        <label>Nombre</label>
+        <input type="text" class="entrada-datos" required asp-for="Nombre" />
+        <span asp-validation-for="Nombre" class="text-danger"></span>
+
+        <label>Descripción</label>
+        <input type="text" class="entrada-datos" asp-for="Descripcion" />
+        <span asp-validation-for="Descripcion" class="text-danger"></span>
+
+        <label>Teléfono SINPE</label>
+        <input type="text" class="entrada-datos" asp-for="TelefonoSINPE" />
+        <span asp-validation-for="TelefonoSINPE" class="text-danger"></span>
+
+        <div class="checkbox">
+            <input asp-for="EstadoBool" type="checkbox" value="true" />
+            <label>Activo</label>
+        </div>
+
+        <div style="display:flex; gap:12px; margin-top:1rem;">
+            <button type="submit" class="boton bg-oscuro">Guardar cambios</button>
+            <a asp-action="Index" class="boton bg-danger">Cancelar</a>
+        </div>
+    </form>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -13,10 +13,9 @@ namespace Proyecto_PAC325.Data
 
         public DbSet<ComercioModel> COMERCIOS {  get; set; }
 
-        // NUEVA LÍNEA: agrega la tabla de bitácora
-        public DbSet<BitacoraEvento> BitacoraEventos { get; set; }
+        public DbSet<CajaModel> CAJAS { get; set; }
+
 
 
     }
 }
-     
