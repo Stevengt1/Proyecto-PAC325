@@ -18,6 +18,19 @@ else if (TempData["success"] != null)
     </div>
 }
 
+<section class="bienvenida">
+    <div>
+        <p>Apartado de Cajas</p>
+        <h1>
+            BIENVENIDOS AL APARTADO DE EDICIÓN DE CAJA
+        </h1>
+        <p>En este apartado podrás editar los datos de la caja seleccionada</p>
+        <button class="boton bg-oscuro">
+            Quiero Probar
+        </button>
+    </div>
+</section>
+
 <div class="titulo-container">
     <h2>EDITAR CAJA</h2>
 </div>
@@ -53,8 +66,8 @@ else if (TempData["success"] != null)
         </div>
 
         <div style="display:flex; gap:12px; margin-top:1rem;">
-            <button type="submit" class="boton">Guardar cambios</button>
-            <a asp-action="Index" asp-route-idComercio="@Model.IdComercio" class="boton" style="background:#eee; color:#000; text-decoration:none; display:inline-flex; align-items:center; justify-content:center;">Cancelar</a>
+            <button type="submit" class="boton bg-oscuro">Guardar cambios</button>
+            <a asp-action="Index" class="boton bg-danger">Cancelar</a>
         </div>
     </form>
 </section>
