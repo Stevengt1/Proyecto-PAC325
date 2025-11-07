@@ -68,13 +68,13 @@ namespace Proyecto_PAC325.Repository
             var n = nombre.Trim().ToLower();
             return await _context.CAJAS
                 .FirstOrDefaultAsync(c => c.IdComercio == idComercio && c.Nombre.Trim().ToLower() == n);
-        }
-
-        public async Task<CajaModel> FindActiveByTelefono(string telefonoSINPE)
+        }        
+        public async Task<List<CajaModel>> ObtenerCajasActivasAsync()
         {
-            if (string.IsNullOrWhiteSpace(telefonoSINPE)) return null;
             return await _context.CAJAS
-                .FirstOrDefaultAsync(c => c.TelefonoSINPE == telefonoSINPE && c.Estado == 1);
+                .Where(c => c.Estado == 1)
+                .OrderBy(c => c.Nombre)
+                .ToListAsync();
         }
     }
 }

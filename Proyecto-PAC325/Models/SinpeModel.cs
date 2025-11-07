@@ -24,23 +24,21 @@ namespace Proyecto_PAC325.Models
 
         [Required, StringLength(200)]
         public string NombreOrigen { get; set; }
+        [StringLength(10)]
+        public string? TelefonoDestinatario { get; set; }
 
-        [Required(ErrorMessage = "El número telefónico debe debe tener 10 dígitos"), StringLength(10)]
-        public string TelefonoDestinatario { get; set; }
-
-        [Required, StringLength(200)]
-        public string NombreDestinatario { get; set; }
+        [StringLength(200)]
+        public string? NombreDestinatario { get; set; }
 
         [Required, Column(TypeName = "decimal(18,2)")]
         public decimal Monto { get; set; }
-
-        [Required]
         public DateTime FechaDeRegistro { get; set; } = DateTime.Now;
 
         [StringLength(50)]
         public string Descripcion { get; set; }
-
-        [Required]
         public bool Estado { get; set; } = false;
+        [NotMapped]
+        [Required]
+        public int IdCaja { get; set; }
     }
 }

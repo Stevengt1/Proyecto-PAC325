@@ -85,7 +85,5 @@ node_modules/
 wwwroot/lib/
 .env
 .env.*
-appsettings.json
-appsettings.Development.json
-
 *obj/
+/Proyecto-PAC325/Program.cs

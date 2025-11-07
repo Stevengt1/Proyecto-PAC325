@@ -23,8 +23,20 @@ namespace Proyecto_PAC325.Repository
         }
         public async Task<List<SinpeModel>> ObtenerSinpesAsync()
         {
-            return await _context.SINPE.ToListAsync();
+            return await _context.SINPE
+                .Select(s => new SinpeModel
+                {
+                    IdSinpe = s.IdSinpe,
+                    TelefonoOrigen = s.TelefonoOrigen,
+                    NombreOrigen = s.NombreOrigen,
+                    TelefonoDestinatario = s.TelefonoDestinatario,
+                    NombreDestinatario = s.NombreDestinatario,
+                    Monto = s.Monto,
+                    FechaDeRegistro = s.FechaDeRegistro,
+                    Descripcion = s.Descripcion,
+                    Estado = s.Estado
+                })
+                .ToListAsync();
         }
-
     }
 }
