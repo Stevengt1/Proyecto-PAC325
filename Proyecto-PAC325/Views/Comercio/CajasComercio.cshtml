@@ -57,7 +57,7 @@
                             <td>@(c.Estado == 1 ? "Activo" : "Inactivo")</td>
                             <td>
                                 <a class="boton bg-success" asp-action="Editar" asp-route-idCaja="@c.IdCaja">Editar</a>
-                                <a class="boton bg-oscuro" asp-action="VerSinpe" asp-route-telefono="@c.TelefonoSINPE">Ver SINPE</a>
+                                <a class="boton bg-oscuro" asp-action="SinpesPorCaja" asp-route-telefono="@c.TelefonoSINPE">Ver SINPE</a>
                             </td>
                         </tr>
                     }
