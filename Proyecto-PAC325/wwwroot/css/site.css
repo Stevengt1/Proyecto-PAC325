@@ -389,3 +389,57 @@ input::placeholder {
 .mensaje button:hover {
     color: #ddd;
 }
+
+/*POPUP*/
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup {
+    background: linear-gradient(to bottom right, #2e0080, #8000ff);
+    padding: 2%;
+    width: 40%;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    color: white;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.contenedor-btns {
+    margin-top: 2%;
+}
+
+.form {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.popup h2 {
+    margin: 0;
+}
+
+.cerrar-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #888;
+}

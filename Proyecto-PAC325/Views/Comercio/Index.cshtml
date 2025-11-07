@@ -81,7 +81,7 @@
                         <td>
                             <a class="boton bg-success" asp-route-idComercio="@comercio.IdComercio" asp-action="Editar">Editar</a>
                             <a class="boton bg-oscuro" asp-route-idComercio="@comercio.IdComercio" asp-action="Detalle">Detalles</a>
-                            <a class="boton bg-oscuro">Ver Cajas</a>
+                            <a class="boton bg-oscuro" asp-route-idComercio="@comercio.IdComercio" asp-action="CajasComercio">Ver Cajas</a>
                         </td>
                     </tr>
                 }

@@ -1,29 +1,11 @@
 ﻿@model List<Proyecto_PAC325.Models.CajaModel>
-@{
-    ViewData["Title"] = "Cajas";
-    var idComercio = ViewBag.IdComercio as int? ?? 0;
-}
-@if (TempData["error"] != null)
-{
-    <div class="mensaje error" id="mensaje">
-        <span>@TempData["error"]</span>
-        <button id="cerrar-modal">×</button>
-    </div>
-}
-else if (TempData["success"] != null)
-{
-    <div class="mensaje success" id="mensaje">
-        <span>@TempData["success"]</span>
-        <button id="cerrar-modal">×</button>
-    </div>
-}
 <section class="bienvenida">
     <div>
-        <p>Apartado de Cajas</p>
+        <p>Apartado de Comercios</p>
         <h1>
-            ESTE ES EL APARTADO DE CAJAS DONDE PODRÁS VISUALIZAR LAS CAJAS DEL COMERCIO
+            ESTE ES EL APARTADO DE COMERCIOS DONDE ESTAN LAS CAJAS AFILIADAS
         </h1>
-        <p>Las cajas listadas representan los teléfonos asociados a cada comercio para recibir SINPE.</p>
+        <p>Acá podrás ver las cajas que se ecnuentran afiliadas al comercio seleccionado</p>
         <button class="boton bg-oscuro">
             Ver cajas
         </button>
@@ -38,8 +20,7 @@ else if (TempData["success"] != null)
 
 <div class="act-container">
     <h3>Acciones: </h3>
-    <a class="activo" asp-action="Index" asp-route-idComercio="@idComercio">Lista</a>
-    <a asp-action="Registro" asp-route-idComercio="@idComercio">Registrar</a>
+    <a class="activo" asp-action="Index">Lista</a>
 </div>
 
 <section class="vista-tabla">
@@ -61,10 +42,6 @@ else if (TempData["success"] != null)
                     <tr>
                         <td colspan="6" style="text-align:center; padding:2rem;">
                             No hay cajas para mostrar.
-                            @if (idComercio == 0)
-                            {
-                                <div>(No se recibió idComercio. Para listar por comercio, abra la lista desde Comercios o use el selector en Registrar.)</div>
-                            }
                         </td>
                     </tr>
                 }

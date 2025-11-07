@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Proyecto_PAC325.Business;
 using Proyecto_PAC325.Data;
+using Proyecto_PAC325.Models;
 using Proyecto_PAC325.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,11 +16,12 @@ builder.Services.AddDbContext<AppDbContext>(
 //Agregar los repos
 builder.Services.AddScoped<ComercioRepository>();
 builder.Services.AddScoped<CajaRepository>();
+builder.Services.AddScoped<BitacoraRepository>();
 
 //Agregar los Business
 builder.Services.AddScoped<ComercioBusiness>();
 builder.Services.AddScoped<CajaBusiness>();
-
+builder.Services.AddScoped<BitacoraBusiness>();
 
 //Lo anterior es para que se inyecten automaticamente en los constructores esto por la biblioteca de inyeccion que trae asp.net
 
