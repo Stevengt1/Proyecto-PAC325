@@ -7,7 +7,7 @@ $("#cerrar-modal").on("click", function () {
     $("#mensaje").fadeOut();
 });.
 
-// Modal SINPE
+// Modal del SINPE
 document.addEventListener("DOMContentLoaded", function () {
     const abrirModal = document.getElementById("abrirModal");
     const cerrarModal = document.getElementById("cerrarModal");
