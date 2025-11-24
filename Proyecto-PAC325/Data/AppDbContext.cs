@@ -19,5 +19,7 @@ namespace Proyecto_PAC325.Data
 
         public DbSet<SinpeModel> SINPE { get; set; }
 
+        public DbSet<ConfigComercioModel> CONFIGURACIONES_COMERCIOS { get; set; }
+
     }
 }
