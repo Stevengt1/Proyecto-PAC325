@@ -8,14 +8,13 @@ namespace Proyecto_PAC325.Models
     {
         [Key]
         public int IdConfiguracion { get; set; }
-        [ForeignKey("COMERCIO")]
         public int IdComercio { get; set; }
         public int TipoConfiguracion { get; set; }
         public int Comision { get; set; }
         public DateTime FechaDeRegistro { get; set; }
         public DateTime FechaDeModificacion { get; set; }
         public int Estado {  get; set; }
-
+        [ForeignKey(nameof(IdComercio))]
         public ComercioModel Comercio { get; set; }
 
         //IdConfiguracion – int, primary key, not null (identity)

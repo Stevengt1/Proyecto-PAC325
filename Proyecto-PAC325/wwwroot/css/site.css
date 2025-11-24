@@ -66,6 +66,44 @@ a {
     text-decoration: none;
 }
 
+.dropdown {
+    position: relative;
+}
+
+.dropdown-btn {
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    padding: 10px 0;
+    display: none;
+    flex-direction: column;
+    min-width: 180px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    z-index: 999;
+}
+
+.dropdown-menu a {
+    padding: 8px 18px;
+    color: #1f4685;
+    display: block;
+    white-space: nowrap;
+}
+
+.dropdown-menu a:hover {
+    background: #e6eefb;
+}
+
+
+.dropdown:hover .dropdown-menu {
+    display: flex;
+}
+
 /*Diseño de la parte de bienvenida con sus mensajes*/
 
 .bienvenida {

@@ -25,6 +25,11 @@ namespace Proyecto_PAC325.Repository
             return await _context.COMERCIOS.FindAsync(id); //Esa funcion lo busca por el Id y devuelve el objeto 
         }
 
+        public async Task<List<ComercioModel>> GetComerciosActivos()
+        {
+            return await _context.COMERCIOS.Where(c => c.Estado == 1).ToListAsync();
+        }
+
         public async Task<ComercioModel> Add(ComercioModel comercio) {
             try
             {

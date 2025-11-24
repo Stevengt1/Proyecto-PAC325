@@ -16,7 +16,7 @@ namespace Proyecto_PAC325.Repository
 
         public async Task<List<ConfigComercioModel>> GetConfiguraciones()
         {
-            return await _context.CONFIGURACIONES_COMERCIOS.ToListAsync();
+            return await _context.CONFIGURACIONES_COMERCIOS.Include(c => c.Comercio).ToListAsync();
         }
 
         public async Task<ConfigComercioModel> GetConfiguracion(int id)

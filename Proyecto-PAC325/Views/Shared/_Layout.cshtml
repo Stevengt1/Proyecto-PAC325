@@ -15,7 +15,12 @@
             <a asp-controller="Home" asp-action="Index">
                 <img src="/img/logo_PAC3.png">
             </a>
-            <a asp-controller="Comercio" asp-action="Index">Comercios</a>
+            <div class="dropdown">
+                <a asp-controller="Comercio" asp-action="Index" class="dropdown-btn">Comercios ▾</a>
+                <div class="dropdown-menu">
+                    <a asp-controller="ConfigComercio" asp-action="Index">➤ Configuraciones</a>
+                </div>
+            </div>
             <a asp-controller="Caja" asp-action="Index">Cajas</a>
             <a asp-controller="Sinpe" asp-action="Index">Sinpe Móvil</a>
             <a asp-controller="Bitacora" asp-action="Index">Bitacora</a>
@@ -33,7 +38,6 @@
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

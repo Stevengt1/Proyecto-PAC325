@@ -18,11 +18,13 @@ builder.Services.AddScoped<ComercioRepository>();
 builder.Services.AddScoped<CajaRepository>();
 builder.Services.AddScoped<BitacoraRepository>();
 builder.Services.AddScoped<SinpeRepository>();
+builder.Services.AddScoped<ConfigComercioRepository>();
 //Agregar los Business
 builder.Services.AddScoped<ComercioBusiness>();
 builder.Services.AddScoped<CajaBusiness>();
 builder.Services.AddScoped<BitacoraBusiness>();
 builder.Services.AddScoped<SinpeBusiness>();
+builder.Services.AddScoped<ConfigComercioBusiness>();
 
 //Lo anterior es para que se inyecten automaticamente en los constructores esto por la biblioteca de inyeccion que trae asp.net
 

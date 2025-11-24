@@ -7,10 +7,12 @@ namespace Proyecto_PAC325.Controllers
     public class ConfigComercioController : Controller
     {
         private readonly ConfigComercioBusiness _configComercioBusiness;
+        private readonly ComercioBusiness _comercioBusiness;
 
-        public ConfigComercioController(ConfigComercioBusiness configComercioBusiness)
+        public ConfigComercioController(ConfigComercioBusiness configComercioBusiness, ComercioBusiness comercioBusiness)
         {
             _configComercioBusiness = configComercioBusiness;
+            _comercioBusiness = comercioBusiness;
         }
 
         public async Task<IActionResult> Index()
@@ -18,8 +20,9 @@ namespace Proyecto_PAC325.Controllers
             return View(await _configComercioBusiness.GetConfiguraciones());
         }
 
-        public IActionResult Registro()
+        public async Task<IActionResult> Registro()
         {
+            ViewBag.Comercios = await _comercioBusiness.GetComerciosActivos();
             return View();
         }
 
@@ -42,9 +45,10 @@ namespace Proyecto_PAC325.Controllers
             return RedirectToAction("Registro");
         }
 
-        public async Task<IActionResult> Editar(int id)
+        public async Task<IActionResult> Editar(int idConfiguracion)
         {
-            return View(await _configComercioBusiness.GetConfiguracion(id));
+            ViewBag.Comercios = await _comercioBusiness.GetComerciosActivos();
+            return View(await _configComercioBusiness.GetConfiguracion(idConfiguracion));
         }
 
         [HttpPost]
