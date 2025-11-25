@@ -21,5 +21,7 @@ namespace Proyecto_PAC325.Data
 
         public DbSet<ConfigComercioModel> CONFIGURACIONES_COMERCIOS { get; set; }
 
+        public DbSet<ReporteMensualModel> REPORTES_MENSUALES { get; set; }
+
     }
 }

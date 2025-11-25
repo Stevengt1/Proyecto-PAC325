@@ -53,5 +53,15 @@ namespace Proyecto_PAC325.Repository
             return false;
         }
 
+        //Para el modulo de reportes
+        //obtiene la configuracion activa del comercio
+        public async Task<ConfigComercioModel?> GetActiveByComercioAsync(int idComercio, int tipoConfiguracion = 1)
+        {
+            return await _context.CONFIGURACIONES_COMERCIOS
+                .Where(c => c.IdComercio == idComercio && c.TipoConfiguracion == tipoConfiguracion && c.Estado == 1)
+                .OrderByDescending(c => c.FechaDeModificacion)
+                .FirstOrDefaultAsync();
+        }
+
     }
 }
