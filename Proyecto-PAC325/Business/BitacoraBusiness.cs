@@ -3,13 +3,11 @@ using Proyecto_PAC325.Models;
 using Proyecto_PAC325.Repository;
 
 namespace Proyecto_PAC325.Business
-{
-    public class BitacoraBusiness
+{    public class BitacoraBusiness
     {
+        private readonly IBitacora _repository;
 
-        private readonly BitacoraRepository _repository;
-
-        public BitacoraBusiness (BitacoraRepository repository)
+        public BitacoraBusiness(IBitacora repository)
         {
             _repository = repository;
         }
@@ -18,6 +16,5 @@ namespace Proyecto_PAC325.Business
         {
             return await _repository.GetBitacoras();
         }
-
     }
 }

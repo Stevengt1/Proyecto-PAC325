@@ -1,0 +1,82 @@
+﻿@model Proyecto_PAC325.Models.UsuarioModel
+@{
+    ViewData["Title"] = "Editar Usuario";
+}
+
+@if (TempData["error"] != null)
+{
+    <div class="mensaje error" id="mensaje">
+        <span>@TempData["error"]</span>
+        <button id="cerrar-modal">×</button>
+    </div>
+}
+else if (TempData["success"] != null)
+{
+    <div class="mensaje success" id="mensaje">
+        <span>@TempData["success"]</span>
+        <button id="cerrar-modal">×</button>
+    </div>
+}
+
+<section class="bienvenida">
+    <div>
+        <p>Apartado de Usuarios</p>
+        <h1>
+            BIENVENIDOS AL APARTADO DE EDICIÓN DE USUARIO
+        </h1>
+        <p>En este apartado podrás editar los datos del usuario seleccionado.</p>
+    </div>
+</section>
+
+<div class="titulo-container">
+    <h2>EDITAR USUARIO</h2>
+</div>
+
+<div class="act-container">
+    <h3>Acciones: </h3>
+    <a asp-action="Index">Lista</a>
+    <a class="activo" asp-action="Editar" asp-route-idUsuario="@Model.IdUsuario">Editar</a>
+</div>
+
+<section class="registro-container">
+    <form class="formulario" asp-action="Update" method="post">
+        @Html.AntiForgeryToken()
+
+        <input type="hidden" asp-for="IdUsuario" />
+        <input type="hidden" asp-for="IdComercio" />
+
+        <label>Nombres</label>
+        <input type="text" class="entrada-datos" required asp-for="Nombres" />
+        <span asp-validation-for="Nombres" class="text-danger"></span>
+
+        <label>Primer Apellido</label>
+        <input type="text" class="entrada-datos" required asp-for="PrimerApellido" />
+        <span asp-validation-for="PrimerApellido" class="text-danger"></span>
+
+        <label>Segundo Apellido</label>
+        <input type="text" class="entrada-datos" required asp-for="SegundoApellido" />
+        <span asp-validation-for="SegundoApellido" class="text-danger"></span>
+
+        <label>Identificación</label>
+        <input type="text" class="entrada-datos" required asp-for="Identificacion" />
+        <span asp-validation-for="Identificacion" class="text-danger"></span>
+
+        <label>Correo Electrónico</label>
+        <input type="email" class="entrada-datos" required asp-for="CorreoElectronico" />
+        <span asp-validation-for="CorreoElectronico" class="text-danger"></span>
+
+        <div class="checkbox">
+            <input asp-for="Estado" type="checkbox" />
+            <label>Activo</label>
+        </div>
+
+        <div style="display:flex; gap:12px; margin-top:1rem;">
+            <button type="submit" class="boton bg-oscuro">Guardar cambios</button>
+            <a asp-action="Index" class="boton bg-danger">Cancelar</a>
+        </div>
+    </form>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

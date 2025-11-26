@@ -1,0 +1,72 @@
+﻿@model Proyecto_PAC325.Models.UsuarioModel
+@{
+    ViewData["Title"] = "Registrar Usuario";
+}
+
+@if (TempData["error"] != null)
+{
+    <div class="mensaje error" id="mensaje">
+        <span>@TempData["error"]</span>
+        <button id="cerrar-modal">×</button>
+    </div>
+}
+else if (TempData["success"] != null)
+{
+    <div class="mensaje success" id="mensaje">
+        <span>@TempData["success"]</span>
+        <button id="cerrar-modal">×</button>
+    </div>
+}
+
+<section class="bienvenida">
+    <div>
+        <p>Apartado de Usuarios</p>
+        <h1>BIENVENIDOS AL APARTADO DE REGISTRO DE USUARIO</h1>
+        <p>En este apartado podrás registrar los datos de un nuevo usuario.</p>
+    </div>
+</section>
+
+<div class="titulo-container"><h2>REGISTRO DE USUARIOS</h2></div>
+
+<div class="act-container">
+    <h3>Acciones: </h3>
+    <a asp-action="Index">Lista</a>
+    <a class="activo" asp-action="Registro">Registrar</a>
+</div>
+
+<section class="registro-container">
+    <form class="formulario" asp-action="Add" method="post">
+        @Html.AntiForgeryToken()
+
+        <label>Nombres</label>
+        <input type="text" class="entrada-datos" required asp-for="Nombres" />
+        <span asp-validation-for="Nombres" class="text-danger"></span>
+
+        <label>Primer Apellido</label>
+        <input type="text" class="entrada-datos" required asp-for="PrimerApellido" />
+        <span asp-validation-for="PrimerApellido" class="text-danger"></span>
+
+        <label>Segundo Apellido</label>
+        <input type="text" class="entrada-datos" required asp-for="SegundoApellido" />
+        <span asp-validation-for="SegundoApellido" class="text-danger"></span>
+
+        <label>Identificación</label>
+        <input type="text" class="entrada-datos" required asp-for="Identificacion" />
+        <span asp-validation-for="Identificacion" class="text-danger"></span>
+
+        <label>Correo Electrónico</label>
+        <input type="email" class="entrada-datos" required asp-for="CorreoElectronico" />
+        <span asp-validation-for="CorreoElectronico" class="text-danger"></span>
+
+        <label>Comercio</label>
+        <select asp-for="IdComercio" asp-items="ViewBag.Comercios" class="entrada-datos"></select>
+        <span asp-validation-for="IdComercio" class="text-danger"></span>
+
+        <button class="boton bg-oscuro">Registrar Usuario</button>
+    </form>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

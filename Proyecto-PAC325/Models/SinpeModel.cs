@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace Proyecto_PAC325.Models
 {
@@ -40,5 +41,10 @@ namespace Proyecto_PAC325.Models
         [NotMapped]
         [Required]
         public int IdCaja { get; set; }
+
+        // Propiedad de navegación
+        [JsonIgnore]
+        public CajaModel Caja { get; set; }
+
     }
 }

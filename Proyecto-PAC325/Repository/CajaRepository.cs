@@ -8,12 +8,11 @@ namespace Proyecto_PAC325.Repository
     {
         private readonly AppDbContext _context;
         private IBitacora _bitacora;
-        public CajaRepository(AppDbContext context, BitacoraRepository bitacora)
+        public CajaRepository(AppDbContext context, IBitacora bitacora)
         {
             _context = context;
             _bitacora = bitacora;
         }
-
         public async Task<List<CajaModel>> GetCajasByComercio(int idComercio)
         {
             return await _context.CAJAS
