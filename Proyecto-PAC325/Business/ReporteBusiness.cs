@@ -18,23 +18,9 @@ namespace Proyecto_PAC325.Business
             _configComercioRepository = configComercioRepository;
 
         }
-        public async Task GenerarReportesPorMesAsync(DateTime monthDate)
+        public async Task GenerarReportes(DateTime fecha)
         {
-            async Task<decimal> ObtenerPorcentaje(int idComercio)
-            {
-                //se obtiene la configuracion activa del comercio
-                var config = await _configComercioRepository.GetActiveByComercioAsync(idComercio);
-                if (config == null)
-                {
-                    //20% por defecto
-                    return 20m;
-                }
-
-                //comision se convierte a decimal 
-                return Convert.ToDecimal(config.Comision);
-            }
-
-            await _reporteRepository.ReportesPorMesAsync(monthDate, ObtenerPorcentaje);
+            await _reporteRepository.GenerarReporte(fecha);
         }
 
         public async Task<List<ReporteMensualModel>> GetAllReportesAsync()

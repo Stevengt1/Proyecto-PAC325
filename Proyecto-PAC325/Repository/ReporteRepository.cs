@@ -6,11 +6,20 @@ namespace Proyecto_PAC325.Repository
     public class ReporteRepository
     {
         private readonly AppDbContext _context;
+        private readonly CajaRepository _cajaRepository;
+        private SinpeRepository _sinpeRepository;
+        private ComercioRepository _comercioRepository;
+        private ConfigComercioRepository _configComercioRepository;
         private readonly BitacoraRepository _bitacora;
 
-        public ReporteRepository(AppDbContext context, BitacoraRepository bitacora)
+        public ReporteRepository(AppDbContext context, BitacoraRepository bitacora, CajaRepository cajaRepository,
+            SinpeRepository sinpeRepository, ComercioRepository comercioRepository, ConfigComercioRepository configComercioRepository)
         {
             _context = context;
+            _cajaRepository = cajaRepository;
+            _sinpeRepository = sinpeRepository;
+            _comercioRepository = comercioRepository;
+            _configComercioRepository = configComercioRepository;
             _bitacora = bitacora;
         }
 
@@ -22,71 +31,58 @@ namespace Proyecto_PAC325.Repository
                .ToListAsync();
         }
 
-        // Generay actualiza reportes para el mes indicado
-        // Genera/actualiza reportes para el mes indicado (monthDate -> se usa el primer día del mes)
-        public async Task ReportesPorMesAsync(DateTime monthDate, Func<int, Task<decimal>> obtenerPorcentajeComisionAsync)
+
+        private async Task<int> CantidadCajas(int idComercio)
         {
-            var monthStart = new DateTime(monthDate.Year, monthDate.Month, 1);
-            var monthEnd = monthStart.AddMonths(1);
+            List<CajaModel> cajas = await _cajaRepository.GetCajasByComercio(idComercio); 
+            return cajas.Count;
+        }
 
-            //obtener sinpes por comercio y agruparlos
-            var agrupados = await (
-                from caja in _context.CAJAS
-                join sinpe in _context.SINPE on caja.TelefonoSINPE equals sinpe.TelefonoDestinatario
-                where sinpe.FechaDeRegistro >= monthStart && sinpe.FechaDeRegistro < monthEnd
-                group sinpe by caja.IdComercio into g
-                select new
-                {
-                    IdComercio = g.Key,
-                    CantidadDeSINPES = g.Count(),
-                    MontoTotalRecaudado = g.Sum(x => x.Monto)
-                }).ToListAsync();
+        private async Task<ReporteMensualModel> ExistReporteComercio(int idComercio)
+        {
+            return await _context.REPORTES_MENSUALES.FirstOrDefaultAsync(r => r.IdComercio == idComercio);
+        }
 
-            //obtener todos los comercios
-            var comercios = await _context.COMERCIOS.ToListAsync();
-
-            foreach (var comercio in comercios)
+        public async Task GenerarReporte(DateTime fecha)
+        {
+            try
             {
-                var agreg = agrupados.FirstOrDefault(a => a.IdComercio == comercio.IdComercio);
-                var cantidadSinpes = agreg?.CantidadDeSINPES ?? 0;
-                var montoRecaudado = agreg?.MontoTotalRecaudado ?? 0m;
-
-                //cantidad de cajas del comercio
-                var cantidadCajas = await _context.CAJAS.CountAsync(c => c.IdComercio == comercio.IdComercio);
-
-                //obtener porcentaje de comisión (usa el callback para que la lógica quede fuera del repo)
-                decimal porcentaje = await obtenerPorcentajeComisionAsync(comercio.IdComercio); // devuelve 20 para 20%
-                var montoComision = Math.Round(montoRecaudado * (porcentaje / 100m), 2);
-
-                // Upsert/busca si ya existe reporte para ese comercio y mes
-                var existing = await _context.REPORTES_MENSUALES
-                    .FirstOrDefaultAsync(r => r.IdComercio == comercio.IdComercio && r.FechaDelReporte == monthStart);
-
-                //datos
-                if (existing == null)
+                List<ComercioModel> comercios = await _comercioRepository.GetAllComercio();
+                foreach(var comercio in comercios)
                 {
-                    var nuevo = new ReporteMensualModel
+
+                    ConfigComercioModel config = await _configComercioRepository.GetConfigActiva(comercio.IdComercio);
+                    if (config != null)
                     {
-                        IdComercio = comercio.IdComercio,
-                        CantidadDeCajas = cantidadCajas,
-                        MontoTotalRecaudado = montoRecaudado,
-                        CantidadDeSINPES = cantidadSinpes,
-                        MontoTotalComision = montoComision,
-                        FechaDelReporte = monthStart
-                    };
-                    _context.REPORTES_MENSUALES.Add(nuevo);
-                }
-                else
-                {
-                    existing.CantidadDeCajas = cantidadCajas;
-                    existing.MontoTotalRecaudado = montoRecaudado;
-                    existing.CantidadDeSINPES = cantidadSinpes;
-                    existing.MontoTotalComision = montoComision;
+                        var reporteAnterior = await ExistReporteComercio(comercio.IdComercio);
+                        var reporte = reporteAnterior ?? new ReporteMensualModel();
+
+                        reporte.CantidadDeCajas = await CantidadCajas(comercio.IdComercio);
+                        reporte.MontoTotalRecaudado = await _sinpeRepository.GetMontoSinpesByDate(comercio.IdComercio, fecha);
+                        reporte.CantidadDeSINPES = await _sinpeRepository.GetCantidadSinpes(comercio.IdComercio, fecha);
+                        decimal comision = (decimal)(config.Comision * 0.01);
+                        reporte.MontoTotalComision = reporte.MontoTotalRecaudado*comision;
+                        reporte.IdComercio = comercio.IdComercio;
+                        reporte.FechaDelReporte = fecha;
+
+                        if (reporteAnterior == null)
+                        {
+                            _context.REPORTES_MENSUALES.Add(reporte);
+                            await _bitacora.RegistrarEvento("REPORTE", "Registro", "Se registro un reporte para la fecha " + fecha, reporte);
+                        }
+                        else
+                        {
+                            await _bitacora.RegistrarEvento("REPORTE", "Actualización", "Se actualizo un reporte para la fecha " + fecha,
+                                reporteAnterior, reporte);
+                        }
+                        _context.SaveChanges();
+                    }
                 }
             }
-
-            await _context.SaveChangesAsync();
-            await _bitacora.RegistrarEvento("REPORTE", "Generar/Actualizar", $"Reportes del mes {monthStart:yyyy-MM} generados/actualizados", monthStart);
+            catch(Exception ex)
+            {
+                //await _bitacora.RegistrarEvento("REPORTE", "Error", "Error", ex);
+            }
         }
     }
 }

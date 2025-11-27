@@ -388,6 +388,10 @@ input::placeholder {
     color: #373a78;
 }
 
+.mb-3{
+    padding: 1%;
+}
+
 /*Modal de mensaje de error o exito*/
 .mensaje {
     position: fixed;

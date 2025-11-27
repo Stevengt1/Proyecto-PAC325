@@ -2,20 +2,39 @@
 @{
     ViewData["Title"] = "Reportes Mensuales";
 }
-<h2>Reportes Mensuales</h2>
 
 @if (TempData["success"] != null)
 {
-    <div class="mensaje success">@TempData["success"]</div>
+    <div class="mensaje success" id="mensaje">
+        <span>@TempData["success"]</span>
+        <button id="cerrar-modal">×</button>
+    </div>
 }
+
+<section class="bienvenida">
+    <div>
+        <p>Apartado de Comercio</p>
+        <h1>
+            ESTE ES EL APARTADO DE REPORTE DONDE SE GENERAN LOS REPORTES DE TODOS LOS COMERCIOS
+        </h1>
+        <p>Este sector esta designado para generar los reportes basados en fechas</p>
+        <button class="boton bg-oscuro">
+            Reporte
+        </button>
+    </div>
+</section>
+
+<div class="titulo-container">
+    <h2>
+        REALIZAR REPORTES
+    </h2>
+</div>
 
 <div class="mb-3">
     <form id="generarForm" method="post" asp-action="GenerarReportes">
         @Html.AntiForgeryToken()
-        <label for="mes">Mes</label>
-        <input id="mes" name="mes" type="month" class="form-control" />
-        <input type="hidden" id="year" name="year" />
-        <input type="hidden" id="month" name="month" />
+        <label for="Fecha para Reporte">Fecha para Reporte</label>
+        <input name="fecha" type="date" class="entrada-datos" required />
         <button type="submit" class="boton bg-oscuro mt-2">Generar reportes</button>
     </form>
 </div>
@@ -46,29 +65,9 @@
                     <td>@r.MontoTotalRecaudado.ToString("C")</td>
                     <td>@r.CantidadDeSINPES</td>
                     <td>@r.MontoTotalComision.ToString("C")</td>
-                    <td>@r.FechaDelReporte.ToString("yyyy-MM")</td>
+                    <td>@r.FechaDelReporte.ToString("g")</td>
                 </tr>
             }
         }
     </tbody>
 </table>
-
-@section Scripts {
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $('#generarForm').on('submit', function (e) {
-            var val = $('#mes').val(); 
-            if (!val) {
-                var now = new Date();
-                var y = now.getFullYear().toString();
-                var m = (now.getMonth() + 1).toString().padStart(2, '0');
-                $('#year').val(y);
-                $('#month').val(m);
-            } else {
-                var parts = val.split('-');
-                $('#year').val(parts[0]);
-                $('#month').val(parts[1]);
-            }
-        });
-    </script>
-}

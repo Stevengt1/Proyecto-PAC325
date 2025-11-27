@@ -9,7 +9,7 @@ namespace Proyecto_PAC325.Repository
         private readonly AppDbContext _context;
         private IBitacora _bitacora;
 
-        public ComercioRepository(AppDbContext context, BitacoraRepository bitacora)
+        public ComercioRepository(AppDbContext context, BitacoraRepository bitacora, CajaRepository cajaRepository)
         {
             _context = context;
             _bitacora = bitacora;

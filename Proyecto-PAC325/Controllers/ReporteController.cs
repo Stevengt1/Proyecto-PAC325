@@ -21,12 +21,10 @@ namespace Proyecto_PAC325.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> GenerarReportes(int? year, int? month)
+        public async Task<IActionResult> GenerarReportes(DateTime fecha)
         {
-            var now = DateTime.Now;
-            var target = new DateTime(year ?? now.Year, month ?? now.Month, 1);
-            await _reporteBusiness.GenerarReportesPorMesAsync(target);
-            TempData["success"] = $"Reportes generados/actualizados ({target:yyyy-MM}).";
+            await _reporteBusiness.GenerarReportes(fecha);
+            TempData["success"] = $"Reportes generados/actualizados ({fecha:yyyy-MM-dd}).";
             return RedirectToAction("Index");
         }
         

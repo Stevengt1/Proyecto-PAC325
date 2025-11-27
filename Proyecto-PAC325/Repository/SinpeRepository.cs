@@ -63,5 +63,45 @@ namespace Proyecto_PAC325.Repository
                 .OrderByDescending(s => s.FechaDeRegistro)
                 .ToListAsync();
         }
+
+        public async Task<decimal> GetMontoSinpesByDate(int idComercio, DateTime fecha)
+        {
+            var inicioMes = new DateTime(fecha.Year, fecha.Month, 1);
+            var fin = fecha.Date;
+
+            return await (
+                from caja in _context.CAJAS
+                join sinpe in _context.SINPE
+                    on caja.TelefonoSINPE equals sinpe.TelefonoDestinatario
+                where caja.IdComercio == idComercio
+                      && sinpe.FechaDeRegistro >= inicioMes
+                      && sinpe.FechaDeRegistro <= fin
+                select sinpe.Monto
+            ).SumAsync();
+            //Eso de arriba es lo mismo que hacer esta consulta en el sql para que no se confundan (Solo para optimizar):
+            //SELECT SUM(s.Monto)
+            //FROM Cajas c
+            //INNER JOIN Sinpes s ON c.TelefonoSINPE = s.Telefono
+            //WHERE c.IdComercio = @idComercio
+            //  AND s.FechaDeRegistro >= @inicioMes
+            //  AND s.FechaDeRegistro <= @fin
+        }
+
+        public async Task<int> GetCantidadSinpes(int idComercio, DateTime fecha)
+        {
+            var inicioMes = new DateTime(fecha.Year, fecha.Month, 1);
+            var fin = fecha.Date;
+
+            return await (
+                from caja in _context.CAJAS
+                join sinpe in _context.SINPE
+                    on caja.TelefonoSINPE equals sinpe.TelefonoDestinatario
+                where caja.IdComercio == idComercio
+                      && sinpe.FechaDeRegistro >= inicioMes
+                      && sinpe.FechaDeRegistro <= fin
+                select sinpe
+                ).CountAsync();
+        }
+
     }
 }
