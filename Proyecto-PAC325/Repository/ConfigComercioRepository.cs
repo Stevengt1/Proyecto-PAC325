@@ -8,10 +8,12 @@ namespace Proyecto_PAC325.Repository
     {
 
         private readonly AppDbContext _context;
+        private readonly BitacoraRepository _bitacora;
 
-        public ConfigComercioRepository(AppDbContext context)
+        public ConfigComercioRepository(AppDbContext context, BitacoraRepository bitacora)
         {
             _context = context;
+            _bitacora = bitacora;
         }
 
         public async Task<List<ConfigComercioModel>> GetConfiguraciones()
@@ -26,22 +28,41 @@ namespace Proyecto_PAC325.Repository
 
         public async Task<ConfigComercioModel> Add(ConfigComercioModel config)
         {
-            _context.CONFIGURACIONES_COMERCIOS.Add(config);
-            if(await _context.SaveChangesAsync() > 0)
+            try
             {
-                return config;
+                _context.CONFIGURACIONES_COMERCIOS.Add(config);
+                if (await _context.SaveChangesAsync() > 0)
+                {
+                    await _bitacora.RegistrarEvento("CONFIGURACIONES_COMERCIOS", "Registrar", "Se registro una configuración de un comercio", config);
+                    return config;
+                }
+                return null;
+            }catch(Exception ex)
+            {
+                await _bitacora.RegistrarEvento("CONFIGURACIONES_COMERCIOS", "Error", "Error", ex);
+                return null;
             }
-            return null;
         }
 
         public async Task<ConfigComercioModel> Update(ConfigComercioModel config)
         {
-            _context.CONFIGURACIONES_COMERCIOS.Update(config);
-            if (await _context.SaveChangesAsync() > 0)
+            try
             {
-                return config;
+                var configAnterior = await _context.CONFIGURACIONES_COMERCIOS.AsNoTracking()
+                        .FirstOrDefaultAsync(c => c.IdConfiguracion == config.IdConfiguracion);
+                _context.CONFIGURACIONES_COMERCIOS.Update(config);
+                if (await _context.SaveChangesAsync() > 0)
+                {
+                    await _bitacora.RegistrarEvento("CONFIGURACIONES_COMERCIOS", "Editar", "Se actualizo una configuración", 
+                        configAnterior, config);
+                    return config;
+                }
+                return null;
+            }catch(Exception ex)
+            {
+                await _bitacora.RegistrarEvento("CONFIGURACIONES_COMERCIOS", "Error", "Error", ex);
+                return null;
             }
-            return null;
         }
 
         public async Task<bool> Exist(int id)
