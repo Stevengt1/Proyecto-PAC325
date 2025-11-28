@@ -30,12 +30,6 @@ namespace Proyecto_PAC325.Models
             get => Estado == 1;
             set => Estado = value ? 1 : 0;
         }
-        // Propiedades de navegación
-        [JsonIgnore]
-        public ComercioModel Comercio { get; set; }
-
-        [JsonIgnore]
-        public List<SinpeModel> Sinpes { get; set; }
 
         //        `IdCaja` int (11) NOT NULL AUTO_INCREMENT,
         //`IdComercio` int (11) NOT NULL,

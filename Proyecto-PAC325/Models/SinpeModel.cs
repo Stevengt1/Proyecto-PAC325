@@ -42,9 +42,5 @@ namespace Proyecto_PAC325.Models
         [Required]
         public int IdCaja { get; set; }
 
-        // Propiedad de navegación
-        [JsonIgnore]
-        public CajaModel Caja { get; set; }
-
     }
 }

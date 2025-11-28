@@ -10,9 +10,9 @@ namespace Proyecto_PAC325.Repository
         private SinpeRepository _sinpeRepository;
         private ComercioRepository _comercioRepository;
         private ConfigComercioRepository _configComercioRepository;
-        private readonly BitacoraRepository _bitacora;
+        private readonly IBitacora _bitacora;
 
-        public ReporteRepository(AppDbContext context, BitacoraRepository bitacora, CajaRepository cajaRepository,
+        public ReporteRepository(AppDbContext context, IBitacora bitacora, CajaRepository cajaRepository,
             SinpeRepository sinpeRepository, ComercioRepository comercioRepository, ConfigComercioRepository configComercioRepository)
         {
             _context = context;

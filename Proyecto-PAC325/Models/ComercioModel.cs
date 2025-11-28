@@ -19,13 +19,6 @@ namespace Proyecto_PAC325.Models
         public DateTime FechaDeModificacion { get; set; }
         public int Estado {  get; set; }
 
-        // Propiedades de navegación
-        [JsonIgnore]
-        public List<UsuarioModel> Usuarios { get; set; }
-
-        [JsonIgnore]
-        public List<CajaModel> Cajas { get; set; }
-
 
         //▪ IdComercio – int, primary key, not null (identity) 
         //▪ Identificacion – varchar(30), not null 
