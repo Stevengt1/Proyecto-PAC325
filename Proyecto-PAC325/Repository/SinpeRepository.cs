@@ -12,6 +12,60 @@ namespace Proyecto_PAC325.Repository
         Task<List<SinpeModel>> GetSinpesByTelefono(string telefono);
 
     }
+
+    public async Task<bool> SincronizarSinpe(int idSinpe)
+        {
+            try
+            {
+                var sinpe = await _context.SINPE.FirstOrDefaultAsync(s => s.IdSinpe == idSinpe);
+
+                if (sinpe == null)
+                    return false; // SINPE no existe
+
+                if (sinpe.Estado == true)
+                    return false; // Ya está sincronizado
+
+                // Guardamos copia para bitácora
+                var sinpeAnterior = new SinpeModel
+                {
+                    IdSinpe = sinpe.IdSinpe,
+                    TelefonoOrigen = sinpe.TelefonoOrigen,
+                    NombreOrigen = sinpe.NombreOrigen,
+                    TelefonoDestinatario = sinpe.TelefonoDestinatario,
+                    NombreDestinatario = sinpe.NombreDestinatario,
+                    Monto = sinpe.Monto,
+                    FechaDeRegistro = sinpe.FechaDeRegistro,
+                    Descripcion = sinpe.Descripcion,
+                    Estado = sinpe.Estado
+                };
+
+                // Actualizamos el estado
+                sinpe.Estado = true;
+
+                _context.SINPE.Update(sinpe);
+
+                if (await _context.SaveChangesAsync() > 0)
+                {
+                    await _bitacora.RegistrarEvento(
+                        "SINPE",
+                        "Sincronizar",
+                        "Se sincronizó un SINPE",
+                        sinpeAnterior,
+                        sinpe
+                    );
+
+                    return true;
+                }
+
+                return false;
+            }
+            catch (Exception ex)
+            {
+                await _bitacora.RegistrarEvento("SINPE", "Error", "Error al sincronizar SINPE", ex);
+                return false;
+            }
+        }
+
     public class SinpeRepository : ISinpeRepository
     {
         private readonly AppDbContext _context;
@@ -101,6 +155,12 @@ namespace Proyecto_PAC325.Repository
                       && sinpe.FechaDeRegistro <= fin
                 select sinpe
                 ).CountAsync();
+        }
+
+        public async Task<SinpeModel?> GetSinpeById(int idSinpe)
+        {
+            return await _context.SINPE
+                .FirstOrDefaultAsync(s => s.IdSinpe == idSinpe);
         }
 
     }
