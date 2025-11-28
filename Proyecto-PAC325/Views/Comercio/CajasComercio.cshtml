@@ -56,7 +56,7 @@
                             <td>@c.FechaDeRegistro.ToString("g")</td>
                             <td>@(c.Estado == 1 ? "Activo" : "Inactivo")</td>
                             <td>
-                                <a class="boton bg-success" asp-action="Editar" asp-route-idCaja="@c.IdCaja">Editar</a>
+                                <a class="boton bg-success" asp-controller="Caja" asp-action="Editar" asp-route-idCaja="@c.IdCaja">Editar</a>
                                 <a class="boton bg-oscuro" asp-controller="Caja" asp-action="SinpesPorCaja" asp-route-telefono="@c.TelefonoSINPE">Ver SINPE</a>
                             </td>
                         </tr>

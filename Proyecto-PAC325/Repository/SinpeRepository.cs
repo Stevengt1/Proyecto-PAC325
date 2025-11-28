@@ -124,7 +124,7 @@ namespace Proyecto_PAC325.Repository
         public async Task<decimal> GetMontoSinpesByDate(int idComercio, DateTime fecha)
         {
             var inicioMes = new DateTime(fecha.Year, fecha.Month, 1);
-            var fin = fecha.Date;
+            var fin = fecha;
 
             return await (
                 from caja in _context.CAJAS
@@ -140,7 +140,7 @@ namespace Proyecto_PAC325.Repository
         public async Task<int> GetCantidadSinpes(int idComercio, DateTime fecha)
         {
             var inicioMes = new DateTime(fecha.Year, fecha.Month, 1);
-            var fin = fecha.Date;
+            var fin = fecha;
 
             return await (
                 from caja in _context.CAJAS

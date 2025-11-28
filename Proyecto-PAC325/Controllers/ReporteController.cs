@@ -23,6 +23,8 @@ namespace Proyecto_PAC325.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> GenerarReportes(DateTime fecha)
         {
+            fecha = fecha.Date.AddDays(1).AddTicks(-1); //Con esto hacemos que la fecha le agreguemos un día pero al quitarle un tick pasa al fin exacto
+            //del día actual
             await _reporteBusiness.GenerarReportes(fecha);
             TempData["success"] = $"Reportes generados/actualizados ({fecha:yyyy-MM-dd}).";
             return RedirectToAction("Index");

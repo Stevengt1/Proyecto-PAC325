@@ -63,7 +63,7 @@ namespace Proyecto_PAC325.Repository
                         decimal comision = (decimal)(config.Comision * 0.01);
                         reporte.MontoTotalComision = reporte.MontoTotalRecaudado*comision;
                         reporte.IdComercio = comercio.IdComercio;
-                        reporte.FechaDelReporte = fecha;
+                        reporte.FechaDelReporte = fecha.Date;
 
                         if (reporteAnterior == null)
                         {
