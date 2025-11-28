@@ -20,6 +20,7 @@
     <div class="act-container">
         <h3>Acciones: </h3>
         <a asp-action="Index">Lista</a>
+        <a asp-action="Registro">Registrar</a>
     </div>
 
     <section class="vista-tabla">
@@ -36,6 +37,7 @@
                         <th>Fecha de Registro</th>
                         <th>Descripción</th>
                         <th>Estado</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -61,7 +63,29 @@
                                 <td>@sinpeModel.FechaDeRegistro.ToString("g")</td>
                                 <td>@(string.IsNullOrEmpty(sinpeModel.Descripcion) ? "" : (sinpeModel.Descripcion.Length > 15 ? sinpeModel.Descripcion.Substring(0, 15) + "…" : sinpeModel.Descripcion))</td>
                                 <td>
-                                    @(sinpeModel.Estado ? "Confirmado" : "Pendiente")
+                                    @if (sinpeModel.Estado)
+                                    {
+                                        <span style="color: green; font-weight: bold;">● Confirmado</span>
+                                    }
+                                    else
+                                    {
+                                        <span style="color: goldenrod; font-weight: bold;">● Pendiente</span>
+                                    }
+                                </td>
+
+                                <td>
+                                    @if (!sinpeModel.Estado)
+                                    {
+                                        <form asp-controller="Sinpe" asp-action="Sincronizar" asp-route-idSinpe="@sinpeModel.IdSinpe" method="post" style="display:inline;">
+                                            <button type="submit" class="boton bg-success">
+                                                Sincronizar
+                                            </button>
+                                        </form>
+                                    }
+                                    else
+                                    {
+                                        <span style="color: gray;">✔</span>
+                                    }
                                 </td>
                             </tr>
                         }

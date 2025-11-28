@@ -56,7 +56,6 @@ else if (TempData["success"] != null)
                     <th>Fecha de Registro</th>
                     <th>Descripción</th>
                     <th>Estado</th>
-                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -82,34 +81,13 @@ else if (TempData["success"] != null)
                             <td>@sinpe.FechaDeRegistro.ToString("g")</td>
                             <td>
                                 @(string.IsNullOrEmpty(sinpe.Descripcion) ? "" :
-                                                        (sinpe.Descripcion.Length > 15 ? sinpe.Descripcion.Substring(0, 15) + "…" : sinpe.Descripcion))
-                    </td>
-
-                            <td>
-                        @if (sinpe.Estado)
-                                {
-                                    <span style="color: green; font-weight: bold;">● Confirmado</span>
-                                }
-                                else
-                                {
-                                    <span style="color: goldenrod; font-weight: bold;">● Pendiente</span>
-                                }
+                                        (sinpe.Descripcion.Length > 15 ? sinpe.Descripcion.Substring(0, 15) + "…" : sinpe.Descripcion))
                             </td>
-
-                            <td>
-                                @if (!sinpe.Estado)
-                                {
-                                    <form asp-action="Sincronizar" asp-route-idSinpe="@sinpe.IdSinpe" method="post" style="display:inline;">
-                                        <button type="submit" class="boton bg-success">
-                                            Sincronizar
-                                        </button>
-                                    </form>
-                                }
-                                else
-                                {
-                                    <span style="color: gray;">✔</span>
-                                }
-                            </td>
+                            @if(sinpe.Estado){
+                                <td>Confirmado</td>
+                            }else{
+                                <td>Pendiente</td>
+                            }
                         </tr>
                     }
                 }

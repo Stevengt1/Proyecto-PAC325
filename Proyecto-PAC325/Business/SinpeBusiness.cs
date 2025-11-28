@@ -42,7 +42,9 @@ namespace Proyecto_PAC325.Business
             return await _sinpeRepository.GetSinpesByTelefono(telefono);
         }
 
-
-
+        public async Task<bool> SincronizarSinpe(int idSinpe)
+        {
+            return await _sinpeRepository.SincronizarSinpe(idSinpe);
+        }
     }
 }

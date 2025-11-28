@@ -9,8 +9,6 @@ namespace Proyecto_PAC325.Repository
         Task HacerSinpeAsync(SinpeModel sinpe);
         Task<List<SinpeModel>> ObtenerSinpesAsync();
         Task<List<SinpeModel>> GetSinpesByTelefono(string telefono);
-
-        // 🔹 Agregamos a la interfaz la nueva función:
         Task<bool> SincronizarSinpe(int idSinpe);
     }
 

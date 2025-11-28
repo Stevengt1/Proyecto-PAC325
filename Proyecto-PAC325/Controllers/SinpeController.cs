@@ -82,5 +82,19 @@ namespace Proyecto_PAC325.Controllers
             }));
         }
 
+        public async Task<IActionResult> Sincronizar(int idSinpe)
+        {
+            if (await _sinpeBusiness.SincronizarSinpe(idSinpe))
+            {
+                TempData["success"] = "Sincronización realizada con exito";
+                return RedirectToAction("Index", "Caja");
+            }
+            else
+            {
+                TempData["error"] = "Ocurrio un error al realizar la sincronización";
+                return RedirectToAction("Index", "Caja");
+            }
+        }
+
     }
 }
