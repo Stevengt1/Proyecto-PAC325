@@ -3,23 +3,33 @@ using Proyecto_PAC325.Business;
 using Proyecto_PAC325.Data;
 using Proyecto_PAC325.Models;
 using Proyecto_PAC325.Repository;
+using System.Text.Json.Serialization; // <-- necesario para ReferenceHandler
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews()
+    .AddJsonOptions(options =>
+    {
+        // Configuraci�n para evitar ciclos en la serializaci�n JSON
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+        options.JsonSerializerOptions.WriteIndented = true;
+    });
+
 //El contexto de la base a la app
 builder.Services.AddDbContext<AppDbContext>(
-        options=>options.UseMySQL(builder.Configuration.GetConnectionString("MySqlConnection"))
+        options => options.UseMySQL(builder.Configuration.GetConnectionString("MySqlConnection"))
     );
 
 //Agregar los repos
+builder.Services.AddScoped<IBitacora, BitacoraRepository>(); // interfaz + implementaci�n
 builder.Services.AddScoped<ComercioRepository>();
 builder.Services.AddScoped<CajaRepository>();
-builder.Services.AddScoped<BitacoraRepository>();
 builder.Services.AddScoped<SinpeRepository>();
 builder.Services.AddScoped<ConfigComercioRepository>();
 builder.Services.AddScoped<ReporteRepository>();
+builder.Services.AddScoped<UsuarioRepository>();
+
 //Agregar los Business
 builder.Services.AddScoped<ComercioBusiness>();
 builder.Services.AddScoped<CajaBusiness>();
@@ -27,6 +37,8 @@ builder.Services.AddScoped<BitacoraBusiness>();
 builder.Services.AddScoped<SinpeBusiness>();
 builder.Services.AddScoped<ConfigComercioBusiness>();
 builder.Services.AddScoped<ReporteBusiness>();
+builder.Services.AddScoped<UsuarioBusiness>();
+
 //Lo anterior es para que se inyecten automaticamente en los constructores esto por la biblioteca de inyeccion que trae asp.net
 
 var app = builder.Build();

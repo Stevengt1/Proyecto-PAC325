@@ -14,7 +14,6 @@ namespace Proyecto_PAC325.Repository
             _context = context;
             _bitacora = bitacora;
         }
-
         public async Task<List<ComercioModel>> GetAllComercio()
         {
             return await _context.COMERCIOS.ToListAsync();

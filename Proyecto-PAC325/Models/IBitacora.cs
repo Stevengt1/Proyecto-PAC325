@@ -14,6 +14,7 @@ namespace Proyecto_PAC325.Models
             object? datosAnteriores = null,
             object? datosPosteriores = null,
             Exception? ex = null);
+        Task<List<BitacoraModel>> GetBitacoras();
     }
 } 
 

@@ -18,6 +18,8 @@ namespace Proyecto_PAC325.Data
         public DbSet<BitacoraModel> BitacoraEventos { get; set; }
 
         public DbSet<SinpeModel> SINPE { get; set; }
+        public DbSet<UsuarioModel> USUARIOS { get; set; }
+
 
         public DbSet<ConfigComercioModel> CONFIGURACIONES_COMERCIOS { get; set; }
 
