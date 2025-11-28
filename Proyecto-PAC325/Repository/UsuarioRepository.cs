@@ -39,6 +39,7 @@ namespace Proyecto_PAC325.Repository
                 }
 
                 usuario.FechaDeRegistro = DateTime.Now;
+                usuario.FechaDeModificacion = usuario.FechaDeRegistro;
                 usuario.Estado = true;
 
                 _context.USUARIOS.Add(usuario);
@@ -68,12 +69,28 @@ namespace Proyecto_PAC325.Repository
             {
                 var existente = await _context.USUARIOS.FindAsync(usuario.IdUsuario);
                 if (existente == null) return null;
+                                
+                var datosAnteriores = new UsuarioModel
+                {
+                    IdUsuario = existente.IdUsuario,
+                    Nombres = existente.Nombres,
+                    PrimerApellido = existente.PrimerApellido,
+                    SegundoApellido = existente.SegundoApellido,
+                    Identificacion = existente.Identificacion,
+                    CorreoElectronico = existente.CorreoElectronico,
+                    IdComercio = existente.IdComercio,
+                    Estado = existente.Estado,
+                    FechaDeRegistro = existente.FechaDeRegistro,
+                    FechaDeModificacion = existente.FechaDeModificacion
+                };
 
+                // Actualizar con los nuevos datos
                 existente.Nombres = usuario.Nombres;
                 existente.PrimerApellido = usuario.PrimerApellido;
                 existente.SegundoApellido = usuario.SegundoApellido;
                 existente.Identificacion = usuario.Identificacion;
                 existente.CorreoElectronico = usuario.CorreoElectronico;
+                existente.IdComercio = usuario.IdComercio;
                 existente.Estado = usuario.Estado;
                 existente.FechaDeModificacion = DateTime.Now;
 
@@ -81,8 +98,14 @@ namespace Proyecto_PAC325.Repository
                 var rows = await _context.SaveChangesAsync();
 
                 if (rows > 0)
-                {
-                    await _bitacora.RegistrarEvento("USUARIOS", "Editar", "Se editó un usuario", null, existente);
+                {                    
+                    await _bitacora.RegistrarEvento(
+                        "USUARIOS",
+                        "Editar",
+                        "Se editó un usuario",
+                        datosAnteriores,
+                        existente
+                    );
                     return existente;
                 }
 
@@ -90,10 +113,11 @@ namespace Proyecto_PAC325.Repository
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error en Update: {ex.Message}");
                 await _bitacora.RegistrarEvento("USUARIOS", "Error", "Error al editar usuario", null, null, ex);
                 return null;
             }
         }
+
+
     }
 }

@@ -42,8 +42,8 @@ else if (TempData["success"] != null)
     <form class="formulario" asp-action="Update" method="post">
         @Html.AntiForgeryToken()
 
+        <!-- IdUsuario oculto para identificar el registro -->
         <input type="hidden" asp-for="IdUsuario" />
-        <input type="hidden" asp-for="IdComercio" />
 
         <label>Nombres</label>
         <input type="text" class="entrada-datos" required asp-for="Nombres" />
@@ -65,6 +65,11 @@ else if (TempData["success"] != null)
         <input type="email" class="entrada-datos" required asp-for="CorreoElectronico" />
         <span asp-validation-for="CorreoElectronico" class="text-danger"></span>
 
+        <!-- Select para Comercio -->
+        <label>Comercio</label>
+        <select asp-for="IdComercio" asp-items="ViewBag.Comercios" class="entrada-datos"></select>
+        <span asp-validation-for="IdComercio" class="text-danger"></span>
+
         <div class="checkbox">
             <input asp-for="Estado" type="checkbox" />
             <label>Activo</label>
@@ -75,6 +80,7 @@ else if (TempData["success"] != null)
             <a asp-action="Index" class="boton bg-danger">Cancelar</a>
         </div>
     </form>
+
 </section>
 
 @section Scripts {
