@@ -42,5 +42,7 @@ namespace Proyecto_PAC325.Business
             return await _sinpeRepository.GetSinpesByTelefono(telefono);
         }
 
+
+
     }
 }

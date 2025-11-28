@@ -39,7 +39,7 @@ else if (TempData["success"] != null)
 <div class="act-container">
     <h3>Acciones: </h3>
     <a class="activo" asp-action="Index">Lista</a>
-    <a asp-action= "TXSE">Realizar Pago</a>
+    <a asp-action="TXSE">Realizar Pago</a>
 </div>
 
 <section class="vista-tabla">
@@ -56,32 +56,59 @@ else if (TempData["success"] != null)
                     <th>Fecha de Registro</th>
                     <th>Descripción</th>
                     <th>Estado</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 @if (Model == null || !Model.Any())
                 {
                     <tr>
-                        <td colspan="9" style="text-align:center; padding:2rem;">
+                        <td colspan="10" style="text-align:center; padding:2rem;">
                             No hay pagos registrados.
                         </td>
                     </tr>
                 }
                 else
                 {
-                    @foreach (var sinpeModel in Model)
+                    @foreach (var sinpe in Model)
                     {
                         <tr>
-                            <td>@sinpeModel.IdSinpe</td>
-                            <td>@sinpeModel.TelefonoOrigen</td>
-                            <td>@sinpeModel.NombreOrigen</td>
-                            <td>@sinpeModel.TelefonoDestinatario</td>
-                            <td>@sinpeModel.NombreDestinatario</td>
-                            <td>@sinpeModel.Monto.ToString("C")</td>
-                            <td>@sinpeModel.FechaDeRegistro.ToString("g")</td>
-                            <td>@(string.IsNullOrEmpty(sinpeModel.Descripcion) ? "" : (sinpeModel.Descripcion.Length > 15 ? sinpeModel.Descripcion.Substring(0, 15) + "…" : sinpeModel.Descripcion))</td>
+                            <td>@sinpe.IdSinpe</td>
+                            <td>@sinpe.TelefonoOrigen</td>
+                            <td>@sinpe.NombreOrigen</td>
+                            <td>@sinpe.TelefonoDestinatario</td>
+                            <td>@sinpe.NombreDestinatario</td>
+                            <td>@sinpe.Monto.ToString("C")</td>
+                            <td>@sinpe.FechaDeRegistro.ToString("g")</td>
                             <td>
-                                @(sinpeModel.Estado ? "Confirmado" : "Pendiente")
+                                @(string.IsNullOrEmpty(sinpe.Descripcion) ? "" :
+                                                        (sinpe.Descripcion.Length > 15 ? sinpe.Descripcion.Substring(0, 15) + "…" : sinpe.Descripcion))
+                    </td>
+
+                            <td>
+                        @if (sinpe.Estado)
+                                {
+                                    <span style="color: green; font-weight: bold;">● Confirmado</span>
+                                }
+                                else
+                                {
+                                    <span style="color: goldenrod; font-weight: bold;">● Pendiente</span>
+                                }
+                            </td>
+
+                            <td>
+                                @if (!sinpe.Estado)
+                                {
+                                    <form asp-action="Sincronizar" asp-route-idSinpe="@sinpe.IdSinpe" method="post" style="display:inline;">
+                                        <button type="submit" class="boton bg-success">
+                                            Sincronizar
+                                        </button>
+                                    </form>
+                                }
+                                else
+                                {
+                                    <span style="color: gray;">✔</span>
+                                }
                             </td>
                         </tr>
                     }
@@ -90,3 +117,4 @@ else if (TempData["success"] != null)
         </table>
     </section>
 </section>
+

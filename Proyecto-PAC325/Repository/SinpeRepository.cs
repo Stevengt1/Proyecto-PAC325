@@ -8,24 +8,37 @@ namespace Proyecto_PAC325.Repository
     {
         Task HacerSinpeAsync(SinpeModel sinpe);
         Task<List<SinpeModel>> ObtenerSinpesAsync();
-
         Task<List<SinpeModel>> GetSinpesByTelefono(string telefono);
 
+        // 🔹 Agregamos a la interfaz la nueva función:
+        Task<bool> SincronizarSinpe(int idSinpe);
     }
 
-    public async Task<bool> SincronizarSinpe(int idSinpe)
+    public class SinpeRepository : ISinpeRepository
+    {
+        private readonly AppDbContext _context;
+        private readonly IBitacora _bitacora;
+
+        public SinpeRepository(AppDbContext context, BitacoraRepository bitacora)
+        {
+            _context = context;
+            _bitacora = bitacora;
+        }
+
+        public async Task<bool> SincronizarSinpe(int idSinpe)
         {
             try
             {
-                var sinpe = await _context.SINPE.FirstOrDefaultAsync(s => s.IdSinpe == idSinpe);
+                var sinpe = await _context.SINPE
+                    .FirstOrDefaultAsync(s => s.IdSinpe == idSinpe);
 
                 if (sinpe == null)
                     return false; // SINPE no existe
 
                 if (sinpe.Estado == true)
-                    return false; // Ya está sincronizado
+                    return false; // Ya estaba sincronizado
 
-                // Guardamos copia para bitácora
+                // Guarda estado anterior para bitácora
                 var sinpeAnterior = new SinpeModel
                 {
                     IdSinpe = sinpe.IdSinpe,
@@ -39,9 +52,8 @@ namespace Proyecto_PAC325.Repository
                     Estado = sinpe.Estado
                 };
 
-                // Actualizamos el estado
+                // Actualizamos estado
                 sinpe.Estado = true;
-
                 _context.SINPE.Update(sinpe);
 
                 if (await _context.SaveChangesAsync() > 0)
@@ -66,30 +78,22 @@ namespace Proyecto_PAC325.Repository
             }
         }
 
-    public class SinpeRepository : ISinpeRepository
-    {
-        private readonly AppDbContext _context;
-        private IBitacora _bitacora;
-        public SinpeRepository(AppDbContext context, BitacoraRepository bitacora)
-        {
-            _context = context;
-            _bitacora = bitacora;
-        }
         public async Task HacerSinpeAsync(SinpeModel sinpe)
         {
             try
             {
                 _context.SINPE.Add(sinpe);
-                if(await _context.SaveChangesAsync() > 0)
+                if (await _context.SaveChangesAsync() > 0)
                 {
-                    await _bitacora.RegistrarEvento("SINPE", "Registrar", "Se realizo un SINPE", sinpe);
+                    await _bitacora.RegistrarEvento("SINPE", "Registrar", "Se realizó un SINPE", sinpe);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 await _bitacora.RegistrarEvento("SINPE", "Error", "Error", ex);
             }
         }
+
         public async Task<List<SinpeModel>> ObtenerSinpesAsync()
         {
             return await _context.SINPE
@@ -110,7 +114,8 @@ namespace Proyecto_PAC325.Repository
 
         public async Task<List<SinpeModel>> GetSinpesByTelefono(string telefono)
         {
-            if (string.IsNullOrWhiteSpace(telefono)) return new List<SinpeModel>();
+            if (string.IsNullOrWhiteSpace(telefono))
+                return new List<SinpeModel>();
 
             return await _context.SINPE
                 .Where(s => s.TelefonoDestinatario == telefono)
@@ -132,13 +137,6 @@ namespace Proyecto_PAC325.Repository
                       && sinpe.FechaDeRegistro <= fin
                 select sinpe.Monto
             ).SumAsync();
-            //Eso de arriba es lo mismo que hacer esta consulta en el sql para que no se confundan (Solo para optimizar):
-            //SELECT SUM(s.Monto)
-            //FROM Cajas c
-            //INNER JOIN Sinpes s ON c.TelefonoSINPE = s.Telefono
-            //WHERE c.IdComercio = @idComercio
-            //  AND s.FechaDeRegistro >= @inicioMes
-            //  AND s.FechaDeRegistro <= @fin
         }
 
         public async Task<int> GetCantidadSinpes(int idComercio, DateTime fecha)
@@ -154,7 +152,7 @@ namespace Proyecto_PAC325.Repository
                       && sinpe.FechaDeRegistro >= inicioMes
                       && sinpe.FechaDeRegistro <= fin
                 select sinpe
-                ).CountAsync();
+            ).CountAsync();
         }
 
         public async Task<SinpeModel?> GetSinpeById(int idSinpe)
@@ -162,6 +160,5 @@ namespace Proyecto_PAC325.Repository
             return await _context.SINPE
                 .FirstOrDefaultAsync(s => s.IdSinpe == idSinpe);
         }
-
     }
 }
