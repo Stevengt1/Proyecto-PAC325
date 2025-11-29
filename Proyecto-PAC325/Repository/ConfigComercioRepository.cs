@@ -26,10 +26,21 @@ namespace Proyecto_PAC325.Repository
             return await _context.CONFIGURACIONES_COMERCIOS.FindAsync(id);
         }
 
+        public async Task<ConfigComercioModel> GetConfiguracionPorComercio(int idComercio)
+        {
+            return await _context.CONFIGURACIONES_COMERCIOS.FirstOrDefaultAsync(c => c.IdComercio == idComercio);
+        }
+
         public async Task<ConfigComercioModel> Add(ConfigComercioModel config)
         {
             try
             {
+                var existente = await GetConfiguracionPorComercio(config.IdComercio);
+
+                if (existente != null)
+                {
+                    return null;
+                }
                 _context.CONFIGURACIONES_COMERCIOS.Add(config);
                 if (await _context.SaveChangesAsync() > 0)
                 {
