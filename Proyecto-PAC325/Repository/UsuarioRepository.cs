@@ -25,6 +25,11 @@ namespace Proyecto_PAC325.Repository
             return await _context.USUARIOS.FindAsync(id);
         }
 
+        public async Task<UsuarioModel> GetUsuarioCorreo(string correo)
+        {
+            return await _context.USUARIOS.FirstOrDefaultAsync(u => u.CorreoElectronico == correo);
+        }
+
         public async Task<UsuarioModel> Add(UsuarioModel usuario)
         {
             try
