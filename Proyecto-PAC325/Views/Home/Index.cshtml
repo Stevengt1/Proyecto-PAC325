@@ -2,6 +2,21 @@
     ViewData["Title"] = "Home Page";
 }
 
+@if (TempData["error"] != null)
+{
+    <div class="mensaje error" id="mensaje">
+        <span>@TempData["error"]</span>
+        <button id="cerrar-modal">×</button>
+    </div>
+}
+else if (TempData["success"] != null)
+{
+    <div class="mensaje success" id="mensaje">
+        <span>@TempData["success"]</span>
+        <button id="cerrar-modal">×</button>
+    </div>
+}
+
     <section class="bienvenida">
         <div>
             <p>Mensaje</p>

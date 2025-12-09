@@ -30,6 +30,7 @@ builder.Services.AddScoped<SinpeRepository>();
 builder.Services.AddScoped<ConfigComercioRepository>();
 builder.Services.AddScoped<ReporteRepository>();
 builder.Services.AddScoped<UsuarioRepository>();
+builder.Services.AddScoped<AuthRepository>();
 
 //Agregar los Business
 builder.Services.AddScoped<ComercioBusiness>();
@@ -39,6 +40,7 @@ builder.Services.AddScoped<SinpeBusiness>();
 builder.Services.AddScoped<ConfigComercioBusiness>();
 builder.Services.AddScoped<ReporteBusiness>();
 builder.Services.AddScoped<UsuarioBusiness>();
+builder.Services.AddScoped<AuthBusiness>();
 
 //Requerido para la autenticación
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
@@ -50,11 +52,16 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
 
 var app = builder.Build();
 
-using (var scope = app.Services.CreateScope())
-{
-    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-    await DataSeeder.SeedRoles(roleManager);
-}
+//using (var scope = app.Services.CreateScope())
+//{
+//    var services = scope.ServiceProvider;
+
+//    var context = services.GetRequiredService<AppDbContext>();
+//    context.Database.Migrate();
+
+//    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+//    await DataSeeder.SeedRoles(roleManager);
+//}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -73,6 +80,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Auth}/{action=Index}/{id?}");
 
 await app.RunAsync();

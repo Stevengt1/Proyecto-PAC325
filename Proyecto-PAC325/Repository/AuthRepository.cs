@@ -14,17 +14,42 @@ namespace Proyecto_PAC325.Repository
             _signInManager = signInManager;
         }
 
-        public async Task<bool> Register(string correo, string password, string rol)
+        public async Task<string> Register(string correo, string password, string rol)
         {
-            var user = new IdentityUser { UserName = correo, Email = correo };
-            
-            var respuesta = await _userManager.CreateAsync(user, password);
-            if (!respuesta.Succeeded) {return false;}
+            try
+            {
+                var user = new IdentityUser { UserName = correo, Email = correo };
 
-            respuesta = await _userManager.AddToRoleAsync(user, rol);
-            if (!respuesta.Succeeded) { return false; }
+                var respuesta = await _userManager.CreateAsync(user, password);
+                if (!respuesta.Succeeded) { return null; }
 
-            return true;
+                respuesta = await _userManager.AddToRoleAsync(user, rol);
+                if (!respuesta.Succeeded) { return null; }
+
+                return user.Id;
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public async Task<bool> Login(string correo, string password)
+        {
+            try
+            {
+                var resultado = await _signInManager.PasswordSignInAsync(
+                    correo,
+                    password,
+                    false,        // para recordar la sesión se tiene que cambiar esto a true
+                    false         // este es el bloqueo tras los intentos fallidos
+                );
+
+                return resultado.Succeeded;
+            }catch(Exception ex)
+            {
+                return false;
+            }
         }
 
 

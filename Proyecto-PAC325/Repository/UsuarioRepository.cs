@@ -17,17 +17,41 @@ namespace Proyecto_PAC325.Repository
 
         public async Task<List<UsuarioModel>> GetAllUsuarios()
         {
-            return await _context.USUARIOS.ToListAsync();
+            try
+            {
+                return await _context.USUARIOS.ToListAsync();
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
+
         }
 
         public async Task<UsuarioModel> GetUsuario(int id)
         {
-            return await _context.USUARIOS.FindAsync(id);
+            try
+            {
+                return await _context.USUARIOS.FindAsync(id);
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
+
         }
 
         public async Task<UsuarioModel> GetUsuarioCorreo(string correo)
         {
-            return await _context.USUARIOS.FirstOrDefaultAsync(u => u.CorreoElectronico == correo);
+            try
+            {
+                return await _context.USUARIOS.FirstOrDefaultAsync(u => u.CorreoElectronico == correo);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
         }
 
         public async Task<UsuarioModel> Add(UsuarioModel usuario)
