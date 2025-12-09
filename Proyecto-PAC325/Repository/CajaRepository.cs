@@ -32,6 +32,17 @@ namespace Proyecto_PAC325.Repository
             return await _context.CAJAS.FindAsync(id);
         }
 
+        public async Task<List<CajaModel>> GetCajasComercio(int idComercio)
+        {
+            try
+            {
+                return await _context.CAJAS.Where(c => c.IdComercio == idComercio).ToListAsync();
+            }catch (Exception ex)
+            {
+                return new List<CajaModel>();
+            }
+        }
+
         public async Task<CajaModel> Add(CajaModel caja)
         {
             try

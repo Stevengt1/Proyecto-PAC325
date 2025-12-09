@@ -1,15 +1,20 @@
 ﻿using Proyecto_PAC325.Models;
 using Proyecto_PAC325.Repository;
+using System.Security.Claims;
 
 namespace Proyecto_PAC325.Business
 {
     public class CajaBusiness
     {
         private readonly CajaRepository _cajaRepository;
+        private readonly UsuarioRepository _usuarioRepository;
+        private readonly IHttpContextAccessor _http;
 
-        public CajaBusiness(CajaRepository cajaRepository)
+        public CajaBusiness(CajaRepository cajaRepository, IHttpContextAccessor http, UsuarioRepository usuarioRepository)
         {
             _cajaRepository = cajaRepository;
+            _http = http;
+            _usuarioRepository = usuarioRepository;
         }
 
         public async Task<List<CajaModel>> GetCajasByComercio(int idComercio)
@@ -25,6 +30,12 @@ namespace Proyecto_PAC325.Business
         public async Task<CajaModel> GetCaja(int id)
         {
             return await _cajaRepository.GetCaja(id);
+        }
+
+        public async Task<List<CajaModel>> GetCajasCajero()
+        {
+            UsuarioModel usuario = await _usuarioRepository.GetUsuarioCorreo(_http.HttpContext.User.Identity.Name);
+            return await _cajaRepository.GetCajasComercio(usuario.IdComercio);
         }
 
         public async Task<CajaModel> Add(CajaModel caja)

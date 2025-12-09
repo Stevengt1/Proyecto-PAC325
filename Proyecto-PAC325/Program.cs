@@ -21,6 +21,8 @@ builder.Services.AddControllersWithViews()
 builder.Services.AddDbContext<AppDbContext>(
         options => options.UseMySQL(builder.Configuration.GetConnectionString("MySqlConnection"))
     );
+//Para usuarios
+builder.Services.AddHttpContextAccessor();
 
 //Agregar los repos
 builder.Services.AddScoped<IBitacora, BitacoraRepository>(); // interfaz + implementaci�n

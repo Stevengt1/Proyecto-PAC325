@@ -11,7 +11,6 @@ namespace Proyecto_PAC325.Controllers
         private readonly ComercioBusiness _comercioBusiness;
         private readonly SinpeBusiness _sinpeBusiness;
 
-
         public CajaController(CajaBusiness cajaBusiness, ComercioBusiness comercioBusiness, SinpeBusiness sinpeBusiness)
         {
             _cajaBusiness = cajaBusiness;
@@ -23,7 +22,10 @@ namespace Proyecto_PAC325.Controllers
         public async Task<IActionResult> Index(int? idComercio)
         {
             ViewBag.IdComercio = idComercio ?? 0;
-
+            if (User.IsInRole("Cajero"))
+            {
+                return View(_cajaBusiness.GetCajasCajero());
+            }
             if (idComercio.HasValue && idComercio.Value > 0)
             {
                 var cajasPorComercio = await _cajaBusiness.GetCajasByComercio(idComercio.Value);
