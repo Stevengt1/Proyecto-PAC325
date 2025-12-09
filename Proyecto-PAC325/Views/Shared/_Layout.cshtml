@@ -6,10 +6,12 @@
     <title>@ViewData["Title"] - Proyecto_PAC325</title>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Proyecto_PAC325.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/accesibilidad.css" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 </head>
 <body>
+
     <header class="nav-container">
         <nav class="navbar">
             <a asp-controller="Home" asp-action="Index">
@@ -26,11 +28,21 @@
             <a asp-controller="Bitacora" asp-action="Index">Bitacora</a>
             <a asp-controller="Reporte" asp-action="Index">Reportes</a>
             <a asp-controller="Usuario" asp-action="Index">Usuario</a>
+
+
+            <!-- Accessibility toolbar -->
+            <div class="accessibility-toolbar" aria-hidden="false">
+                <button id="acc-contrast" class="acc-btn" type="button">Alto contraste</button>
+                <button id="acc-increase" class="acc-btn" type="button">A+</button>
+                <button id="acc-decrease" class="acc-btn" type="button">A-</button>
+                <button id="acc-reset" class="acc-btn secondary" type="button">Reset</button>
+            </div>
+
         </nav>
     </header>
 
-    <main role="main" class="pb-3">
-            @RenderBody()
+    <main id="main-content" tabindex="-1" role="main" aria-labelledby="page-title">
+        @RenderBody()
     </main>
 
     <footer class="border-top footer text-muted">
@@ -40,6 +52,8 @@
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    
+    <script src="~/js/accesibilidad.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
