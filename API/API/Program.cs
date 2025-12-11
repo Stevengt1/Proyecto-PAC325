@@ -15,9 +15,9 @@ builder.Services.AddDbContext<AppDbContext>(
         options => options.UseMySQL(builder.Configuration.GetConnectionString("MySqlConnection"))
     );
 
-// ?? Configuración directa del JWT (sin appsettings.json)
-var jwtKey = "programacion_avanzada";
-var jwtIssuer = "https://localhost:7030";
+builder.Configuration.AddJsonFile("appsettings.json");
+var secretKey = builder.Configuration.GetSection("settings").GetSection("secretKey").ToString();
+var keyBytes = Encoding.UTF8.GetBytes(secretKey);
 
 // Servicios de negocio y repositorios
 builder.Services.AddScoped<IBitacora, BitacoraRepository>();
@@ -35,20 +35,22 @@ builder.Services.AddScoped<ReporteRepository>();
 builder.Services.AddScoped<ConfigComercioRepository>();
 
 // Configuración de autenticación JWT
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options =>
+builder.Services.AddAuthentication(config =>
+{
+    config.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    config.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(config =>
+{
+    config.RequireHttpsMetadata = false;
+    config.SaveToken = true;
+    config.TokenValidationParameters = new TokenValidationParameters
     {
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuer = true,
-            ValidateAudience = true,
-            ValidateLifetime = true,
-            ValidateIssuerSigningKey = true,
-            ValidIssuer = jwtIssuer,
-            ValidAudience = jwtIssuer,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey))
-        };
-    });
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(keyBytes),
+        ValidateIssuer = false,
+        ValidateAudience = false
+    };
+});
 
 // Agregar controladores
 builder.Services.AddControllers();

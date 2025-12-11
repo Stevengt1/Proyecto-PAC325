@@ -16,10 +16,9 @@ namespace API.Data
 
         public DbSet<BitacoraModel> BitacoraEventos { get; set; }
 
+        public DbSet<UserModel> USER { get; set; }
         public DbSet<SinpeModel> SINPE { get; set; }
         public DbSet<UsuarioModel> USUARIOS { get; set; }
-
-
         public DbSet<ConfigComercioModel> CONFIGURACIONES_COMERCIOS { get; set; }
 
         public DbSet<ReporteMensualModel> REPORTES_MENSUALES { get; set; }

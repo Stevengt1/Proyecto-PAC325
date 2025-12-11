@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace API.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public class SinpeController : ControllerBase
     {
@@ -18,8 +19,6 @@ namespace API.Controllers
             _sinpeBusiness = sinpeBusiness;
             _cajaRepository = cajaRepository;
         }
-
-        // Endpoint público
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -27,8 +26,6 @@ namespace API.Controllers
             return Ok(sinpes);
         }
 
-        // Endpoint protegido con JWT
-        [Authorize]
         [HttpPost("txse")]
         public async Task<IActionResult> TXSE([FromBody] SinpeModel sinpe)
         {
@@ -36,7 +33,6 @@ namespace API.Controllers
             if (caja == null || caja.Estado != 1)
                 return BadRequest(new { error = "La caja seleccionada no es válida o está inactiva." });
 
-            // Asignar valores del destinatario
             sinpe.TelefonoDestinatario = caja.TelefonoSINPE;
             sinpe.NombreDestinatario = caja.Nombre;
 
@@ -50,8 +46,6 @@ namespace API.Controllers
 
             return Ok(new { success = mensaje, sinpe });
         }
-
-        // Endpoint público
         [HttpGet("cajas")]
         public async Task<IActionResult> GetCajasActivas()
         {
@@ -66,8 +60,6 @@ namespace API.Controllers
             return Ok(cajasJson);
         }
 
-        // Endpoint protegido con JWT
-        [Authorize]
         [HttpPut("sincronizar/{idSinpe}")]
         public async Task<IActionResult> Sincronizar(int idSinpe)
         {
