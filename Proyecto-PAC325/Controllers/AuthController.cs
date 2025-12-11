@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Proyecto_PAC325.Business;
+using Proyecto_PAC325.Repository;
 using System.Globalization;
 
 namespace Proyecto_PAC325.Controllers
@@ -49,6 +50,14 @@ namespace Proyecto_PAC325.Controllers
             TempData["success"] = mensaje;
             return RedirectToAction("Index", "Home");
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            await _authBusiness.Logout();
+            return RedirectToAction("Login", "Auth");
+        }
+
 
     }
 }

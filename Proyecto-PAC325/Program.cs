@@ -54,16 +54,16 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
 
 var app = builder.Build();
 
-//using (var scope = app.Services.CreateScope())
-//{
-//    var services = scope.ServiceProvider;
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
 
-//    var context = services.GetRequiredService<AppDbContext>();
-//    context.Database.Migrate();
+    var context = services.GetRequiredService<AppDbContext>();
+    context.Database.Migrate();
 
-//    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
-//    await DataSeeder.SeedRoles(roleManager);
-//}
+    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+    await DataSeeder.SeedRoles(roleManager);
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

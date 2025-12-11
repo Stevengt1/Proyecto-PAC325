@@ -24,7 +24,7 @@ namespace Proyecto_PAC325.Controllers
             ViewBag.IdComercio = idComercio ?? 0;
             if (User.IsInRole("Cajero"))
             {
-                return View(_cajaBusiness.GetCajasCajero());
+                return View(await _cajaBusiness.GetCajasCajero());
             }
             if (idComercio.HasValue && idComercio.Value > 0)
             {

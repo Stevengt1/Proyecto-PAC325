@@ -28,6 +28,10 @@ namespace Proyecto_PAC325.Business
                 {
                     return "Error: ocurrio un error y no se pudo registrar en el sistema";
                 }
+                if(id == "ERROR")
+                {
+                    return "Error: revisa la dificultad de tu password (mayúsculas, minúsculas, número, carácter especial y más de 6–8 caracteres)";
+                }
                 usuario.IdNetUser = Guid.Parse(id);
                 await _usuarioRepository.Update(usuario);
                 return "Success: el usuario se registro correctamente";
@@ -50,6 +54,11 @@ namespace Proyecto_PAC325.Business
                 return "Success: el usuario se registro correctamente";
             }
             return "Error: credenciales invalidas";
+        }
+
+        public async Task Logout()
+        {
+            await _authRepository.Logout();
         }
 
     }

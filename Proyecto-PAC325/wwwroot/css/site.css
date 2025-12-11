@@ -36,6 +36,11 @@ main {
     background-color: #d5efff;
 }
 
+.logout-container {
+    margin-left: auto; 
+}
+
+
 /*Diseño de la barra de nav*/
 .nav-container {
     z-index: 1;

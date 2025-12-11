@@ -21,10 +21,10 @@ namespace Proyecto_PAC325.Repository
                 var user = new IdentityUser { UserName = correo, Email = correo };
 
                 var respuesta = await _userManager.CreateAsync(user, password);
-                if (!respuesta.Succeeded) { return null; }
+                if (!respuesta.Succeeded) { return "ERROR"; }
 
                 respuesta = await _userManager.AddToRoleAsync(user, rol);
-                if (!respuesta.Succeeded) { return null; }
+                if (!respuesta.Succeeded) { return "ERROR"; }
 
                 return user.Id;
             }
@@ -50,6 +50,11 @@ namespace Proyecto_PAC325.Repository
             {
                 return false;
             }
+        }
+
+        public async Task Logout()
+        {
+            await _signInManager.SignOutAsync();
         }
 
 
