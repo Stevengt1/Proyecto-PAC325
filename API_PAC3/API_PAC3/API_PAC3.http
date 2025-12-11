@@ -1,0 +1,6 @@
+@API_PAC3_HostAddress = http://localhost:5280
+
+GET {{API_PAC3_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
