@@ -8,10 +8,12 @@ namespace Proyecto_PAC325.Controllers
     {
 
         private readonly ComercioBusiness _comercioBusiness;
+        private readonly CajaBusiness _cajaBusiness;
 
-        public ComercioController (ComercioBusiness comercioBusiness)
+        public ComercioController (ComercioBusiness comercioBusiness, CajaBusiness cajaBusiness)
         {
             _comercioBusiness = comercioBusiness;
+            _cajaBusiness = cajaBusiness;
         }
 
         public async Task<IActionResult> Index()
@@ -63,6 +65,11 @@ namespace Proyecto_PAC325.Controllers
         public async Task<IActionResult> Detalle(int idComercio)
         {
             return View(await _comercioBusiness.GetComercio(idComercio));
+        }
+
+        public async Task<IActionResult> CajasComercio(int idComercio)
+        {
+            return View(await _cajaBusiness.GetCajasByComercio(idComercio));
         }
     }
 }

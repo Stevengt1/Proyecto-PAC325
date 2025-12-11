@@ -1,0 +1,84 @@
+﻿@model List<Proyecto_PAC325.Models.UsuarioModel>
+@{
+    ViewData["Title"] = "Usuarios";
+}
+
+@if (TempData["error"] != null)
+{
+    <div class="mensaje error" id="mensaje">
+        <span>@TempData["error"]</span>
+        <button id="cerrar-modal">×</button>
+    </div>
+}
+else if (TempData["success"] != null)
+{
+    <div class="mensaje success" id="mensaje">
+        <span>@TempData["success"]</span>
+        <button id="cerrar-modal">×</button>
+    </div>
+}
+
+<section class="bienvenida">
+    <div>
+        <p>Apartado de Usuarios</p>
+        <h1>ESTE ES EL APARTADO DE USUARIOS</h1>
+        <p>Los usuarios listados representan las personas que administran las cajas y sincronizan SINPE.</p>
+    </div>
+</section>
+
+<div class="titulo-container"><h2>USUARIOS DEL SISTEMA</h2></div>
+
+<div class="act-container">
+    <h3>Acciones: </h3>
+    <a class="activo" asp-action="Index">Lista</a>
+    <a asp-action="Registro">Registrar</a>
+</div>
+
+<section class="vista-tabla">
+    <section class="tabla-container">
+        <table class="tabla">
+            <thead>
+                <tr>
+                    <th>Nombres</th>
+                    <th>Primer Apellido</th>
+                    <th>Segundo Apellido</th>
+                    <th>Identificación</th>
+                    <th>Correo Electrónico</th>
+                    <th>Fecha de Registro</th>
+                    <th>Fecha de Modificación</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model == null || !Model.Any())
+                {
+                    <tr>
+                        <td colspan="9" style="text-align:center; padding:2rem;">
+                            No hay usuarios para mostrar.
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    @foreach (var u in Model)
+                    {
+                        <tr>
+                            <td>@u.Nombres</td>
+                            <td>@u.PrimerApellido</td>
+                            <td>@u.SegundoApellido</td>
+                            <td>@u.Identificacion</td>
+                            <td>@u.CorreoElectronico</td>
+                            <td>@u.FechaDeRegistro.ToString("g")</td>
+                            <td>@u.FechaDeModificacion?.ToString("g")</td>
+                            <td>@(u.Estado ? "Activo" : "Inactivo")</td>
+                            <td>
+                                <a class="boton bg-success" asp-action="Editar" asp-route-idUsuario="@u.IdUsuario">Editar</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </section>
+</section>

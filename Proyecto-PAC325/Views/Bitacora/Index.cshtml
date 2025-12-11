@@ -1,0 +1,105 @@
+﻿@model List<Proyecto_PAC325.Models.BitacoraModel>
+<script src="~/js/popup.js"></script>
+<section class="bienvenida">
+    <div>
+        <p>Apartado de Bitacora</p>
+        <h1>
+            ESTE ES EL APARTADO DE BITACORA DONDE PODRAS VISUALIZAR LAS BITACORAS
+        </h1>
+        <p>Las bitacoras son el registro de los eventos de la aplicación</p>
+        <button class="boton bg-oscuro">
+            Ver bitacoras
+        </button>
+    </div>
+</section>
+
+<div class="titulo-container">
+    <h2>
+        BITACORAS
+    </h2>
+</div>
+
+<div class="act-container">
+    <h3>Acciones: </h3>
+    <a class="activo" asp-action="Index">Lista</a>
+</div>
+
+<section class="vista-tabla">
+    <section class="tabla-container">
+        <table class="tabla">
+            <thead>
+                <tr>
+                    <th>ID Evento</th>
+                    <th>Tabla</th>
+                    <th>Tipo de Evento</th>
+                    <th>Fecha</th>
+                    <th>Descripción</th>
+                    <th>StackTrace</th>
+                    <th>Datos Anteriores</th>
+                    <th>Datos Posteriores</th>
+                </tr>
+            </thead>
+            <tbody>
+                    @foreach (var evento in Model.OrderByDescending(e => e.FechaDeEvento))
+                    {
+                        <tr>
+                            <td>@evento.IdEvento</td>
+                            <td>@evento.TablaDeEvento</td>
+                            <td>@evento.TipoDeEvento</td>
+                            <td>@evento.FechaDeEvento.ToString("g")</td>
+                            <td>@evento.DescripcionDeEvento</td>
+                            <td>
+                                @if (!string.IsNullOrEmpty(evento.StackTrace))
+                                {
+                                    <details>
+                                        <summary>Ver</summary>
+                                        <pre>@evento.StackTrace</pre>
+                                    </details>
+                                }
+                                else
+                                {
+                                    <span>—</span>
+                                }
+                            </td>
+                            <td>
+                                @if (evento.DatosAnteriores != null)
+                                {
+                                <button class="datosAnteriores boton btn-modal bg-oscuro"
+                                    data-titulo="Datos Anteriores"
+                                    data-contenido='@evento.DatosAnteriores'>
+                                    Ver
+                                </button>
+                                }
+                                else
+                                {
+                                    <span>-</span>
+                                }
+                        </td>
+                            <td>
+                                @if (evento.DatosPosteriores != null)
+                                {
+                                <button class="datosPosteriores boton btn-modal bg-oscuro"
+                                        data-titulo="Datos Posteriores"
+                                        data-contenido='@evento.DatosPosteriores'>
+                                        Ver
+                                    </button>
+                                }
+                                else
+                                {
+                                    <span>-</span>
+                                }
+                            </td>
+                        </tr>
+                    }
+            </tbody>
+        </table>
+    </section>
+</section>
+
+<div class="overlay" id="popup" style="display:none;">
+    <div class="popup">
+        <button class="cerrar-btn" id="cerrar">&times;</button>
+        <h2 id="modalTitulo">JSON</h2>
+        <p id="modalContenido">INFORMACION JSON</p>
+    </div>
+</div>

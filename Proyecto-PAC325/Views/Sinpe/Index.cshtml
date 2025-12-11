@@ -1,0 +1,98 @@
+﻿@model IEnumerable<Proyecto_PAC325.Models.SinpeModel>
+
+@{
+    ViewData["Title"] = "Confirmación Sinpe Móvil";
+}
+
+@if (TempData["error"] != null)
+{
+    <div class="mensaje error" id="mensaje">
+        <span>@TempData["error"]</span>
+        <button id="cerrar-modal">×</button>
+    </div>
+}
+else if (TempData["success"] != null)
+{
+    <div class="mensaje success" id="mensaje">
+        <span>@TempData["success"]</span>
+        <button id="cerrar-modal">×</button>
+    </div>
+}
+
+<section class="bienvenida">
+    <div>
+        <p>Apartado de SINPE</p>
+        <h1>
+            ESTE ES EL APARTADO DONDE PODRAS REALIZAR TU SINPE
+        </h1>
+        <p>Solo se podrá realizar sinpes a las cajas activas</p>
+        <button class="boton bg-oscuro">
+            Sinpes
+        </button>
+    </div>
+</section>
+
+<div class="titulo-container">
+    <h2>PAGOS SINPE MÓVIL</h2>
+</div>
+
+<div class="act-container">
+    <h3>Acciones: </h3>
+    <a class="activo" asp-action="Index">Lista</a>
+    <a asp-action="TXSE">Realizar Pago</a>
+</div>
+
+<section class="vista-tabla">
+    <section class="tabla-container">
+        <table class="tabla">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Teléfono Emisor</th>
+                    <th>Nombre Emisor</th>
+                    <th>Teléfono Receptor</th>
+                    <th>Nombre Receptor</th>
+                    <th>Monto</th>
+                    <th>Fecha de Registro</th>
+                    <th>Descripción</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model == null || !Model.Any())
+                {
+                    <tr>
+                        <td colspan="10" style="text-align:center; padding:2rem;">
+                            No hay pagos registrados.
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    @foreach (var sinpe in Model)
+                    {
+                        <tr>
+                            <td>@sinpe.IdSinpe</td>
+                            <td>@sinpe.TelefonoOrigen</td>
+                            <td>@sinpe.NombreOrigen</td>
+                            <td>@sinpe.TelefonoDestinatario</td>
+                            <td>@sinpe.NombreDestinatario</td>
+                            <td>@sinpe.Monto.ToString("C")</td>
+                            <td>@sinpe.FechaDeRegistro.ToString("g")</td>
+                            <td>
+                                @(string.IsNullOrEmpty(sinpe.Descripcion) ? "" :
+                                        (sinpe.Descripcion.Length > 15 ? sinpe.Descripcion.Substring(0, 15) + "…" : sinpe.Descripcion))
+                            </td>
+                            @if(sinpe.Estado){
+                                <td>Confirmado</td>
+                            }else{
+                                <td>Pendiente</td>
+                            }
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </section>
+</section>
+

@@ -13,12 +13,25 @@
     <header class="nav-container">
         <nav class="navbar">
             <a asp-controller="Home" asp-action="Index">
-                XX
+                <img src="/img/logo_PAC3.png">
             </a>
-            <a asp-controller="Comercio" asp-action="Index">Comercios</a>
-            <a href="">Opcion 2</a>
-            <a href="">Opcion 3</a>
-            <a href="">Opcion 4</a>
+            @if (User.IsInRole("Administrador")) 
+            {
+                <div class="dropdown">
+                    <a asp-controller="Comercio" asp-action="Index" class="dropdown-btn">Comercios ▾</a>
+                    <div class="dropdown-menu">
+                        <a asp-controller="ConfigComercio" asp-action="Index">➤ Configuraciones</a>
+                    </div>
+                </div>
+                <a asp-controller="Sinpe" asp-action="Index">Sinpe Móvil</a>
+                <a asp-controller="Bitacora" asp-action="Index">Bitacora</a>
+                <a asp-controller="Reporte" asp-action="Index">Reportes</a>
+                <a asp-controller="Usuario" asp-action="Index">Usuario</a>
+            }
+            <a asp-controller="Caja" asp-action="Index">Cajas</a>
+            <div class="logout-container">
+                <a asp-controller="Auth" asp-action="Index">Cerar Sesión</a>
+            </div>
         </nav>
     </header>
 
@@ -33,7 +46,6 @@
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

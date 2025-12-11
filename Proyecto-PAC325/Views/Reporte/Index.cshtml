@@ -1,0 +1,73 @@
+﻿@model List<Proyecto_PAC325.Models.ReporteMensualModel>
+@{
+    ViewData["Title"] = "Reportes Mensuales";
+}
+
+@if (TempData["success"] != null)
+{
+    <div class="mensaje success" id="mensaje">
+        <span>@TempData["success"]</span>
+        <button id="cerrar-modal">×</button>
+    </div>
+}
+
+<section class="bienvenida">
+    <div>
+        <p>Apartado de Reporte</p>
+        <h1>
+            ESTE ES EL APARTADO DE REPORTE DONDE SE GENERAN LOS REPORTES DE TODOS LOS COMERCIOS
+        </h1>
+        <p>Este sector esta designado para generar los reportes basados en fechas</p>
+        <button class="boton bg-oscuro">
+            Reporte
+        </button>
+    </div>
+</section>
+
+<div class="titulo-container">
+    <h2>
+        REALIZAR REPORTES
+    </h2>
+</div>
+
+<div class="mb-3">
+    <form id="generarForm" method="post" asp-action="GenerarReportes">
+        @Html.AntiForgeryToken()
+        <label for="Fecha para Reporte">Fecha para Reporte</label>
+        <input name="fecha" type="date" class="entrada-datos" required />
+        <button type="submit" class="boton bg-oscuro mt-2">Generar reportes</button>
+    </form>
+</div>
+
+<table class="tabla">
+    <thead>
+        <tr>
+            <th>Comercio</th>
+            <th>Cantidad de cajas</th>
+            <th>Monto recaudado</th>
+            <th>Cantidad de SINPES</th>
+            <th>Monto total de comisión</th>
+            <th>Fecha del reporte</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model == null || !Model.Any())
+        {
+            <tr><td colspan="6">No hay reportes</td></tr>
+        }
+        else
+        {
+            foreach (var r in Model)
+            {
+                <tr>
+                    <td>@(r.Nombre ?? r.IdComercio.ToString())</td>
+                    <td>@r.CantidadDeCajas</td>
+                    <td>@r.MontoTotalRecaudado.ToString("C")</td>
+                    <td>@r.CantidadDeSINPES</td>
+                    <td>@r.MontoTotalComision.ToString("C")</td>
+                    <td>@r.FechaDelReporte.ToString("g")</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

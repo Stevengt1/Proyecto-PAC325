@@ -1,4 +1,5 @@
-﻿using Proyecto_PAC325.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Proyecto_PAC325.Models;
 using Proyecto_PAC325.Repository;
 
 namespace Proyecto_PAC325.Business
@@ -23,6 +24,10 @@ namespace Proyecto_PAC325.Business
             return await _comercioRepository.GetComercio(id);
         }
 
+        public async Task<List<ComercioModel>> GetComerciosActivos()
+        {
+            return await _comercioRepository.GetComerciosActivos();
+        }
         public async Task<ComercioModel> Add(ComercioModel comercio)
         {
             if (await _comercioRepository.ExistIdentification(comercio.Identificacion)) //Esta es la funcion que cree
