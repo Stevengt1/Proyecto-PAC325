@@ -23,7 +23,6 @@
 
 /* botones dentro del navbar en un menu */
 .accessibility-dropdown {
-    margin-left: auto; 
     position: relative;
     display: flex;
     align-items: center;
