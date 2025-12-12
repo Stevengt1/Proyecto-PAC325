@@ -48,6 +48,10 @@ namespace Proyecto_PAC325.Business
                 {
                     return "Error: ocurrio un error y no se pudo registrar en el sistema";
                 }
+                if (id == "ERROR")
+                {
+                    return "Error: revisa la dificultad de tu password (mayúsculas, minúsculas, número, carácter especial y más de 6–8 caracteres)";
+                }
                 return "Success: el usuario se registro correctamente";
             }
         }
