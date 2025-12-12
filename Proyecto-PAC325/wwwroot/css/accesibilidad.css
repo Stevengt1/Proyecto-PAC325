@@ -1,5 +1,4 @@
-﻿
-.skip-to-content {
+﻿.skip-to-content {
     position: absolute;
     left: -999px;
     top: auto;
@@ -22,7 +21,90 @@
         z-index: 10000;
     }
 
-/* estética*/
+/* botones dentro del navbar en un menu */
+.accessibility-dropdown {
+    margin-left: auto; 
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 9999;
+}
+
+.acc-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 36px;
+    padding: 6px;
+    border-radius: 9999px;
+    background: linear-gradient(180deg,#ffea58,#ffd200);
+    color: #061018;
+    border: 2px solid rgba(0,0,0,0.12);
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(3,10,18,0.28);
+}
+
+    .acc-toggle:hover, .acc-toggle:focus {
+        transform: translateY(-2px);
+        outline: none;
+    }
+
+/* dropdown menu */
+.acc-dropdown-menu {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 10px);
+    background: rgba(8,12,20,0.92);
+    padding: 10px;
+    border-radius: 12px;
+    min-width: 220px;
+    box-shadow: 0 12px 32px rgba(3,10,18,0.6);
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: flex-end;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    transition: transform .12s ease, opacity .12s ease, visibility .12s ease;
+}
+
+.accessibility-dropdown:focus-within .acc-dropdown-menu,
+.accessibility-dropdown:hover .acc-dropdown-menu,
+#acc-dropdown-menu[aria-hidden="false"] {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+
+.accessibility-dropdown .acc-btn {
+    min-width: 44px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    background: #0D47A1;
+    color: #ffffff;
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: none;
+}
+
+    .accessibility-dropdown .acc-btn:hover,
+    .accessibility-dropdown .acc-btn:focus {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 18px rgba(2,6,10,0.18);
+        outline: none;
+    }
+    .accessibility-dropdown .acc-btn.secondary {
+        background: #ffffff;
+        color: #0D47A1;
+        border: 1px solid rgba(13,71,161,0.12);
+        box-shadow: none;
+    }
+
 .acc-widget {
     position: fixed;
     right: 20px;
@@ -148,8 +230,8 @@ body.high-contrast {
     html.high-contrast footer,
     html.high-contrast .container,
     html.high-contrast .bienvenida,
-    html.high-contrast .vista-tabla,
-    html.high-contrast .tabla-container,
+    /*    html.high-contrast .vista-tabla,
+*/ /*    html.high-contrast .tabla-container,*/
     html.high-contrast .titulo-container {
         background: #000 !important;
         color: #ffeb3b !important;
@@ -166,28 +248,27 @@ body.high-contrast {
     }
 
     /* botones */
-    html.high-contrast button,
+    /*html.high-contrast button,
     html.high-contrast .boton,
     html.high-contrast .btn {
         background: #ffeb3b !important;
         color: #000 !important;
         border: 2px solid #000 !important;
-    }
+    }*/
 
     /* tablas */
-    html.high-contrast table,
+    /*html.high-contrast table,
     html.high-contrast .tabla {
         background: #000 !important;
         color: #ffeb3b !important;
         border-color: #ffeb3b !important;
-    }
+    }*/
 
     html.high-contrast thead th {
         background: #000 !important;
         color: #ffeb3b !important;
     }
 
-    /* inputs */
     html.high-contrast input,
     html.high-contrast select,
     html.high-contrast textarea {
@@ -216,6 +297,26 @@ body.high-contrast {
 
     .acc-panel {
         min-width: 150px;
+    }
+
+    .accessibility-toolbar {
+        margin-left: 0;
+        position: absolute;
+        right: 16px;
+        top: 12px;
+        background: rgba(0,0,0,0.06);
+        padding: 6px;
+        border-radius: 8px;
+    }
+
+    .accessibility-dropdown {
+        margin-left: 0;
+    }
+
+    .acc-dropdown-menu {
+        right: 12px;
+        top: 56px;
+        min-width: 180px;
     }
 }
 

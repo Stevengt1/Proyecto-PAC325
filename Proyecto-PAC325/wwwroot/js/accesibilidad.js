@@ -54,29 +54,12 @@
         anuncio('accesibilidad restablecida');
     }
 
-    // widget control
-    function openWidget() {
-        $('#acc-widget').addClass('expanded');
-        $('#acc-main-btn').attr('aria-expanded', 'true');
-        $('#acc-panel').attr('aria-hidden', 'false');
-        $('#acc-panel .acc-btn').first().focus();
-    }
-    function closeWidget() {
-        $('#acc-widget').removeClass('expanded');
-        $('#acc-main-btn').attr('aria-expanded', 'false');
-        $('#acc-panel').attr('aria-hidden', 'true');
-        $('#acc-main-btn').focus();
-    }
-    function toggleWidget() {
-        if ($('#acc-widget').hasClass('expanded')) closeWidget(); else openWidget();
-    }
 
     window.__acc = window.__acc || {};
     Object.assign(window.__acc, {
         toggleContrast: toggleContrast,
         aplicarConfigs: aplicarConfigs,
-        resetAccessibility: resetAccessibility,
-        toggleWidget: toggleWidget
+        resetAccessibility: resetAccessibility
     });
 
     $(function () {
@@ -88,19 +71,11 @@
         $('#acc-reset').on('click', resetAccessibility);
         $('#acc-skip').on('click', function () { $('#main-content').focus(); });
 
-        $('#acc-main-btn').on('click', function (e) {
-            e.stopPropagation();
-            toggleWidget();
-        });
 
         $(document).on('click', function (e) {
-            if (!$(e.target).closest('#acc-widget').length) {
-                closeWidget();
-            }
         });
 
         $(document).on('keydown', function (e) {
-            if (e.key === 'Escape') closeWidget();
             if (e.altKey && !e.ctrlKey && !e.shiftKey) {
                 switch (e.key.toLowerCase()) {
                     case 'h': e.preventDefault(); toggleContrast(); break;
@@ -113,15 +88,17 @@
             }
         });
 
-        $('#acc-panel .acc-btn').on('keydown', function (e) {
+        $('.dropdown .dropdown-menu .acc-btn').on('keydown', function (e) {
+            var $buttons = $(this).closest('.dropdown-menu').find('.acc-btn');
             if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
                 e.preventDefault();
-                $(this).closest('.acc-panel-inner').find('.acc-btn').eq(($(this).index() + 1) % $(this).closest('.acc-panel-inner').find('.acc-btn').length).focus();
+                var nextIdx = ($buttons.index(this) + 1) % $buttons.length;
+                $buttons.eq(nextIdx).focus();
             } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
                 e.preventDefault();
-                var idx = $(this).closest('.acc-panel-inner').find('.acc-btn').index(this);
-                var prev = (idx - 1 + $(this).closest('.acc-panel-inner').find('.acc-btn').length) % $(this).closest('.acc-panel-inner').find('.acc-btn').length;
-                $(this).closest('.acc-panel-inner').find('.acc-btn').eq(prev).focus();
+                var idx = $buttons.index(this);
+                var prev = (idx - 1 + $buttons.length) % $buttons.length;
+                $buttons.eq(prev).focus();
             }
         });
 
