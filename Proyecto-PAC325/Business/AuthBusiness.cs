@@ -16,6 +16,11 @@ namespace Proyecto_PAC325.Business
 
         public async Task<string> Register(string correo, string password, string rol)
         {
+            string mensaje = await _authRepository.Exist(correo);
+            if (!mensaje.Equals("Success"))
+            {
+                return "Error: " + mensaje;
+            }
             if(rol == "Cajero")
             {
                 var usuario = await _usuarioRepository.GetUsuarioCorreo(correo);

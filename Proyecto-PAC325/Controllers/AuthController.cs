@@ -28,6 +28,7 @@ namespace Proyecto_PAC325.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(string correo, string password, string rol)
         {
+
             string mensaje = await _authBusiness.Register(correo,password,rol);
             if (mensaje.Contains("Error"))
             {
@@ -35,7 +36,7 @@ namespace Proyecto_PAC325.Controllers
                 return RedirectToAction("Registro");
             }
             TempData["success"] = mensaje;
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index");
         }
 
         [HttpPost]

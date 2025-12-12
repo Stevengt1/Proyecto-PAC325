@@ -14,6 +14,23 @@ namespace Proyecto_PAC325.Repository
             _signInManager = signInManager;
         }
 
+        public async Task<string> Exist(string correo)
+        {
+            try
+            {
+                var respuesta = await _userManager.FindByEmailAsync(correo);
+                if (respuesta != null)
+                {
+                    return "Correo en uso";
+                }
+                return "Success";
+            }
+            catch (Exception ex)
+            {
+                return "error a la hora de verificar la existencia";
+            }
+        }
+
         public async Task<string> Register(string correo, string password, string rol)
         {
             try
