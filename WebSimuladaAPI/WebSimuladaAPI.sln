@@ -5,9 +5,9 @@ VisualStudioVersion = 17.14.36603.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSimuladaAPI", "WebSimuladaAPI\WebSimuladaAPI.csproj", "{4442D8AB-E548-4870-A383-FF19796AAC71}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API_PAC3", "..\..\..\..\..\..\source\repos\Proyecto-PAC325\API_PAC3\API_PAC3\API_PAC3.csproj", "{C0B36F8D-2300-F3B1-043A-E0AECF38E675}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API_PAC3", "..\API_PAC3\API_PAC3\API_PAC3.csproj", "{0758B7CC-D319-0D6F-8BF9-01F876BAE134}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proyecto-PAC325", "..\..\..\..\..\..\source\repos\Proyecto-PAC325\Proyecto-PAC325\Proyecto-PAC325.csproj", "{F9BF34D6-6ABC-BD19-C8CB-3F1BB41845F5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proyecto-PAC325", "..\Proyecto-PAC325\Proyecto-PAC325.csproj", "{B20009CA-A48F-5D2E-C587-F2E72DFF3CED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +19,14 @@ Global
 		{4442D8AB-E548-4870-A383-FF19796AAC71}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4442D8AB-E548-4870-A383-FF19796AAC71}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4442D8AB-E548-4870-A383-FF19796AAC71}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C0B36F8D-2300-F3B1-043A-E0AECF38E675}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C0B36F8D-2300-F3B1-043A-E0AECF38E675}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C0B36F8D-2300-F3B1-043A-E0AECF38E675}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C0B36F8D-2300-F3B1-043A-E0AECF38E675}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F9BF34D6-6ABC-BD19-C8CB-3F1BB41845F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F9BF34D6-6ABC-BD19-C8CB-3F1BB41845F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F9BF34D6-6ABC-BD19-C8CB-3F1BB41845F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F9BF34D6-6ABC-BD19-C8CB-3F1BB41845F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0758B7CC-D319-0D6F-8BF9-01F876BAE134}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0758B7CC-D319-0D6F-8BF9-01F876BAE134}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0758B7CC-D319-0D6F-8BF9-01F876BAE134}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0758B7CC-D319-0D6F-8BF9-01F876BAE134}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B20009CA-A48F-5D2E-C587-F2E72DFF3CED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B20009CA-A48F-5D2E-C587-F2E72DFF3CED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B20009CA-A48F-5D2E-C587-F2E72DFF3CED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B20009CA-A48F-5D2E-C587-F2E72DFF3CED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
