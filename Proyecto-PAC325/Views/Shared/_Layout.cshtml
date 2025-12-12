@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -32,6 +32,23 @@
             <div class="logout-container">
                 <a asp-controller="Auth" asp-action="Index">Cerrar Sesión</a>
             </div>
+            <a asp-controller="Sinpe" asp-action="Index">Sinpe Móvil</a>
+            <a asp-controller="Bitacora" asp-action="Index">Bitacora</a>
+            <a asp-controller="Reporte" asp-action="Index">Reportes</a>
+            <a asp-controller="Usuario" asp-action="Index">Usuario</a>
+
+
+            <div class="dropdown accessibility-dropdown" style="margin-left: auto;">
+                <a class="dropdown-btn" role="button" aria-haspopup="true" aria-expanded="false">Accesibilidad ▾</a>
+                <div class="dropdown-menu" role="menu" aria-label="Herramientas de accesibilidad">
+                    <button id="acc-contrast" class="acc-btn" type="button" role="menuitem" aria-pressed="false">Alto contraste</button>
+                    <button id="acc-increase" class="acc-btn" type="button" role="menuitem">A+</button>
+                    <button id="acc-decrease" class="acc-btn" type="button" role="menuitem">A−</button>
+                    <button id="acc-reset" class="acc-btn secondary" type="button" role="menuitem">Reset</button>
+                </div>
+            </div>
+
+
         </nav>
     </header>
 
