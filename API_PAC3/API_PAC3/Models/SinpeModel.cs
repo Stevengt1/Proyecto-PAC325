@@ -26,8 +26,5 @@ namespace API_PAC3.Models
         [StringLength(50)]
         public string Descripcion { get; set; }
         public bool Estado { get; set; } = false;
-        [NotMapped]
-        [Required]
-        public int IdCaja { get; set; }
     }
 }

@@ -42,6 +42,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 builder.Services.AddScoped<ComercioServices>();
 builder.Services.AddScoped<ConfigComercioServices>();
 builder.Services.AddScoped<SinpeServices>();
+builder.Services.AddScoped<CajaServices>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

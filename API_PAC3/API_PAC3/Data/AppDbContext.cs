@@ -14,7 +14,7 @@ namespace API_PAC3.Data
         public DbSet<ComercioModel> COMERCIOS {  get; set; }
         public DbSet<SinpeModel> SINPE { get; set; }
         public DbSet<ConfigComercioModel> CONFIGURACIONES_COMERCIOS { get; set; }
-
+        public DbSet<CajaModel> CAJAS { get; set; }
 
     }
 }

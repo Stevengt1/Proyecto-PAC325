@@ -8,21 +8,31 @@ namespace API_PAC3.Services
     {
 
         private readonly AppDbContext _context;
+        private readonly CajaServices _cajaServices;
 
-        public SinpeServices(AppDbContext contex)
+        public SinpeServices(AppDbContext contex, CajaServices cajaServices)
         {
             _context = contex;
+            _cajaServices = cajaServices;
         }
 
-        public async Task<List<SinpeModel>> GetSinpesByTelefono(string telefono)
+        public async Task<List<SinpeModel>> GetSinpesByTelefono(string telefono, string idComercio)
         {
-            if (string.IsNullOrWhiteSpace(telefono))
+            if (string.IsNullOrWhiteSpace(telefono) || string.IsNullOrWhiteSpace(idComercio))
                 return new List<SinpeModel>();
-
-            return await _context.SINPE
-                .Where(s => s.TelefonoDestinatario == telefono)
-                .OrderByDescending(s => s.FechaDeRegistro)
-                .ToListAsync();
+            int id = int.Parse(idComercio);
+            CajaModel caja = await _cajaServices.GetCajaByTelefono(telefono);
+            if (caja != null && caja.IdComercio == id)
+            {
+                return await _context.SINPE
+                            .Where(s => s.TelefonoDestinatario == telefono)
+                            .OrderByDescending(s => s.FechaDeRegistro)
+                            .ToListAsync();
+            }
+            else
+            {
+                return new List<SinpeModel>();
+            }
         }
 
         public async Task<bool> Sincronizar(int idSinpe) 

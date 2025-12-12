@@ -21,7 +21,8 @@ namespace API_PAC3.Controllers
         [HttpGet("{telefono}")]
         public async Task<ActionResult<IEnumerable<SinpeModel>>> GetSinpesCaja(string telefono)
         {
-            return await _sinpeServices.GetSinpesByTelefono(telefono);
+            var idComercio = User.FindFirst("IdComercio")?.Value;
+            return await _sinpeServices.GetSinpesByTelefono(telefono, idComercio);
         }
 
         [Authorize]
