@@ -6,47 +6,38 @@
     <title>@ViewData["Title"] - Proyecto_PAC325</title>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Proyecto_PAC325.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/accesibilidad.css" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 </head>
 <body>
-
     <header class="nav-container">
         <nav class="navbar">
             <a asp-controller="Home" asp-action="Index">
                 <img src="/img/logo_PAC3.png">
             </a>
-            <div class="dropdown">
-                <a asp-controller="Comercio" asp-action="Index" class="dropdown-btn">Comercios ▾</a>
-                <div class="dropdown-menu">
-                    <a asp-controller="ConfigComercio" asp-action="Index">➤ Configuraciones</a>
+            @if (User.IsInRole("Administrador")) 
+            {
+                <div class="dropdown">
+                    <a asp-controller="Comercio" asp-action="Index" class="dropdown-btn">Comercios ▾</a>
+                    <div class="dropdown-menu">
+                        <a asp-controller="ConfigComercio" asp-action="Index">➤ Configuraciones</a>
+                    </div>
                 </div>
-            </div>
+                <a asp-controller="Sinpe" asp-action="Index">Sinpe Móvil</a>
+                <a asp-controller="Bitacora" asp-action="Index">Bitacora</a>
+                <a asp-controller="Reporte" asp-action="Index">Reportes</a>
+                <a asp-controller="Usuario" asp-action="Index">Usuario</a>
+            }
             <a asp-controller="Caja" asp-action="Index">Cajas</a>
-            <a asp-controller="Sinpe" asp-action="Index">Sinpe Móvil</a>
-            <a asp-controller="Bitacora" asp-action="Index">Bitacora</a>
-            <a asp-controller="Reporte" asp-action="Index">Reportes</a>
-            <a asp-controller="Usuario" asp-action="Index">Usuario</a>
-
-
-            @* <div class="accessibility-toolbar" aria-hidden="false">
-                <button id="acc-contrast" class="acc-btn" type="button">Alto contraste</button>
-                <button id="acc-increase" class="acc-btn" type="button">A+</button>
-                <button id="acc-decrease" class="acc-btn" type="button">A-</button>
-                <button id="acc-reset" class="acc-btn secondary" type="button">Reset</button>
-            </div> *@
-
+            <div class="logout-container">
+                <a asp-controller="Auth" asp-action="Index">Cerar Sesión</a>
+            </div>
         </nav>
     </header>
 
-    <main id="main-content" tabindex="-1" role="main" aria-labelledby="page-title">
-        @RenderBody()
+    <main role="main" class="pb-3">
+            @RenderBody()
     </main>
-
-
-
-
 
     <footer class="border-top footer text-muted">
         <div class="container">
@@ -54,24 +45,7 @@
         </div>
     </footer>
 
-
-    <div id="acc-widget" class="acc-widget" aria-hidden="false">
-        <button id="acc-main-btn" class="acc-main" aria-expanded="false" aria-controls="acc-panel" aria-label="Abrir opciones de accesibilidad">⚙︎</button>
-
-        <div id="acc-panel" class="acc-panel" role="region" aria-label="Herramientas de accesibilidad" aria-hidden="true">
-            <div class="acc-panel-inner">
-                <button id="acc-contrast" class="acc-btn" type="button" aria-pressed="false">Alto contraste</button>
-                <button id="acc-increase" class="acc-btn" type="button">A+</button>
-                <button id="acc-decrease" class="acc-btn" type="button">A−</button>
-                <button id="acc-reset" class="acc-btn secondary" type="button">Reset</button>
-            </div>
-        </div>
-    </div>
-
-
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    
-    <script src="~/js/accesibilidad.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
