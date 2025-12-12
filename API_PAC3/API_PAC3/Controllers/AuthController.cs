@@ -25,9 +25,9 @@ namespace API_PAC3.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> ObtenerToken(ComercioModel comercio)
+        public async Task<IActionResult> ObtenerToken(int idComercio)
         {
-            comercio = await _comercioServices.GetComercio(comercio.IdComercio);
+            ComercioModel comercio = await _comercioServices.GetComercio(idComercio);
             if(comercio == null)
             {
                 return Unauthorized();
