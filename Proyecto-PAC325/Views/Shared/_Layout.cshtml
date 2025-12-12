@@ -30,13 +30,12 @@
             <a asp-controller="Usuario" asp-action="Index">Usuario</a>
 
 
-            <!-- Accessibility toolbar -->
-            <div class="accessibility-toolbar" aria-hidden="false">
+            @* <div class="accessibility-toolbar" aria-hidden="false">
                 <button id="acc-contrast" class="acc-btn" type="button">Alto contraste</button>
                 <button id="acc-increase" class="acc-btn" type="button">A+</button>
                 <button id="acc-decrease" class="acc-btn" type="button">A-</button>
                 <button id="acc-reset" class="acc-btn secondary" type="button">Reset</button>
-            </div>
+            </div> *@
 
         </nav>
     </header>
@@ -45,11 +44,30 @@
         @RenderBody()
     </main>
 
+
+
+
+
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2025 - Proyecto_PAC325 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
+
+
+    <div id="acc-widget" class="acc-widget" aria-hidden="false">
+        <button id="acc-main-btn" class="acc-main" aria-expanded="false" aria-controls="acc-panel" aria-label="Abrir opciones de accesibilidad">⚙︎</button>
+
+        <div id="acc-panel" class="acc-panel" role="region" aria-label="Herramientas de accesibilidad" aria-hidden="true">
+            <div class="acc-panel-inner">
+                <button id="acc-contrast" class="acc-btn" type="button" aria-pressed="false">Alto contraste</button>
+                <button id="acc-increase" class="acc-btn" type="button">A+</button>
+                <button id="acc-decrease" class="acc-btn" type="button">A−</button>
+                <button id="acc-reset" class="acc-btn secondary" type="button">Reset</button>
+            </div>
+        </div>
+    </div>
+
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     
