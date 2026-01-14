@@ -1,0 +1,78 @@
+﻿@model List<Proyecto_PAC325.Models.ConfigComercioModel>
+<section class="bienvenida">
+    <div>
+        <p>Apartado de Comercio</p>
+        <h1>
+            ESTE ES EL APARTADO DE COMERCIO DONDE PODRAS VISUALIZAR LAS CONFIGURACIONES
+        </h1>
+        <p>En este apartado se visualizara la lista de las configuraciones afiliadas a los comercios</p>
+        <button class="boton bg-oscuro">
+            Ver configuraciones
+        </button>
+    </div>
+</section>
+
+<div class="titulo-container">
+    <h2>
+        CONFIGURACIONES
+    </h2>
+</div>
+
+<div class="act-container">
+    <h3>Acciones: </h3>
+    <a class="activo" asp-action="Index">Lista</a>
+    <a asp-action="Registro">Registrar</a>
+</div>
+
+<section class="vista-tabla">
+    <section class="tabla-container">
+        <table class="tabla">
+            <thead>
+                <tr>
+                    <th>Comercio</th>
+                    <th>Tipo de Configuración</th>
+                    <th>Comisión</th>
+                    <th>Fecha Registro</th>
+                    <th>Fecha Modificación</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (ConfigComercioModel config in Model)
+                {
+                    <tr>
+                        <td>@config.Comercio.Nombre</td>
+                        @switch(config.TipoConfiguracion)
+                        {
+                            case 1:
+                                <td>Plataforma</td>
+                                break;
+                            case 2:
+                                <td>Externa</td>
+                                break;
+                            case 3:
+                                <td>Ambas</td>
+                                break;
+                        }
+                        <td>@config.Comision</td>
+                        <td>@config.FechaDeRegistro.ToString("g")</td>
+                        <td>@config.FechaDeModificacion.ToString("g")</td>
+                        @if (config.Estado == 1)
+                        {
+                            <td>Activo</td>
+                        }
+                        else
+                        {
+                            <td>Inactivo</td>
+                        }
+                        <td>
+                            <a class="boton bg-success" asp-route-idConfiguracion="@config.IdConfiguracion" asp-action="Editar">Editar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </section>
+
+</section>

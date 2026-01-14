@@ -7,12 +7,13 @@ namespace Proyecto_PAC325.Repository
     public class ComercioRepository
     {
         private readonly AppDbContext _context;
+        private IBitacora _bitacora;
 
-        public ComercioRepository(AppDbContext context)
+        public ComercioRepository(AppDbContext context, IBitacora bitacora, CajaRepository cajaRepository)
         {
             _context = context;
+            _bitacora = bitacora;
         }
-
         public async Task<List<ComercioModel>> GetAllComercio()
         {
             return await _context.COMERCIOS.ToListAsync();
@@ -23,24 +24,45 @@ namespace Proyecto_PAC325.Repository
             return await _context.COMERCIOS.FindAsync(id); //Esa funcion lo busca por el Id y devuelve el objeto 
         }
 
-        public async Task<ComercioModel> Add(ComercioModel comercio) {
+        public async Task<List<ComercioModel>> GetComerciosActivos()
+        {
+            return await _context.COMERCIOS.Where(c => c.Estado == 1).ToListAsync();
+        }
 
-            _context.COMERCIOS.Add(comercio);
-            if (await _context.SaveChangesAsync() > 0) //Se valida que realmente se hayan dado cambios, esto devuelve 
-            { // la cantidad de  entidades afectadas 0, 1, 2,3 etc.. para que lo tengan en cuenta por si no entienden
-                return comercio;
+        public async Task<ComercioModel> Add(ComercioModel comercio) {
+            try
+            {
+                _context.COMERCIOS.Add(comercio);
+                if (await _context.SaveChangesAsync() > 0) //Se valida que realmente se hayan dado cambios, esto devuelve 
+                { // la cantidad de  entidades afectadas 0, 1, 2,3 etc.. para que lo tengan en cuenta por si no entienden
+                    await _bitacora.RegistrarEvento("COMERCIOS", "Registrar", "Se registro un comercio", comercio);
+                    return comercio;
+                }
+                return null;
+            }catch(Exception ex)
+            {
+                await _bitacora.RegistrarEvento("COMERCIOS", "Error", "Error", ex);
+                return null;
             }
-            return null;
         }
 
         public async Task<ComercioModel> Update(ComercioModel comercio)
         {
-            _context.COMERCIOS.Update(comercio);
-            if (await _context.SaveChangesAsync() > 0)
+            try
             {
-                return comercio;
+                var comercioAnterior = await _context.COMERCIOS.AsNoTracking().FirstOrDefaultAsync(c => c.IdComercio == comercio.IdComercio);
+                _context.COMERCIOS.Update(comercio);
+                if (await _context.SaveChangesAsync() > 0)
+                {
+                    await _bitacora.RegistrarEvento("COMERCIOS", "Editar", "Se actualizo un comercio", comercioAnterior, comercio);
+                    return comercio;
+                }
+                return null;
+            }catch(Exception ex)
+            {
+                await _bitacora.RegistrarEvento("COMERCIOS", "Error", "Error", ex);
+                return null;
             }
-            return null;
         }
 
         public async Task<bool> ExistIdentification(String Identificacion)

@@ -1,0 +1,68 @@
+﻿@model List<Proyecto_PAC325.Models.CajaModel>
+<section class="bienvenida">
+    <div>
+        <p>Apartado de Comercios</p>
+        <h1>
+            ESTE ES EL APARTADO DE COMERCIOS DONDE ESTAN LAS CAJAS AFILIADAS
+        </h1>
+        <p>Acá podrás ver las cajas que se ecnuentran afiliadas al comercio seleccionado</p>
+        <button class="boton bg-oscuro">
+            Ver cajas
+        </button>
+    </div>
+</section>
+
+<div class="titulo-container">
+    <h2>
+        CAJAS DEL COMERCIO
+    </h2>
+</div>
+
+<div class="act-container">
+    <h3>Acciones: </h3>
+    <a class="activo" asp-action="Index">Lista</a>
+</div>
+
+<section class="vista-tabla">
+    <section class="tabla-container">
+        <table class="tabla">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Teléfono SINPE</th>
+                    <th>Fecha de registro</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model == null || !Model.Any())
+                {
+                    <tr>
+                        <td colspan="6" style="text-align:center; padding:2rem;">
+                            No hay cajas para mostrar.
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    @foreach (var c in Model)
+                    {
+                        <tr>
+                            <td>@c.Nombre</td>
+                            <td>@(string.IsNullOrEmpty(c.Descripcion) ? "" : (c.Descripcion.Length > 10 ? c.Descripcion.Substring(0, 10) + "…" : c.Descripcion))</td>
+                            <td>@c.TelefonoSINPE</td>
+                            <td>@c.FechaDeRegistro.ToString("g")</td>
+                            <td>@(c.Estado == 1 ? "Activo" : "Inactivo")</td>
+                            <td>
+                                <a class="boton bg-success" asp-controller="Caja" asp-action="Editar" asp-route-idCaja="@c.IdCaja">Editar</a>
+                                <a class="boton bg-oscuro" asp-controller="Caja" asp-action="SinpesPorCaja" asp-route-telefono="@c.TelefonoSINPE">Ver SINPE</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </section>
+</section>

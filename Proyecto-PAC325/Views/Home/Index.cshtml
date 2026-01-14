@@ -2,14 +2,29 @@
     ViewData["Title"] = "Home Page";
 }
 
+@if (TempData["error"] != null)
+{
+    <div class="mensaje error" id="mensaje">
+        <span>@TempData["error"]</span>
+        <button id="cerrar-modal">×</button>
+    </div>
+}
+else if (TempData["success"] != null)
+{
+    <div class="mensaje success" id="mensaje">
+        <span>@TempData["success"]</span>
+        <button id="cerrar-modal">×</button>
+    </div>
+}
+
     <section class="bienvenida">
         <div>
             <p>Mensaje</p>
             <h1>
-                MENSAJE DE BIENVENIDA
+                BIENVENIDOS AL PROYECTO DE PROGRAMACIÓN AVANZADA
             </h1>
-            <p>Descripción pequeña de la página</p>
-            <button class="boton">
+            <p>Este proyecto esta desarrollado para la materia de programación avanzada, fue desarrollado por el grupo 3</p>
+            <button class="boton bg-oscuro">
                 Quiero Probar
             </button>
         </div>
